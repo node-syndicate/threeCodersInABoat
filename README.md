@@ -1,3 +1,10 @@
+# TODO:
+* watch the course materials xD
+* basic structure
+* project idea
+* list of technologies
+
+
 # Course Project
 _Web applications with Node.js_
 
