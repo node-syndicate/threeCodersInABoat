@@ -1,3 +1,16 @@
+# rules 
+1. html - use semantics where posible
+2. css:
+  * use classes over ids;
+  * use: .modulename, .modulename-submodule, .modulename-subcomponent;
+  * more [here](https://smacss.com/);
+3. javascript:
+  * ES6;
+  * use single quotes;
+  * semicolons - yes;
+  * indent - tabs;
+  * custom eslint - [airbnb](https://github.com/airbnb/javascript) style config
+
 # TODO:
 * watch the course materials xD
 * basic structure
