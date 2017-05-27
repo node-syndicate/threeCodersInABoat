@@ -10,7 +10,7 @@
   * semicolons - yes;
   * indent - tabs;
   * custom eslint - [airbnb](https://github.com/airbnb/javascript) style config;
-  * feel free to edit rules - leave a comment tho
+  * feel free to edit the rules - leave a comment tho
 
 # TODO:
 * watch the course materials xD
