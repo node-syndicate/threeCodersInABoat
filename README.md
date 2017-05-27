@@ -9,7 +9,7 @@
   * use single quotes;
   * semicolons - yes;
   * indent - tabs;
-  * custom eslint - [airbnb](https://github.com/airbnb/javascript) style config
+  * custom eslint - [airbnb](https://github.com/airbnb/javascript) style config;
 
 # TODO:
 * watch the course materials xD
