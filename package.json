@@ -1,0 +1,29 @@
+{
+  "name": "not-desided-yet",
+  "version": "1.0.0",
+  "description": "Telerik Academy Course Project - Node Applications",
+  "main": "app.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/node-syndicate/testfield.git"
+  },
+  "keywords": [
+    "node",
+    "javascript"
+  ],
+  "author": "Team some-name",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/node-syndicate/testfield/issues"
+  },
+  "homepage": "https://github.com/node-syndicate/testfield#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.2.0"
+  }
+}
