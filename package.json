@@ -20,7 +20,9 @@
     "url": "https://github.com/node-syndicate/testfield/issues"
   },
   "homepage": "https://github.com/node-syndicate/testfield#readme",
-  "dependencies": {},
+  "dependencies": {
+    "mongodb": "^2.2.27"
+  },
   "devDependencies": {
     "eslint": "^3.19.0",
     "eslint-config-airbnb-base": "^11.2.0",
