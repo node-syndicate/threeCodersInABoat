@@ -1,40 +1,25 @@
-const MongoClient = require('mongodb').MongoClient;
+// controlling the app through the terminal
+// exit terminates the process
 
-const assert = require('assert');
-
-const url = 'mongodb://localhost:27017/testfield';
-
-// the code below fills up the db everytime app.js is triggered
-
-const insertDocuments = (db, callback) => {
-	const collection = db.collection('documents');
-	collection.insertMany([
-    { julia: 'zadava mnogo vyprosi' }, { az: 'se iznerbqm' }, { nie: 'sekarame' },
-	],	(err, result) => {
-		assert.equal(err, null);
-		assert.equal(3, result.result.n);
-		assert.equal(3, result.ops.length);
-		console.log('Inserted 3 documents into the collection');
-		callback(result);
-	});
-};
-
-const findDocuments = (db, callback) => {
-	const collection = db.collection('documents');
-	collection.find({}).toArray((err, docs) => {
-		assert.equal(err, null);
-		console.log('Found the following records');
-		console.log(docs);
-		callback(docs);
-	});
-};
-
-MongoClient.connect(url, (err, db) => {
-	assert.equal(null, err);
-	console.log('Connected successfully to server');
-	insertDocuments(db, () => {
-		findDocuments(db, () => {
-			db.close();
-		});
-	});
+process.stdin.setEncoding('utf8');
+process.stdin.on('readable', () => {
+	const input = process.stdin.read();
+	if (input !== null) {
+		process.stdout.write(input);
+		const command = input.trim();
+		if (command === 'exit') {
+			process.exit(0);
+		}
+	}
 });
+
+const http = require('http');
+const fs = require('fs');
+const events = require('events');
+
+
+http.createServer((request, response) => {
+	response.writeHead(200, { 'Content-Type': 'text/plain' }); response.end('Hello World\n');
+}).listen(8081);
+
+console.log('Server running at http://127.0.0.1:8081/');
