@@ -10,13 +10,9 @@
 # TODO:
 * watch the course materials xD
 * basic structure
-check node module, how to use them, design patterns -- MV*
+  * check node modules, how to use them, design patterns -- MV*
 * project idea
-whatever idea for website, it doesn't matter
-* list of technologies
-  * node.js
-  * express
-
+  * whatever idea for website, it doesn't matter
 
 # Course Project
 _Web applications with Node.js_
