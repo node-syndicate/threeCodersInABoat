@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/node-syndicate/testfield#readme",
   "dependencies": {
+    "express": "^4.15.3",
     "mongodb": "^2.2.27"
   },
   "devDependencies": {
