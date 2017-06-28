@@ -9,6 +9,10 @@
 
 # TODO:
 * watch the course materials xD
+* learn Promises !!! learn callbacks !!! scafolding ---> boilerplate
+* use native solutiions, better than libraries, plugins etc. 
+* learn Networking :D 
+* how to deploy the DB in the cloud
 * basic structure
   * check node modules, how to use them, design patterns -- MV*
 * project idea
