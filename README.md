@@ -14,7 +14,9 @@
 * learn Networking :D 
 * how to deploy the DB in the cloud
 * basic structure
+  * begginer mode: node server, simple web app, deployed in the cloud
   * check node modules, how to use them, design patterns -- MV*
+  * modules ---> index.js / architecture / exporting
 * project idea
   * whatever idea for website, it doesn't matter
 
