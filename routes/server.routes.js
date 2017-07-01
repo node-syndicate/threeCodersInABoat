@@ -3,12 +3,10 @@ const router = new Router();
 
 router
 	.get('/', (req, res) => {
-		res.send('<h1>---Home---</h1>');
-		console.log('---Home---');
+		res.render('home');
 	})
 	.get('/all', (req, res) => {
-		res.send('<h1>---All---</h1>');
-		console.log('---All---');
+		res.render('all');
 	});
 
 module.exports = router;

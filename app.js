@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 const port = 8000;
+app.set('view engine', 'pug');
+
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
