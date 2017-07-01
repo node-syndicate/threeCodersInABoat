@@ -1,0 +1,32 @@
+{
+  "name": "nodejs-teamwork",
+  "version": "1.0.0",
+  "description": "Course project for Telerik Academy",
+  "main": "app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/node-syndicate/testfield.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongoDB"
+  ],
+  "author": "threeCodersInABoat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/node-syndicate/testfield/issues"
+  },
+  "homepage": "https://github.com/node-syndicate/testfield#readme",
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.1.1",
+    "eslint-config-google": "^0.8.0"
+  }
+}
