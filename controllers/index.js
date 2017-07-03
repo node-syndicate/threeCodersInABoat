@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = new Router();
 
 router.use('/all', require('./all'));
+router.use('/', require('./api.routes'));
 
 router
 	.get('/', (req, res) => {
