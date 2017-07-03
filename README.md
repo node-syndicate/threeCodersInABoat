@@ -9,16 +9,13 @@
 
 # TODO:
 * watch the course materials xD
-* learn Promises !!! learn callbacks !!! scafolding ---> boilerplate
-* use native solutiions, better than libraries, plugins etc. 
-* learn Networking :D 
-* how to deploy the DB in the cloud
-* basic structure
-  * begginer mode: node server, simple web app, deployed in the cloud
-  * check node modules, how to use them, design patterns -- MV*
-  * modules ---> index.js / architecture / exporting
-* project idea
+* learn Networking :X 
+* how to deploy the DB in the cloud | fuck AWS, aws acc --- done
+* basic structure --- done
+* project idea --- pfff
   * whatever idea for website, it doesn't matter
+* login logout register auth passport gulp ---> for tomorrow
+* basic login and register system, user page and responding to the changes ui
 
 # Course Project
 _Web applications with Node.js_
