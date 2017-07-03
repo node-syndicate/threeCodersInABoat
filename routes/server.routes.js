@@ -5,8 +5,12 @@ router
 	.get('/', (req, res) => {
 		res.render('home');
 	})
-	.get('/all', (req, res) => {
-		res.render('all');
+	
+	.get('/404', (req, res) => {
+		res.render('error');
+	})
+	.get('*', (req, res) => {
+		res.redirect('/404');
 	});
 
 module.exports = router;
