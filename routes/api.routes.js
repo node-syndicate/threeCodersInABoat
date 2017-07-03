@@ -15,6 +15,14 @@ router
 		items.push(item);
 		res.status(201)
 			.send(item);
+	})
+	.post('/login', (req, res) => {
+		// middleware for auth
+		console.log('u r logged');
+	})
+	.post('/register', (req, res) => {
+		// middleware for auth
+		console.log('u r registered');
 	});
 
 module.exports = router;
