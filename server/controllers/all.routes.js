@@ -7,13 +7,13 @@ const items = [{
 }];
 
 router
-	.get('/', (req, res) => {
+	.get('/all', (req, res) => {
 		res.render('all');
 	})
-	.get('/items', (req, res) => {
+	.get('/all/items', (req, res) => {
 		res.send(items);
 	})
-	.post('/items', (req, res) => {
+	.post('/all/items', (req, res) => {
 		const item = req.body;
 		item.id = items.length + 1;
 		items.push(item);
