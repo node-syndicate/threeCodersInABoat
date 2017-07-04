@@ -14,6 +14,10 @@
             "error",
             "always"
         ],
+        "linebreak-style": [
+            "error",
+            "windows"
+        ],
         "semi": 2,
         "no-undef": 2,
         "no-use-before-define": 0,
