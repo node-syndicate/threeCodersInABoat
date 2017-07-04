@@ -14,7 +14,7 @@
             "error",
             "always"
         ],
-        "linebreak-style": [
+        "linebreak-style": [   // this is for windows users
             "error",
             "windows"
         ],
