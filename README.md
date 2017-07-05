@@ -8,6 +8,12 @@
   * rules are kindly provided by Telerik Academy, feel free to obey
 
 # TODO:
+  * public routes --> API for news ot news data
+  * register/login
+    * register ---- form --- post ----->  ---- валидация на паролата
+    * login ---- през passport и аuth
+
+
 * watch the course materials xD
 * learn Networking :X 
 * how to deploy the DB in the cloud | fuck AWS, aws acc --- done
@@ -34,7 +40,8 @@
 #### да питаме Дончо
   1. какъв ще е тоя private auth route
   2. да питаме за спа-то
-  3. 
+  3. кво е API и API routes --- ква е разликата с другите раутове
+  4. кво е рестфул раут/ейджакс раут
 
 # Course Project
 _Web applications with Node.js_
