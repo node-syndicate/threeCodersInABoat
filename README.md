@@ -12,6 +12,9 @@
   * register/login
     * register ---- form --- post ----->  ---- валидация на паролата
     * login ---- през passport и аuth
+    * user model ----> 
+  * css/style | front-end
+  * mongoDB --- как работи
 
 
 * watch the course materials xD
