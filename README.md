@@ -17,6 +17,20 @@
 * login logout register auth passport gulp ---> for tomorrow
 * basic login and register system, user page and responding to the changes ui
 
+## plan:
+  1. новини
+  2. search
+  3. спорт
+  4. life
+  5. културни мероприятия
+  6. къде да отидем
+  
+## private
+  1. любими / бележки
+  2. профил - НЕ спа апп
+  3. галерия
+  4. чат
+
 # Course Project
 _Web applications with Node.js_
 
