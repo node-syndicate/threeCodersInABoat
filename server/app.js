@@ -1,8 +1,10 @@
 const express = require('express');
 let app = express();
 const config = require('./config');
+const data =require('./data');
 
-app = config(app);
+app = config.config(app);
+app = config.authConfig(app, data);
 
 app.use(require('./controllers'));
 
