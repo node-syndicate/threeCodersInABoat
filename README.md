@@ -31,6 +31,11 @@
   3. галерия
   4. чат
 
+#### да питаме Дончо
+  1. какъв ще е тоя private auth route
+  2. да питаме за спа-то
+  3. 
+
 # Course Project
 _Web applications with Node.js_
 
