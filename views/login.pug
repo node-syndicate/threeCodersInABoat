@@ -1,0 +1,14 @@
+extends layout/main
+append head
+    link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/static/css/error.css")
+    title braindead | you're lazy
+append header
+    form(action = '/login' method = 'post')
+        label(for = 'username') username
+        input(type = 'text' name = 'username')
+        label(for = 'password') password
+        input(type = 'password' name = 'password')
+        button.btn.btn-info(type = 'submit') Login
+    a.btn(href = '/register')
+        | New User

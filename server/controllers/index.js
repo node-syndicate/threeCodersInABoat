@@ -35,6 +35,12 @@ router
 		// if logged get one .pug
 		// else get another .pug
 	})
+	.get('/register', (req, res) => {
+		res.render('register');
+	})
+	.get('/login', (req, res) => {
+		res.render('login');
+	})
 	.get('/404', (req, res) => {
 		res.render('error');
 	})

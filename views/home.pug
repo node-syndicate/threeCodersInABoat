@@ -4,14 +4,8 @@ append head
     link(rel="stylesheet", href="/static/css/home.css")
     title braindead | you're lazy
 append header
-    form(action = '/login' method = 'post')
-        label(for = 'username') username
-        input(type = 'text' name = 'username')
-        br
-        label(for = 'password') password
-        input(type = 'password' name = 'password')
-        br
-        button(type = 'submit') login
+    a.btn.btn-info(href = '/login')
+        | LogIn
 append main
     // не слагай br, ще ползваме css-a
     h1 this is the website, welcome

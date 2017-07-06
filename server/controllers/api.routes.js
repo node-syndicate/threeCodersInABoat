@@ -6,6 +6,7 @@ router
 	.post('/login', (req, res) => {
 		// middleware for auth --- passport
 		console.log('u r logged');
+		res.redirect('/');
 	})
 	.post('/register', (req, res) => {
 		// middleware for validation
