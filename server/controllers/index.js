@@ -5,6 +5,7 @@ const router = new Router();
 const path = require('path');
 const fs = require('fs');
 
+// adding routes dynamically
 fs.readdirSync(__dirname)
 	.filter((file) => file.includes('routes.js'))
 	.map((file) => path.join(__dirname, file))
@@ -17,6 +18,7 @@ fs.readdirSync(__dirname)
 router
 	.get('/', (req, res) => {
 		// using the news api directly, this stuff will come from the db later on
+		// this will be removed
 		const https = require('https');
 		const url = 'https://newsapi.org/v1/articles?source=the-guardian-uk&sortBy=latest&apiKey=a8f1aaa1a2fe4a22bdbb98f971c484a5';
 		let body = '';
@@ -30,6 +32,8 @@ router
 					res.render('home', { articles: body.articles });
 				});
 		});
+		// if logged get one .pug
+		// else get another .pug
 	})
 	.get('/404', (req, res) => {
 		res.render('error');
