@@ -4,7 +4,7 @@ const config = require('./config');
 const data =require('./data');
 
 app = config.config(app);
-app = config.authConfig(app, data);
+// app = config.authConfig(app, data);
 
 app.use(require('./controllers'));
 

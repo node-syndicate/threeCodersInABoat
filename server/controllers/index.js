@@ -16,7 +16,20 @@ fs.readdirSync(__dirname)
 
 router
 	.get('/', (req, res) => {
-		res.render('home');
+		// using the news api directly, this stuff will come from the db later on
+		const https = require('https');
+		const url = 'https://newsapi.org/v1/articles?source=the-guardian-uk&sortBy=latest&apiKey=a8f1aaa1a2fe4a22bdbb98f971c484a5';
+		let body = '';
+		https.get(url, (resp) => {
+			resp
+				.on('data', (chunk) => {
+					body += chunk;
+				})
+				.on('end', () => {
+					body = JSON.parse(body);
+					res.render('home', { articles: body.articles });
+				});
+		});
 	})
 	.get('/404', (req, res) => {
 		res.render('error');

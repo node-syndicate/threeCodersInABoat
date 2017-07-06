@@ -31,6 +31,9 @@ const users = {
 	},
 };
 
+const newsList = []; // not used anywhere
+
 module.exports = {
 	users,
+	newsList,
 };
