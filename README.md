@@ -8,11 +8,15 @@
   * rules are kindly provided by Telerik Academy, feel free to obey
 
 # TODO:
-  * public routes --> API for news ot news data
+  * public routes --> API for news ot news data (done)
+    * not the best way to pump the db
+    * tested with pug --> working
+    * db before all 
   * register/login
     * register ---- form --- post ----->  ---- валидация на паролата
     * login ---- през passport и аuth
-    * user model ----> 
+    * user model ----> register/login
+    * how to change the ui
   * css/style | front-end
   * mongoDB --- как работи
 
@@ -23,8 +27,6 @@
 * basic structure --- done
 * project idea --- pfff
   * whatever idea for website, it doesn't matter
-* login logout register auth passport gulp ---> for tomorrow
-* basic login and register system, user page and responding to the changes ui
 
 ## plan:
   1. новини
