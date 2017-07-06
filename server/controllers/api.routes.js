@@ -4,7 +4,7 @@ const router = new Router();
 
 router
 	.post('/login', (req, res) => {
-		// middleware for auth
+		// middleware for auth --- passport
 		console.log('u r logged');
 	})
 	.post('/register', (req, res) => {
