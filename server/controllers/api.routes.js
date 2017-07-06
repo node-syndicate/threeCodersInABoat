@@ -11,6 +11,7 @@ router
 		// that lib for implementing errors in the layout
 		const userData = req.body;
 		// add the user into the db using user model
+		
 		res.redirect('/');
 	});
 
