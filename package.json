@@ -38,6 +38,7 @@
     "global": "^4.3.2",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.2.1",
+    "mongodb": "^2.2.30",
     "morgan": "^1.8.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
