@@ -1,4 +1,6 @@
 extends layout/main
+include mixins/news
+
 append head
     link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet", href="/static/css/home.css")
@@ -20,8 +22,11 @@ append main
         label(for = 'password') re-password
         input(type = 'password' name = 'password')
         button(type = 'submit') register
-        each val in articles 
-            h1= val.title
-            p= val.description
-            img(src= val.urlToImage)
-            a(href= val.url) source
+        section.row.marketing
+            each piece, index in articles 
+                ul.col-lg-6
+                    if index % 2 == 0
+                        +pieceOfNews(piece.title, piece.description, piece.urlToImage, piece.url)
+                ul.col-lg-6
+                    if index % 2 != 0
+                        +pieceOfNews(piece.title, piece.description, piece.urlToImage, piece.url)
