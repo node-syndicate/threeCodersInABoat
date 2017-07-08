@@ -5,3 +5,23 @@ h1 {
 a{
 	margin-right: 1%;
 }
+
+.marketing {
+	width: 75%;
+	margin: 0 auto;
+}
+
+.marketing ul{
+	width: 50%;
+}
+
+.marketing ul:nth-of-type(1){
+	margin-top: 0.2%;
+}
+
+.marketing li{
+	margin: 2%;
+}
+
+
+

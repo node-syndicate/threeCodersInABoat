@@ -22,11 +22,12 @@ append main
         label(for = 'password') re-password
         input(type = 'password' name = 'password')
         button(type = 'submit') register
+        br
         section.row.marketing
             each piece, index in articles 
-                ul.col-lg-6
+                ul.list-inline.col-lg-6
                     if index % 2 == 0
                         +pieceOfNews(piece.title, piece.description, piece.urlToImage, piece.url)
-                ul.col-lg-6
+                ul.list-inline.col-lg-6
                     if index % 2 != 0
                         +pieceOfNews(piece.title, piece.description, piece.urlToImage, piece.url)
