@@ -1,4 +1,4 @@
-module.exports ={
-	config: require('./app.config'),
-	authConfig: require('./auth.config'),
+module.exports = {
+    config: require('./app.config'),
+    authConfig: require('./auth.config'),
 };

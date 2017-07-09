@@ -1,5 +1,5 @@
 const helpers = {
-	otherHelper: require('./helper'),
+    otherHelper: require('./helper'),
 };
 
 module.exports = helpers;

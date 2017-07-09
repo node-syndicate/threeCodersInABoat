@@ -14,11 +14,11 @@
             "error",
             "always"
         ],
-        // ----- this is for windows users -----
-        // "linebreak-style": [   
-        //     "error",
-        //     "windows"
-        // ],
+        //----- this is for windows users -----
+        "linebreak-style": [   
+            "error",
+            "windows"
+        ],
         "semi": 2,
         "no-undef": 2,
         "no-use-before-define": 0,

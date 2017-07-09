@@ -1,9 +1,9 @@
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
-const start = require('./app');
+const startServer = require('./app');
 
 gulp.task('server', () => {
-    start();
+    startServer();
 });
 
 gulp.task('dev', ['server'], () => {
