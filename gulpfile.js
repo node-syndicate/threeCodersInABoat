@@ -1,12 +1,9 @@
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
+const start = require('./app');
 
 gulp.task('server', () => {
-    const app = require('./server');
-    const port = 8080;
-    app.listen(port, () => {
-        console.log('server started');
-    });
+    start();
 });
 
 gulp.task('dev', ['server'], () => {
