@@ -2,13 +2,109 @@ extends layout/main
 append head
     link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet", href="/static/css/error.css")
+    link(rel="stylesheet", href="/static/css/main.css")
     title braindead | you're lazy
 append header
-    form(action = '/register' method = 'post')
-        label(for = 'username') username
-        input(type = 'text' name = 'username')
-        br
-        label(for = 'password') password
-        input(type = 'password' name = 'password')
-        br
-        button(type = 'submit') Register
+
+    form.well.form-horizontal(action="/login" method="post"  id="contact_form")
+        fieldset
+            legend
+                center
+                    h2
+                        b 
+                            |Registration Form
+
+        div.form-group
+            label.col-md-4.control-label
+                |First Name
+            div.col-md-4.inputGroupContainer
+                div.input-group
+                    span.input-group-addon
+                        i.glyphicon.glyphicon-user
+                    input.form-control(name="first_name" placeholder="First Name"  type="text")
+
+        div.form-group
+            label.col-md-4.control-label
+                |Last Name
+            div.col-md-4.inputGroupContainer
+                div.input-group
+                    span.input-group-addon
+                        i.glyphicon.glyphicon-user
+                    input.form-control(name="last_name" placeholder="Last Name"  type="text")
+
+
+        div.form-group
+            label.col-md-4.control-label
+                | Department / Office
+            div.col-md-4.selectContainer
+                div.input-group
+                    span.input-group-addon
+                        i.glyphicon.glyphicon-list
+                    select.form-control.selectpicker(name="department")
+                        option(value="")
+                            | Select
+                        option
+                            | Opt 1
+                        option
+                            | Opt 2
+
+        div.form-group
+                    label.col-md-4.control-label
+                        |Username
+                    div.col-md-4.inputGroupContainer
+                        div.input-group
+                            span.input-group-addon
+                                i.glyphicon.glyphicon-user
+                            input.form-control(name="user_name" placeholder="Username"  type="text")
+
+        div.form-group
+            label.col-md-4.control-label
+                |Password
+            div.col-md-4.inputGroupContainer
+                div.input-group
+                    span.input-group-addon
+                        i.glyphicon.glyphicon-user
+                    input.form-control(name="user_password" placeholder="Password"  type="password")
+
+        div.form-group
+            label.col-md-4.control-label
+                |Confirm Password
+            div.col-md-4.inputGroupContainer
+                div.input-group
+                    span.input-group-addon
+                        i.glyphicon.glyphicon-user
+                    input.form-control(name="confirm_password" placeholder="Confirm Password"  type="password")
+
+        div.form-group
+            label.col-md-4.control-label
+                |E-Mail Address
+            div.col-md-4.inputGroupContainer
+                div.input-group
+                    span.input-group-addon
+                        i.glyphicon.glyphicon-envelope
+                    input.form-control(name="email" placeholder="E-Mail Address"  type="text")
+
+        div.form-group
+            label.col-md-4.control-label
+                |Contact No.
+            div.col-md-4.inputGroupContainer
+                div.input-group
+                    span.input-group-addon
+                        i.glyphicon.glyphicon-earphone
+                    input.form-control(name="contact_no" placeholder="(359)"  type="text")
+
+        div.alert.alert-success(role="alert" id="success_message")
+            |Success 
+            i.glyphicon.glyphicon-thumbs-up
+            |Success!
+
+        div.form-group
+            label.col-md-4.control-label
+            div.col-md-4
+                br
+                |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                button.btn.btn-warning(type="submit")  
+                    |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT 
+                    span.glyphicon.glyphicon-send
+                    |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
