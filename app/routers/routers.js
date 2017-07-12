@@ -5,6 +5,11 @@ const router = new Router();
 const path = require('path');
 const fs = require('fs');
 
+const attachTo = (app, data) => {
+	// hop
+};
+
+
 // adding routes dynamically
 fs.readdirSync(__dirname)
     .filter((file) => file.includes('routes.js'))
@@ -13,7 +18,9 @@ fs.readdirSync(__dirname)
 
 router
     .get('/', (req, res) => {
-        // this will be removed
+		// this will be removed
+		// here we recieve the data for news, have to use it and render it.
+		// data.news.getAllNews().then((news) => {res.render('home', { context: news})})
         const https = require('https');
         const url = 'https://newsapi.org/v1/articles?source=the-guardian-uk&sortBy=latest&apiKey=a8f1aaa1a2fe4a22bdbb98f971c484a5';
         let body = '';
@@ -41,4 +48,4 @@ router
         res.redirect('/404');
     });
 
-module.exports = router;
+	module.exports = router;

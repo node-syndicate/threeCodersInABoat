@@ -2,7 +2,7 @@
   "name": "nodejs-teamwork",
   "version": "1.0.0",
   "description": "Course project for Telerik Academy",
-  "main": "app.js",
+  "main": "server.js",
   "directories": {
     "test": "tests"
   },

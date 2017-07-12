@@ -1,4 +1,4 @@
-const data = require('../server/data');
+// const data = require('../server/data');
 
 class News {
 	constructor() {
