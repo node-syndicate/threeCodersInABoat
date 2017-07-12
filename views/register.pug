@@ -12,41 +12,7 @@ append header
                 center
                     h2
                         b 
-                            |Registration Form
-
-        div.form-group
-            label.col-md-4.control-label
-                |First Name
-            div.col-md-4.inputGroupContainer
-                div.input-group
-                    span.input-group-addon
-                        i.glyphicon.glyphicon-user
-                    input.form-control(name="first_name" placeholder="First Name"  type="text")
-
-        div.form-group
-            label.col-md-4.control-label
-                |Last Name
-            div.col-md-4.inputGroupContainer
-                div.input-group
-                    span.input-group-addon
-                        i.glyphicon.glyphicon-user
-                    input.form-control(name="last_name" placeholder="Last Name"  type="text")
-
-
-        div.form-group
-            label.col-md-4.control-label
-                | Department / Office
-            div.col-md-4.selectContainer
-                div.input-group
-                    span.input-group-addon
-                        i.glyphicon.glyphicon-list
-                    select.form-control.selectpicker(name="department")
-                        option(value="")
-                            | Select
-                        option
-                            | Opt 1
-                        option
-                            | Opt 2
+                            |Registration
 
         div.form-group
                     label.col-md-4.control-label
@@ -84,15 +50,6 @@ append header
                         i.glyphicon.glyphicon-envelope
                     input.form-control(name="email" placeholder="E-Mail Address"  type="text")
 
-        div.form-group
-            label.col-md-4.control-label
-                |Contact No.
-            div.col-md-4.inputGroupContainer
-                div.input-group
-                    span.input-group-addon
-                        i.glyphicon.glyphicon-earphone
-                    input.form-control(name="contact_no" placeholder="(359)"  type="text")
-
         div.alert.alert-success(role="alert" id="success_message")
             |Success 
             i.glyphicon.glyphicon-thumbs-up
@@ -107,4 +64,6 @@ append header
                     |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT 
                     span.glyphicon.glyphicon-send
                     |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-
+        div.form-group.text-center
+            a(href='/login') 
+                |Log In
