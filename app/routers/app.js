@@ -9,7 +9,6 @@ const attachTo = (app, data) => {
 	// hop
 };
 
-
 // adding routes dynamically
 fs.readdirSync(__dirname)
     .filter((file) => file.includes('routes.js'))
