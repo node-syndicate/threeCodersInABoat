@@ -2,12 +2,16 @@ const passport = require('passport');
 const { Strategy } = require('passport-local').Strategy;
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const users = require('../../models/user');
 
-const configAuth = (app, { users }) => {
+const configAuth = (app, db) => {
 
     passport.use(new Strategy((username, password, done) => {
-        return users.findByUsername(username)
+        return users.findByUsername(db, username) // FIXME: specify db query funcs here
             .then((user) => {
+                // TODO: bcrypt compare ...
+                // if not found, return BadAuth
+                // else, next()
                 return done(null, user);
             })
             .catch((err) => {
