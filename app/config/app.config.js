@@ -16,11 +16,11 @@ function config(app, data) {
     app.use(require('morgan')('combined'));
     app.use(
         '/static',
-        express.static(path.join(__dirname, '../static'))
+        express.static(path.join(__dirname, '../../static'))
     );
     app.use(
         '/libs',
-        express.static(path.join(__dirname, '../node_modules'))
+        express.static(path.join(__dirname, '../../node_modules'))
     );
 }
 

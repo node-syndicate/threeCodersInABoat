@@ -9,16 +9,17 @@ const attachTo = (app, data) => {
         .post('/login', (req, res) => {
             // middleware for auth --- passport
             console.log('u r logged');
+            // change ui
             res.redirect('/');
+            // res.redirect('/dashboard')
         })
         .post('/register', (req, res) => {
             // that lib for implementing errors in the layout
-            const userData = req.body;
-            const username = userData.user_name;
-            console.log(username);
-            // add the user into the db using user model
-            // const user = new User(userData.username, userData.email, userData.password);
-            // user.register();
+            const user = req.body;
+            // return data.users.create(user)
+            //     .then((dbUser) => {
+            //         return res.redirect('/sucsesfulregistered);
+            //     });
             res.redirect('/login');
         });
 };

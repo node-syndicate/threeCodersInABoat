@@ -1,9 +1,8 @@
 
 const mongodb = require('mongodb').MongoClient;
-const url = 'mongodb://52.58.237.61:27017';
-const init = () => {
+const init = (connectionString) => {
     return new Promise((resolve, reject) => {
-        mongodb.connect(url, (err, database) => {
+        mongodb.connect(connectionString, (err, database) => {
             if (err) {
                 reject(err);
             }

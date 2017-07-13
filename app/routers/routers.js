@@ -30,11 +30,8 @@ const attachTo = (app, data) => {
                     });
             });
         })
-        .get('/404', (req, res) => {
-            res.render('error');
-        })
         .get('*', (req, res) => {
-            res.redirect('/404');
+            res.render('error');
         });
 };
 

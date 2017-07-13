@@ -1,15 +1,16 @@
+const config = require('./config');
+
 function startServer() {
-    require('./db').init()
+    require('./db').init(config.connectionString)
         .then((db) => {
-            // return require('./models').init(db);
+            return require('./data').init(db);
         })
         .then((data) => {
             data = data || 'chep';
             return require('./app').init('chep');
         })
         .then((app) => {
-            const port = 8080;
-            app.listen(port, () => {
+            app.listen(config.port, () => {
                 console.log('server started');
             });
         });

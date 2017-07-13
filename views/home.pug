@@ -12,22 +12,11 @@ append main
     // не слагай br, ще ползваме css-a
     h1 this is the website, welcome
     p some fancy explanation about the purpose of the site
-    form(action = '/register' method = 'post')
-        label(for = 'username') username
-        input(type = 'text' name = 'username')
-        label(for = 'email') email
-        input(type = 'email' name = 'email')
-        label(for = 'password') password
-        input(type = 'password' name = 'password')
-        label(for = 'password') re-password
-        input(type = 'password' name = 'password')
-        button(type = 'submit') register
-        br
-        section.row.marketing
-            each piece, index in articles 
-                ul.list-inline.col-lg-6
-                    if index % 2 == 0
-                        +pieceOfNews(piece.title, piece.description, piece.urlToImage, piece.url)
-                ul.list-inline.col-lg-6
-                    if index % 2 != 0
-                        +pieceOfNews(piece.title, piece.description, piece.urlToImage, piece.url)
+    section.row.marketing
+        each piece, index in articles 
+            ul.list-inline.col-lg-6
+                if index % 2 == 0
+                    +pieceOfNews(piece.title, piece.description, piece.urlToImage, piece.url)
+            ul.list-inline.col-lg-6
+                if index % 2 != 0
+                    +pieceOfNews(piece.title, piece.description, piece.urlToImage, piece.url)

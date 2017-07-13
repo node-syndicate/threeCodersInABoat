@@ -1,3 +1,1 @@
-module.exports = {
-    app: require('./app.config'),
-};
+module.exports = require('./config');
