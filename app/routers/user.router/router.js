@@ -1,6 +1,3 @@
-// const { Router } = require('express');
-// const router = new Router();
-
 const attachTo = (app, data) => {
     app
         .get('/login', (req, res) => {
