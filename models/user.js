@@ -8,3 +8,6 @@ class User {
 		// db set this.username && db set this.email && db set this.password
 	}
 }
+
+
+module.exports = User;

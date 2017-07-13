@@ -11,7 +11,7 @@ const attachTo = (app, data) => {
 
 // adding routes dynamically
 fs.readdirSync(__dirname)
-    .filter((file) => file.includes('routes.js'))
+    .filter((file) => file.includes('.router'))
     .map((file) => path.join(__dirname, file))
     .forEach((modulePath) => router.use('/', require(modulePath)));
 
@@ -33,12 +33,6 @@ router
                     res.render('home', { articles: body.articles });
                 });
         });
-    })
-    .get('/register', (req, res) => {
-        res.render('register');
-    })
-    .get('/login', (req, res) => {
-        res.render('login');
     })
     .get('/404', (req, res) => {
         res.render('error');
