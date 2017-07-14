@@ -1,6 +1,10 @@
+const UsersData = require('./users.data');
+const NewsData = require('./news.data');
+
 const init = (db) => {
     return Promise.resolve({
-        users: new Data(db, User),
+        users: new UsersData(db),
+        news: new NewsData(db),
     });
 };
 

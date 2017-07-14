@@ -1,10 +1,5 @@
-// const data = require('../server/data');
-
 class News {
-	constructor() {
-		// wtf prrbly title, author, img, description, content, sourceUrl
-	}
-	// get data from db methods down here
+    // validations
 }
 
-module.exports = new News();
+module.exports = News;

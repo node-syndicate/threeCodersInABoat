@@ -14,12 +14,8 @@ const attachTo = (app, data) => {
             // res.redirect('/dashboard')
         })
         .post('/register', (req, res) => {
-            // that lib for implementing errors in the layout
-            const user = req.body;
-            // return data.users.create(user)
-            //     .then((dbUser) => {
-            //         return res.redirect('/sucsesfulregistered);
-            //     });
+            console.log(data);
+            data.users.create(req.body);
             res.redirect('/login');
         });
 };

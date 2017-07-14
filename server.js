@@ -6,8 +6,7 @@ function startServer() {
             return require('./data').init(db);
         })
         .then((data) => {
-            data = data || 'chep';
-            return require('./app').init('chep');
+            return require('./app').init(data);
         })
         .then((app) => {
             app.listen(config.port, () => {
