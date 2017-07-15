@@ -19,6 +19,11 @@ class UsersData extends BaseData {
         });
     }
 
+    getUserById(id, callback) {
+        const options = { id: id };
+        super.filterBy(options);
+    }
+
 
 // // we should use filterBy
 //     checkPassword(username, password) {

@@ -31,43 +31,40 @@ const auth = (app, data) => {
     //         })
     //         .catch(done);
     // });
-    
-    passport.use(new LocalStrategy( function(username, password, done) {
-        data.users.getUserByUsername(username, function(err, user) {
-            // Handle errors
-            if (err) throw err;
 
-            // If username does not match db
-            if (!user) {
-            console.log('Unknown user');
-            return done(null, false, { message: 'Unknown user' });
-            }
+    passport.use(new LocalStrategy((username, password, done) => {
+    data.users.getUserByUsername(username, (err, user) => {
+      // Handle errors
+      if (err) return err;
 
-        data.users.comparePassword(password, user.password, function(err, isMatch) {
-            if (err) throw err;
+      // If username does not match db
+      if (!user) {
+        console.log('Unknown user');
+        return done(null, false, { message: 'Unknown user' });
+      }
 
-            if (isMatch) {
-                console.log('password match');
-                return done(null, user);
-            }
-            else {
-                return done(null, false, {message: 'Invalid password'});
-            }
-            });
-        });
+      data.users.comparePassword(password, user.password, (errPass, isMatch) => {
+        if (errPass) throw errPass;
+
+        if (!isMatch) {
+          return done(null, false, { message: 'Invalid password' });
         }
-        ));
+        console.log('password match');
+          return done(null, user);
+      });
+    });
+  }
+));
 
     passport.serializeUser(function(user, done) {
         done(null, user.id);
     });
 
     passport.deserializeUser(function(id, done) {
-        data.users.findById(id, function(err, user) {
+        data.users.getUserById(id, function(err, user) {
             done(err, user);
         });
     });
-
 };
 
 module.exports = auth;
