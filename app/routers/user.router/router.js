@@ -1,6 +1,5 @@
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
-const LocalStrategy = require('passport-local').Strategy;
 const User = require('../../../models/user');
 
 
@@ -30,20 +29,21 @@ const attachTo = (app, data) => {
         })
         .post('/register', (req, res) => {
             // hashing works but console.log of hashed pass is undefined
-            console.log(JSON.stringify(req.body) + ' req.body');
             let pass = req.body.user_password;
-            bcrypt.hash(pass, 10, (err, hash) => {
-                if (err) throw err;
-                pass = hash;
-                console.log(hash + ' *** HASHED PASS');
+            new Promise((resolve, rej) => {
+                bcrypt.hash(pass, 10, (err, hash) => {
+                    if (err) throw err;
+                    pass = hash;
+                    resolve(pass);
+                });
+            })
+            .then((passHashed) =>{
+                const newUser = new User(req.body.user_name, passHashed, req.body.email);
+                return newUser;
+            })
+            .then((newUser)=>{
+                data.users.create(newUser);
             });
-            const newUser = new User(req.body.user_name, pass, req.body.email);
-            data.users.create(newUser);
-            console.log(newUser.username + " " + newUser.password + " " + newUser.email + ' *** newUSER');
-
-            //  JSON.stringify(data.users.getAll()) + ' in the collection');
-
-
             res.redirect('/user');
         });
 };

@@ -8,6 +8,14 @@ const init = (data) => {
                     });
                 });
         },
+        // filterBy(req, res) {
+        //     return data.users.getUserByUsername(req.username, )
+        //         .then((users) => {
+        //             return res.render('user', {
+        //                 users,
+        //             });
+        //         });
+        // },
     };
 
     return controller;

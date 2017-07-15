@@ -14,7 +14,7 @@ class User {
     }
 
     set password(pass) {
-        // this._password = bcrypt.hash(pass, salt, (err, hash) => {
+        //  bcrypt.hash(pass, salt, (err, hash) => {
         //     if (err) throw err;
         //     pass = hash;
         //     return pass;
