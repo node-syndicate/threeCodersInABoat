@@ -1,4 +1,6 @@
 const attachTo = (app, data) => {
+
+    const controller = require('./controller').init(data);
     app
         .get('/login', (req, res) => {
             res.render('login');
@@ -8,13 +10,13 @@ const attachTo = (app, data) => {
         })
         .post('/login', (req, res) => {
             // middleware for auth --- passport
-            console.log('u r logged');
             // change ui
             res.redirect('/');
             // res.redirect('/dashboard')
         })
         .post('/register', (req, res) => {
-            console.log(data);
+            
+            
             data.users.create(req.body);
             res.redirect('/login');
         });

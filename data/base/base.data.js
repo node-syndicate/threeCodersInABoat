@@ -1,5 +1,5 @@
 class BaseMongoDbData {
-    constructor(db, ModelClass) {
+    constructor(db, ModelClass, validator) {
         this.db = db;
         this.ModelClass = ModelClass;
         this.collectionName = this._getCollectionName();
@@ -13,7 +13,10 @@ class BaseMongoDbData {
     }
 
     create(model) {
-        return this.collection.insert(model);
+        return this.collection.insert(model)
+        .then(() => {
+            return model;
+        });
     }
 
     _getCollectionName() {
