@@ -1,39 +1,14 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const User = require('../../../models/user');
 
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    User.getUserByUsername(username, (err, user) =>{
-        if (err) throw err;
-        if (!user) {
-            return done(null, false, { message: 'unknown user' });
-        }
- 
-    User.comparePassword(password, user.password, (err, isMatched) => {
-        if (err) throw err;
-        if (isMatched) {
-            return done(null, user );
-        } else {
-            return done(null, false, { message: 'invalid password' })
-        }
-    });
-   });
-  }));
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
 
 const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
+
+
     app
         .get('/login', (req, res) => {
             res.render('login');

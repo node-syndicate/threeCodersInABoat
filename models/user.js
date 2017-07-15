@@ -1,5 +1,5 @@
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const salt = 10;
 
 class User {
@@ -19,18 +19,6 @@ class User {
             pass = hash;
             return pass;
         });
-    }
-
-    getUserByUsername(username, callback) {
-        const options = { username: username };
-        User.find(options).toArray();
-    }
-
-    comparePassword(candidatePasseord, hash, callback) {
-        bcrypt.compare(candidatePassword, hash, (err)) {
-            if (err) throw err;
-            callback(null, isMatch)
-        }
     }
 }
 

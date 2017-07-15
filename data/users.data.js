@@ -1,6 +1,6 @@
 const BaseData = require('./base/base.data');
 const User = require('../models/user');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 class UsersData extends BaseData {
     constructor(db) {
