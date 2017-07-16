@@ -9,10 +9,13 @@ const auth = (app, data) => {
     passport.use(new LocalStrategy((username, password, done) => {
         return data.users.getUserByUsername(username)
             .then((user) => {
-                return done(null, user);
+                console.log(user);
+                // return done(null, user[0]);
+                return user[0];
             })
             .then((user) => {
-              data.users.comparePassword(password, user.password, (errPass, isMatch) => {
+                console.log(user);
+              data.users.comparePassword(password, user._password, (errPass, isMatch) => {
                 if (errPass) throw errPass;
 
                 if (!isMatch) {
@@ -27,14 +30,15 @@ const auth = (app, data) => {
             });
     }
     ));
+
     app.use(cookieParser());
     // app.use(session({ secret: 'another dimension' }));
     app.use(passport.initialize());
     app.use(passport.session());
 
     passport.serializeUser((user, done) => {
-        console.log(user[0]);
-        done(null, user[0]._id);
+        console.log(user);
+        done(null, user._id);
     });
     passport.deserializeUser((id, done) => {
         return data.users.findUserById(id)

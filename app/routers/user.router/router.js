@@ -47,6 +47,11 @@ const attachTo = (app, data) => {
                 data.users.create(newUser);
             });
             res.redirect('/user');
+        })
+        .get('/logout', (req, res) => {
+            req.logout();
+            // req.flash('success_msg', 'You are logged out');
+            res.redirect('/');
         });
 };
 
