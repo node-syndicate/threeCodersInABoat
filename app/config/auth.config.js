@@ -33,7 +33,8 @@ const auth = (app, data) => {
     app.use(passport.session());
 
     passport.serializeUser((user, done) => {
-        done(null, user.id);
+        console.log(user[0]);
+        done(null, user[0]._id);
     });
     passport.deserializeUser((id, done) => {
         return data.users.findUserById(id)

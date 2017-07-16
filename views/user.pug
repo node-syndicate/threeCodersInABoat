@@ -3,6 +3,8 @@ ul
     each user in users
         li
             p
+                | #{user._id}
+            p
                 | #{user.username}
             p
                 | #{user._password}

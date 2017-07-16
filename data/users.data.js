@@ -20,8 +20,8 @@ class UsersData extends BaseData {
     }
 
     getUserById(id, callback) {
-        const options = { id: id };
-        super.filterBy(options);
+        const options = { _id: id };
+        return super.filterBy(options);
     }
 
 
