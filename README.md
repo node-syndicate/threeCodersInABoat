@@ -8,25 +8,7 @@
   * rules are kindly provided by Telerik Academy, feel free to obey
 
 # TODO:
-  * public routes --> API for news ot news data (done)
-    * not the best way to pump the db
-    * tested with pug --> working
-    * db before all 
-  * register/login
-    * register ---- form --- post ----->  ---- валидация на паролата
-    * login ---- през passport и аuth
-    * user model ----> register/login
-    * how to change the ui
-  * css/style | front-end
-  * mongoDB --- как работи
-
-
-* watch the course materials xD
-* learn Networking :X 
-* how to deploy the DB in the cloud | fuck AWS, aws acc --- done
-* basic structure --- done
-* project idea --- pfff
-  * whatever idea for website, it doesn't matter
+  * guts out
 
 ## plan:
   1. новини
@@ -42,11 +24,11 @@
   3. галерия
   4. чат
 
-#### да питаме Дончо
-  1. какъв ще е тоя private auth route
-  2. да питаме за спа-то
-  3. кво е API и API routes --- ква е разликата с другите раутове
-  4. кво е рестфул раут/ейджакс раут
+# да питаме Дончо
+  1. Са ли тези класове в дейта заради екстендабилити
+  2. За какво ни е модела тогава?
+  3. Е ли data --> db access layer / buissnes logic layer 
+  4. Защо подаваме два пъти като аргумент един и същи параметър / е ли заради статичните методи / е ли за да се побъркаш?
 
 # Course Project
 _Web applications with Node.js_
