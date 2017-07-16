@@ -42,31 +42,6 @@ const auth = (app, data) => {
             })
             .catch(done);
     });
-
-//   passport.use(new LocalStrategy((username, password, done) => {
-//     data.users.getUserByUsername(username, (err, user) => {
-//       // Handle errors
-//       if (err) throw err;
-
-//       // If username does not match db
-//       if (!user) {
-//         console.log('Unknown user');
-//         return done(null, false, { message: 'Unknown user' });
-//       }
-
-//       data.users.comparePassword(password, user.password, (errPass, isMatch) => {
-//         if (errPass) throw errPass;
-
-//         if (!isMatch) {
-//           return done(null, false, { message: 'Invalid password' });
-//         }
-//         console.log('password match');
-//         return done(null, user);
-//       });
-//     });
-
-//   })
-// );
 };
 
 module.exports = auth;

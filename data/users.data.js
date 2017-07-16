@@ -9,7 +9,7 @@ class UsersData extends BaseData {
 
     getUserByUsername(username, callback) {
         const options = { username: username };
-        super.filterBy(options);
+        return super.filterBy(options);
     }
 
     comparePassword(candidatePassword, hash, callback) {
