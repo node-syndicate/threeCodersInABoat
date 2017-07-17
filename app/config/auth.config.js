@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-// const session = require('express-session');
+const session = require('express-session');
 const cookieParser = require('cookie-parser');
 
 const auth = (app, data) => {
@@ -32,7 +32,7 @@ const auth = (app, data) => {
     ));
 
     app.use(cookieParser());
-    // app.use(session({ secret: 'another dimension' }));
+    app.use(session({ secret: 'another dimension' }));
     app.use(passport.initialize());
     app.use(passport.session());
 
@@ -41,7 +41,7 @@ const auth = (app, data) => {
         done(null, user._id);
     });
     passport.deserializeUser((id, done) => {
-        return data.users.findUserById(id)
+        return data.users.getUserById(id)
             .then((user) => {
                 done(null, user);
             })
