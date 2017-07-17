@@ -15,7 +15,7 @@ class BaseMongoDbData {
     create(model) {
         return this.collection.insert(model)
         .then(() => {
-            return model;
+            return model; // this returns promise for sure
         });
     }
 

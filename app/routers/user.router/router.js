@@ -15,10 +15,7 @@ const attachTo = (app, data) => {
             // res.redirect('/dashboard')
         })
         .post('/register', (req, res) => {
-            
-            
-            data.users.create(req.body);
-            res.redirect('/login');
+            controller.register(req, res);
         });
 };
 

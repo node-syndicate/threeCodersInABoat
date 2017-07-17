@@ -6,6 +6,17 @@ class UsersData extends BaseData {
         super(db, User);
     }
 
+    register(user) {
+        this.ModelClass.createHash(user.user_password)
+        .then((hash) => {
+            user.password = hash;
+            this.create(user);
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    }
+
     checkPassword(username, password) {
         this.collection.find({
             username,

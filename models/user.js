@@ -1,12 +1,19 @@
+const hash = require('../helpers/hashing');
+
 class User {
     // validations
     static isValid(model) {
-        return typeof model !== 'undefined' 
-        && model.name === 'string' 
-        && model.name.length > 2
-        && model.name.length < 15;
-        // and all other shits about user
-        // which has to be validated before pumped into the db
+        // require validator(model)
+    }
+
+    static createHash(pass) {
+        console.log(hash);
+        console.log('HEREEE');
+        return hash.hashPassword(pass);
+    }
+
+    compareHash(pass) {
+        return hash.checkPassword(pass, hash);
     }
 
     get id() {
