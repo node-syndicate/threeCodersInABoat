@@ -1,24 +1,11 @@
 const bcrypt = require('bcryptjs');
 
-const hashPassword = (pass) => {
-    console.log(pass);
-    return new Promise((res, rej) => {
-        bcrypt.hash(pass, 8, (err, hash) => {
-            if (err) {
-                rej(err);
-            }
-            res(hash);
-        });
-    });
+const create = (pass) => {
+    return bcrypt.hash(pass, 8);
 };
 
-const checkPassword = (pass, hash) => {
-    bcrypt.compare(pass, hash, (err, res) => {
-        if (err) {
-            return Promise.reject(err);
-        }
-        return Promise.resolve(res);
-    });
+const compare = (pass, hash) => {
+    return bcrypt.compare(pass, hash);
 };
 
-module.exports = { hashPassword, checkPassword };
+module.exports = { create, compare };

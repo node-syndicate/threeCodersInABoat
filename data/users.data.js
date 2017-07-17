@@ -1,19 +1,25 @@
 const BaseData = require('./base/base.data');
 const User = require('../models/user');
+const hashPass = require('../helpers/hashing');
+
 
 class UsersData extends BaseData {
     constructor(db) {
         super(db, User);
     }
 
-    register(user) {
-        this.ModelClass.createHash(user.user_password)
+    register(data) {
+        hashPass.create(data.user_password)
         .then((hash) => {
-            user.password = hash;
+            const user = {
+                username: data.user_name,
+                password: hash,
+                email: data.email,
+            };
             this.create(user);
         })
         .catch((err) => {
-            console.log(err);
+            throw err;
         });
     }
 

@@ -9,8 +9,7 @@ const init = (data) => {
                         console.log('chep v kontroller');
                         return data.users.register(req.body);
                     }
-                    console.log(result.useFirstErrorOnly());
-                    return result.useFirstErrorOnly();
+                    throw result.array();
                 })
                 .then((user) => {
                     // passport session
@@ -19,8 +18,9 @@ const init = (data) => {
                 })
                 .catch((err) => {
                     // handle errors
-                    // here you can recieve res.flash(err);
+                    // here you can recieve res.flash(err) or not
                     console.log(err);
+                    res.render('register', { err: err });
                 });
         },
         login() {
