@@ -23,20 +23,6 @@ class UsersData extends BaseData {
         const options = { _id: id };
         return super.filterBy(options);
     }
-
-
-// // we should use filterBy
-//     checkPassword(username, password) {
-//         this.collection.find({
-//             username,
-//         })
-//             .then((user) => {
-//                 if (user.password !== password) {
-//                     throw new Error('Invalid password');
-//                 }
-//                 return true;
-//             });
-//     }
 }
 
 
