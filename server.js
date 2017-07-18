@@ -14,7 +14,7 @@ const startServer = () => {
             const server = app.listen(config.port, () => {
                 console.log('server started');
             });
-            require('./helpers/socket').attachTo(server);
+            require('./socket').attachTo(server);
         })
         .catch((err) =>{
             //pita
