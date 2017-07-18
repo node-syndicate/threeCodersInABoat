@@ -9,9 +9,10 @@ function startServer() {
             return require('./app').init(data);
         })
         .then((app) => {
-            app.listen(config.port, () => {
+            const server = app.listen(config.port, () => {
                 console.log('server started');
             });
+            
         });
 }
 
