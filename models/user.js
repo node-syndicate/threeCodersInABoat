@@ -8,6 +8,8 @@ class User {
         return this._id;
     }
 
+        
+
     // wtf is this
 
     // static toViewModel(model) {
