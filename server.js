@@ -1,6 +1,6 @@
 const config = require('./config');
 
-function startServer() {
+const startServer = () => {
     require('./db').init(config.connectionString)
         .then((db) => {
             return require('./data').init(db);
@@ -12,7 +12,11 @@ function startServer() {
             app.listen(config.port, () => {
                 console.log('server started');
             });
+        })
+        .catch((err) =>{
+            //pita
+            console.log('tralala');
         });
-}
+};
 
 module.exports = startServer;

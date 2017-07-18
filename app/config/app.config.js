@@ -4,18 +4,24 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const expressValidator = require('express-validator');
+const passport = require('passport');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const authConfig = require('./auth.config');
 const flash = require('connect-flash');
 
 function config(app, data) {
-    // how the fuck this works
-    // passport config
     authConfig(app, data);
 
     app.set('view engine', 'pug');
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(require('morgan')('combined'));
+
+    // middleware for validation
+    app.use(expressValidator());
+
+    // app.use(require('morgan')('combined'));
     app.use(
         '/static',
         express.static(path.join(__dirname, '../../static'))

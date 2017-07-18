@@ -13,7 +13,11 @@ append header
                     h2
                         b 
                             |Registration
-
+        div.form-group
+            #err
+                if err
+                    each val in err
+                        div.alert.alert-danger.col-md-4= val.msg
         div.form-group
                     label.col-md-4.control-label
                         |Username
