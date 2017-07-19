@@ -17,8 +17,8 @@ const startServer = () => {
             require('./socket').attachTo(server);
         })
         .catch((err) =>{
-            //pita
-            console.log('tralala');
+            // pita
+            console.log('cannot run the server');
         });
 };
 

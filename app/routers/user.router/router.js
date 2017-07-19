@@ -21,7 +21,8 @@ const attachTo = (app, data) => {
                 res.redirect('/');
                 // res.redirect('/dashboard')
         })
-        .post('/register', (req, res) => {
+        .post('/register', passport.authenticate('local',
+            { successRedirect: '/', failureRedirect: '/register' }), (req, res) => {
             controller.register(req, res);
         })
         .get('/logout', (req, res) => {
