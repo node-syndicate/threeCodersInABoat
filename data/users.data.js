@@ -9,18 +9,32 @@ class UsersData extends BaseData {
     }
 
     register(data) {
-        hashPass.create(data.user_password)
-        .then((hash) => {
-            const user = {
-                username: data.user_name,
-                password: hash,
-                email: data.email,
-            };
-            this.create(user);
-        })
-        .catch((err) => {
-            throw err;
-        });
+        return super.filterBy({ username: data.username })
+            .then((existingUser) => {
+                if (existingUser.length > 0) {
+                    const err = [{ msg: 'User is already in the BASS' }];
+                    throw err;
+                }
+                 return super.filterBy({ email: data.email });
+            })
+            .then((existingUser) => {
+                if (existingUser.length > 0) {
+                   const err = [{ msg: 'User is already in the BASS' }];
+                    throw err;
+                }
+                return hashPass.create(data.password);
+            })
+            .then((hash) => {
+                const user = {
+                    username: data.username,
+                    password: hash,
+                    email: data.email,
+                };
+                return super.create(user);
+            })
+            .catch((err) => {
+                throw err;
+            });
     }
 
     checkPassword(username, password) {

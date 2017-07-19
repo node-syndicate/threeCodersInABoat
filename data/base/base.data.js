@@ -5,9 +5,11 @@ class BaseMongoDbData {
         this.collectionName = this._getCollectionName();
         this.collection = this.db.collection(this.collectionName);
     }
+
     filterBy(properties) {
         return this.collection.find(properties).toArray();
     }
+
     getAll() {
         return this.collection.find().toArray();
     }

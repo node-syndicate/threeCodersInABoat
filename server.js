@@ -1,4 +1,5 @@
 const config = require('./config');
+const socket = require('./socket');
 
 function startServer() {
     require('./db').init(config.connectionString)
@@ -9,11 +10,16 @@ function startServer() {
             return require('./app').init(data);
         })
         .then((app) => {
-            app.listen(config.port, () => {
+            return app.listen(config.port, () => {
                 console.log('server started');
             });
+        })
+        .then((server) => {
+            socket.attachTo(server);
+        })
+        .catch((err) => {
+            console.log(err);
         });
-        
 }
 
 module.exports = startServer;

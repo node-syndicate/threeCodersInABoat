@@ -8,6 +8,7 @@ const expressValidator = require('express-validator');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const flash = require('connect-flash');
 
 function config(app, data) {
     app.set('view engine', 'pug');
@@ -21,12 +22,16 @@ function config(app, data) {
     // app.use(require('morgan')('combined'));
 
     // passport requirements
-
     app.use(cookieParser());
-    // app.use(session({ secret: 'another dimension' }));
+    app.use(session({
+        secret: 'another dimension',
+        cookie: { maxAge: 3600000 },
+        resave: false,
+        saveUninitialized: false,
+    }));
     app.use(passport.initialize());
     app.use(passport.session());
-
+    app.use(flash());
 
     app.use(
         '/static',

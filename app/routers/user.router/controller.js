@@ -1,28 +1,42 @@
 const validator = require('../validator');
+const passport = require('passport');
 
 const init = (data) => {
     const controller = {
-        register(req, res) {
+        validate(req, res, next) {
             validator.register(req)
                 .then((result) => {
                     if (result.isEmpty()) {
-                        console.log('chep v kontroller');
-                        return data.users.register(req.body);
+                        return next();
                     }
-                    throw result.array();
-                })
-                .then((user) => {
-                    // passport session
-                    res.redirect('/');
-                    console.log('registered');
-                })
-                .catch((err) => {
-                    // handle errors
-                    // here you can recieve res.flash(err) or not
-                    console.log(err);
-                    res.render('register', { err: err });
+                    req.flash('register', result.array());
+                    return res.redirect('/register');
                 });
         },
+
+        register(req, res) {
+            data.users.register(req.body)
+            .then(() => {
+                passport.authenticate(
+                    'register',
+                    {
+                        successRedirect: '/dashboard',
+                        failureRedirect: '/register',
+                        failureFlash: true,
+                    }
+                );
+            })
+            .catch((err) => {
+                console.log(err);
+                req.flash('register', err);
+                return res.redirect('/register');
+            });
+            // проверка в базата
+            // passport session
+                    // ясно е че тука ще е нова сесия
+            // редирект дашборд
+        },
+
         login() {
 
         },

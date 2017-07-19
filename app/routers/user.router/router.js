@@ -6,7 +6,7 @@ const attachTo = (app, data) => {
             res.render('login');
         })
         .get('/register', (req, res) => {
-            res.render('register');
+            res.render('register', { err: req.flash('register') });
         })
         .post('/login', (req, res) => {
             // middleware for auth --- passport
@@ -14,9 +14,9 @@ const attachTo = (app, data) => {
             res.redirect('/');
             // res.redirect('/dashboard')
         })
-        .post('/register', (req, res) => {
-            controller.register(req, res);
-        });
+        .post('/register',
+            (req, res, next) => controller.validate(req, res, next),
+            (req, res) => controller.register(req, res));
 };
 
 module.exports = {
