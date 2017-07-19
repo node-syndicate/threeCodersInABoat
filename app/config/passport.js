@@ -1,12 +1,18 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const hashPass = require('../../helpers/hashing');
+
 
 const config = ({ users }) => {
     passport
         .use(new LocalStrategy(
-            (username, password, done) => {
+            { passReqToCallback: true },
+            (req, username, password, done) => {
                 users.findOne({ username: username })
                 .then((user) => {
+                    if (!hashPass.compare(password, user.password)) {
+                        return done(null, false, req.flash('register', 'invalid password'));
+                    }
                     return done(null, user);
                 })
                 .catch((err) => {
@@ -14,22 +20,19 @@ const config = ({ users }) => {
                 });
             })
         );
+
     passport.serializeUser((user, done) => {
         console.log(user);
-        done(null, user._id);
+        const sessionUser = {
+            _id: user._id,
+            username: user.username,
+            email: user.email,
+        };
+        done(null, sessionUser);
     });
 
-    // used to deserialize the user
-    passport.deserializeUser((id, done) => {
-        console.log('neseria');
-        users.findOne({ _id: id })
-                .then((user) => {
-                    done(null, user);
-                })
-                .catch((err) => {
-                    return done(err);
-                });
+    passport.deserializeUser((sessionUser, done) => {
+        done(null, sessionUser);
     });
 };
-
 module.exports = config;

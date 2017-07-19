@@ -16,7 +16,7 @@ const init = (data) => {
 
         register(req, res) {
             data.users.register(req.body)
-            .then(() => {
+            .then((user) => {
                 passport.authenticate(
                     'local',
                     {

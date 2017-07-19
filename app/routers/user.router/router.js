@@ -3,12 +3,14 @@ const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
     app
         .get('/login', (req, res) => {
-            console.log(req.user);
-            console.log(req.session);
             res.render('login');
         })
         .get('/register', (req, res) => {
             res.render('register', { err: req.flash('register') });
+        })
+        .get('/dashboard', (req, res) => {
+            console.log(req.session);
+            res.render('dashboard');
         })
         .post('/login', (req, res) => {
             // middleware for auth --- passport
