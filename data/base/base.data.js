@@ -6,8 +6,8 @@ class BaseMongoDbData {
         this.collection = this.db.collection(this.collectionName);
     }
 
-    filterBy(properties) {
-        return this.collection.find(properties).toArray();
+    filterBy(props) {
+        return this.collection.find(props).toArray();
     }
 
     getAll() {
@@ -17,8 +17,12 @@ class BaseMongoDbData {
     create(model) {
         return this.collection.insert(model)
         .then(() => {
-            return model; // this returns promise for sure
+            return model;
         });
+    }
+
+    findOne(props) {
+        return this.collection.findOne(props);
     }
 
     _getCollectionName() {

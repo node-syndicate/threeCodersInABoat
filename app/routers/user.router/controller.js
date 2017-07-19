@@ -18,23 +18,18 @@ const init = (data) => {
             data.users.register(req.body)
             .then(() => {
                 passport.authenticate(
-                    'register',
+                    'local',
                     {
                         successRedirect: '/dashboard',
                         failureRedirect: '/register',
                         failureFlash: true,
                     }
-                );
+                )(req, res);
             })
             .catch((err) => {
-                console.log(err);
                 req.flash('register', err);
                 return res.redirect('/register');
             });
-            // проверка в базата
-            // passport session
-                    // ясно е че тука ще е нова сесия
-            // редирект дашборд
         },
 
         login() {

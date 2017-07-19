@@ -23,6 +23,7 @@ function config(app, data) {
 
     // passport requirements
     app.use(cookieParser());
+    // calls deserializeUser
     app.use(session({
         secret: 'another dimension',
         cookie: { maxAge: 3600000 },
@@ -30,6 +31,14 @@ function config(app, data) {
         saveUninitialized: false,
     }));
     app.use(passport.initialize());
+    // this is for test
+    // app.use( (req, res, next)=> {
+    //     if (req.url.match('/register' || req.url.match('/login'))) {
+    //         passport.session()(req, res, next);
+    //     } else {
+    //         next(); // do not invoke passport
+    //     }
+    // });
     app.use(passport.session());
     app.use(flash());
 

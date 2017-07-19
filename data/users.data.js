@@ -9,17 +9,17 @@ class UsersData extends BaseData {
     }
 
     register(data) {
-        return super.filterBy({ username: data.username })
+        return super.findOne({ username: data.username })
             .then((existingUser) => {
-                if (existingUser.length > 0) {
-                    const err = [{ msg: 'User is already in the BASS' }];
+                if (existingUser) {
+                    const err = [{ msg: 'Username already exists.' }];
                     throw err;
                 }
-                 return super.filterBy({ email: data.email });
+                 return super.findOne({ email: data.email });
             })
             .then((existingUser) => {
-                if (existingUser.length > 0) {
-                   const err = [{ msg: 'User is already in the BASS' }];
+                if (existingUser) {
+                   const err = [{ msg: 'This email is already in use.' }];
                     throw err;
                 }
                 return hashPass.create(data.password);
@@ -31,9 +31,6 @@ class UsersData extends BaseData {
                     email: data.email,
                 };
                 return super.create(user);
-            })
-            .catch((err) => {
-                throw err;
             });
     }
 

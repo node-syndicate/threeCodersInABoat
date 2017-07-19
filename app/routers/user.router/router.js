@@ -3,6 +3,8 @@ const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
     app
         .get('/login', (req, res) => {
+            console.log(req.user);
+            console.log(req.session);
             res.render('login');
         })
         .get('/register', (req, res) => {
