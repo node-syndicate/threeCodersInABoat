@@ -14,8 +14,18 @@ const init = (data) => {
                 });
         },
 
-        register(req, res) {
+        validateLog(req, res, next) {
+            validator.login(req)
+                .then((result) => {
+                    if (result.isEmpty()) {
+                        return next();
+                    }
+                    req.flash('register', result.array());
+                    return res.redirect('/login');
+                });
+        },
 
+        register(req, res) {
             data.users.register(req.body)
             .then((user) => {
                 passport.authenticate(

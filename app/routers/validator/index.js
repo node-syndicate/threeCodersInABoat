@@ -14,8 +14,10 @@ const login = (req) => {
     req.checkBody('username', 'Username is missing.').notEmpty();
     req.checkBody('password', 'Password is missing.').notEmpty();
 
+    return req.getValidationResult(); // returns promise with all the errors
 };
 
 module.exports = {
     register,
+    login,
 };

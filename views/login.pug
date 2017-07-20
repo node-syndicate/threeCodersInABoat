@@ -4,14 +4,19 @@ append head
     link(rel="stylesheet", href="/static/css/error.css")
     title braindead | you're lazy
 append header
-    form.well.form-horizontal(action="/" method="post"  id="contact_form")
+    
+    form.well.form-horizontal(action="/login" method="post"  id="contact_form")
         fieldset
             legend
                 center
                     h2
                         b 
                             |Login
-
+        div.container
+            #err
+            if err
+                each val in err
+                    div.alert.alert-danger= val.msg
         div.form-group
                     label.col-md-4.control-label
                         |Username
@@ -20,7 +25,6 @@ append header
                             span.input-group-addon
                                 i.glyphicon.glyphicon-user
                             input.form-control(name="username" placeholder="Username"  type="text")
-
         div.form-group
             label.col-md-4.control-label
                 |Password
@@ -29,7 +33,6 @@ append header
                     span.input-group-addon
                         i.glyphicon.glyphicon-user
                     input.form-control(name="password" placeholder="Password"  type="password")
-
         div.form-group
             label.col-md-4.control-label
             div.col-md-4

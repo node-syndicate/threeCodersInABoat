@@ -5,7 +5,7 @@ const create = (pass) => {
 };
 
 const compare = (pass, hash) => {
-    return bcrypt.compare(pass, hash);
+    return bcrypt.compareSync(pass, hash);
 };
 
 module.exports = { create, compare };

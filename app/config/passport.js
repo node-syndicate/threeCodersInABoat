@@ -10,8 +10,11 @@ const config = ({ users }) => {
             (req, username, password, done) => {
                 users.findOne({ username: username })
                 .then((user) => {
+                    if (!user) {
+                        return done(null, false, req.flash('register', { msg: 'Invalid username or password.' } ));
+                    }
                     if (!hashPass.compare(password, user.password)) {
-                        return done(null, false, req.flash('register', 'invalid password'));
+                        return done(null, false, req.flash('register', { msg: 'Invalid username or password.' }));
                     }
                     return done(null, user);
                 })
@@ -22,7 +25,6 @@ const config = ({ users }) => {
         );
 
     passport.serializeUser((user, done) => {
-        console.log(user);
         const sessionUser = {
             _id: user._id,
             username: user.username,
