@@ -29,6 +29,7 @@ function config(app, data) {
         cookie: { maxAge: 3600000 },
         resave: false,
         saveUninitialized: false,
+        return_to: '/',
     }));
     app.use(passport.initialize());
     // this is for test
