@@ -32,8 +32,15 @@ const init = (data) => {
             });
         },
 
-        login() {
-
+        login(req, res) {
+            passport.authenticate(
+                    'local',
+                    {
+                        successRedirect: '/dashboard',
+                        failureRedirect: '/login',
+                        failureFlash: true,
+                    }
+                )(req, res);
         },
     };
     return controller;

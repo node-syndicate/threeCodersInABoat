@@ -10,12 +10,10 @@ function startServer() {
             return require('./app').init(data);
         })
         .then((app) => {
-            return app.listen(config.port, () => {
+            const server = app.listen(config.port, () => {
+                socket.attachTo(server);
                 console.log('server started');
             });
-        })
-        .then((server) => {
-            socket.attachTo(server);
         })
         .catch((err) => {
             console.log(err);
