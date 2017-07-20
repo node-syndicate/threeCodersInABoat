@@ -12,12 +12,10 @@ const attachTo = (app, data) => {
             console.log(req.session);
             res.render('dashboard');
         })
-        .post('/login', (req, res) => {
-            // middleware for auth --- passport
-            // change ui
-            res.redirect('/');
-            // res.redirect('/dashboard')
-        })
+        .post('/login', (req, res) =>
+        // validations
+            controller.login(req, res))
+
         .post('/register',
             (req, res, next) => controller.validate(req, res, next),
             (req, res) => controller.register(req, res));
