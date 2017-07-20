@@ -26,10 +26,10 @@ const init = (data) => {
         },
 
         checkAuthentication(req, res, next) {
-            if (req.isAuthenticated()) {
-                return next();
+            if (!req.isAuthenticated()) {
+                return res.redirect('/login');
             }
-            return res.redirect('/login');
+            return next();
         },
 
         register(req, res) {
