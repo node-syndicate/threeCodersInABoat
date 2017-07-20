@@ -25,11 +25,11 @@ const init = (data) => {
                 });
         },
 
-        checkAuthentication(req, res, next) {
+        checkNotAuthentication(req, res, next) {
             if (!req.isAuthenticated()) {
-                return res.redirect('/login');
+                return next();
             }
-            return next();
+            return res.redirect('/');
         },
 
         register(req, res) {
