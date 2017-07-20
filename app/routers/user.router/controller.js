@@ -3,7 +3,7 @@ const passport = require('passport');
 
 const init = (data) => {
     const controller = {
-        validate(req, res, next) {
+        validateReg(req, res, next) {
             validator.register(req)
                 .then((result) => {
                     if (result.isEmpty()) {
@@ -15,7 +15,7 @@ const init = (data) => {
         },
 
         register(req, res) {
-            
+
             data.users.register(req.body)
             .then((user) => {
                 passport.authenticate(

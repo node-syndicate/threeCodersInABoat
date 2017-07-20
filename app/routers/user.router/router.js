@@ -12,12 +12,12 @@ const attachTo = (app, data) => {
             console.log(req.session);
             res.render('dashboard');
         })
-        .post('/login', (req, res) =>
-        // validations
-            controller.login(req, res))
+        .post('/login',
+            (req, res, next) => controller.validateLog(req, res, next),
+            (req, res) => controller.login(req, res))
 
         .post('/register',
-            (req, res, next) => controller.validate(req, res, next),
+            (req, res, next) => controller.validateReg(req, res, next),
             (req, res) => controller.register(req, res));
 };
 
