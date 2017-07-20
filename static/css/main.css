@@ -1,2 +1,25 @@
 #success_message{ display: none;}
 
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+}
+
+.navbar-brand{
+	font-size: 22px;
+}
+.navbar-brand > span {
+	color: black;
+}
+
+.main-footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.main-footer > nav {
+	margin-bottom: 0;
+}
