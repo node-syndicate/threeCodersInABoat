@@ -25,6 +25,13 @@ const init = (data) => {
                 });
         },
 
+        checkAuthentication(req, res, next) {
+            if (req.isAuthenticated()) {
+                return next();
+            }
+            return res.redirect('/login');
+        },
+
         register(req, res) {
             data.users.register(req.body)
             .then((user) => {

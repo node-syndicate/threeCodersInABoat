@@ -1,8 +1,6 @@
 extends layout/main
-include mixins/news
 
 append head
-    link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet", href="/static/css/home.css")
     title braindead | you're lazy
 append header
@@ -12,14 +10,5 @@ append header
                     each val in msg
                         div.alert.alert-success= val
 append main
-    // не слагай br, ще ползваме css-a
     h1 this is the website, welcome
     p some fancy explanation about the purpose of the site
-    section.row.marketing
-        each piece, index in articles 
-            ul.list-inline.col-lg-6
-                if index % 2 == 0
-                    +pieceOfNews(piece.title, piece.description, piece.urlToImage, piece.url)
-            ul.list-inline.col-lg-6
-                if index % 2 != 0
-                    +pieceOfNews(piece.title, piece.description, piece.urlToImage, piece.url)

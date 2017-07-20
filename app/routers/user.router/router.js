@@ -2,10 +2,16 @@ const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
     app
         .get('/login', (req, res) => {
-            res.render('login', { err: req.flash('register') });
+            if (!req.isAuthenticated()) {
+                return res.render('login', { err: req.flash('register') });
+            }
+            return res.redirect('/');
         })
         .get('/register', (req, res) => {
-            res.render('register', { err: req.flash('register') });
+            if (!req.isAuthenticated()) {
+                return res.render('register', { err: req.flash('register') });
+            }
+            return res.redirect('/');
         })
         .get('/dashboard', (req, res) => {
             res.render('dashboard');

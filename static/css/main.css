@@ -23,3 +23,9 @@ body {
 .main-footer > nav {
 	margin-bottom: 0;
 }
+
+.main-footer > nav ul a{
+	font-size: 18px;
+	height: 100px;
+	line-height: 70px;
+}
