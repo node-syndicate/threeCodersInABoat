@@ -56,7 +56,8 @@ const init = (data) => {
 
         logOut(req, res) {
             req.logout();
-            res.redirect('/');
+            req.flash('register', ['You are logged out']);
+            res.redirect('/login');
         },
     };
     return controller;

@@ -1,5 +1,4 @@
 const attachTo = (app, data) => {
-
     const controller = require('./controller').init(data);
     app
         .get('/login', (req, res) => {

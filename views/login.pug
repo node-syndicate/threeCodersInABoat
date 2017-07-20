@@ -16,7 +16,10 @@ append header
             #err
             if err
                 each val in err
-                    div.alert.alert-danger= val.msg
+                    if val.msg
+                        div.alert.alert-danger= val.msg
+                    else
+                        div.alert.alert-success= val
         div.form-group
                     label.col-md-4.control-label
                         |Username
