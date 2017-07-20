@@ -53,6 +53,11 @@ const init = (data) => {
                     }
                 )(req, res);
         },
+
+        logOut(req, res) {
+            req.logout();
+            res.redirect('/');
+        },
     };
     return controller;
 };

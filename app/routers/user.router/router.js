@@ -16,7 +16,8 @@ const attachTo = (app, data) => {
             (req, res) => controller.login(req, res))
         .post('/register',
             (req, res, next) => controller.validateReg(req, res, next),
-            (req, res) => controller.register(req, res));
+            (req, res) => controller.register(req, res))
+        .get('/logout', (req, res) => controller.logOut(req, res));
 };
 
 module.exports = {

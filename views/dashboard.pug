@@ -1,1 +1,10 @@
-h1 USERMOTHERFUCKEr
+extends layout/main
+include mixins/news
+
+append head
+    link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.min.css")
+    link(rel="stylesheet", href="/static/css/home.css")
+    title braindead | you're lazy
+append header
+    a.btn.btn-info(href = '/logout')
+        | LogOut

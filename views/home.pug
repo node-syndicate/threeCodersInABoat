@@ -8,6 +8,11 @@ append head
 append header
     a.btn.btn-info(href = '/login')
         | LogIn
+    div.container
+                #msg
+                if msg
+                    each val in msg
+                        div.alert.alert-success= val
 append main
     // не слагай br, ще ползваме css-a
     h1 this is the website, welcome
