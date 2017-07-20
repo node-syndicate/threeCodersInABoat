@@ -38,7 +38,7 @@ const init = (data) => {
                 passport.authenticate(
                     'local',
                     {
-                        successRedirect: '/dashboard',
+                        successRedirect: '/',
                         failureRedirect: '/register',
                         failureFlash: true,
                     }
@@ -54,7 +54,7 @@ const init = (data) => {
             passport.authenticate(
                     'local',
                     {
-                        successRedirect: '/dashboard',
+                        successRedirect: '/',
                         failureRedirect: '/login',
                         failureFlash: true,
                     }

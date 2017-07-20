@@ -28,8 +28,6 @@ html(lang="en")
 						li
 							a(href='/lifestyle') Lifestyle
 						li
-							a(href='/fashion') Fashion
-						li
 							a(href='/enviroment') Enviroment
 					form.navbar-form.navbar-right(action='/search' method='get')
 						.input-group
@@ -38,11 +36,14 @@ html(lang="en")
 								button.btn.btn-default(type='submit')
 									i.glyphicon.glyphicon-search
 					ul.nav.navbar-nav.navbar-right
-						li
-							
-							if user
-							a(href='/login') Log In
-
+						if user
+							li
+								a(href='/profile')= user.username
+							li
+								a(href='/logout') Log Out
+						else
+							li
+								a(href='/login') Log In
 			block header
 		main.main-container
 			block main
