@@ -36,7 +36,8 @@ class NewsData extends BaseData {
     }
 
     updateNews() {
-        this.newsApiRequest()
+        setInterval(() => {
+            this.newsApiRequest()
             .then((result) => {
                 result.forEach((element) => {
                     this.findOne({ id: element.id })
@@ -48,6 +49,7 @@ class NewsData extends BaseData {
                         });
                 });
             });
+        }, 20000);
     }
 }
 
