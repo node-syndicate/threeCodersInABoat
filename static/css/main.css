@@ -7,11 +7,29 @@ body {
   min-height: 1200px;
 }
 
-.navbar-brand{
+
+.main-header .navbar-brand{
 	font-size: 22px;
 }
-.navbar-brand > span {
+.main-header .navbar-brand > span {
 	color: black;
+}
+.main-header .profile-link {
+	padding: 10px;
+}
+
+.main-header .profile-link > div {
+	width: 30px;
+	height: 30px;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: middle;
+	border-radius: 30px;
+	margin-right: 5px;
+}
+
+.main-header .profile-link > div > img {
+	width: 30px;
 }
 
 .main-footer {
@@ -28,11 +46,6 @@ body {
 	font-size: 18px;
 	height: 100px;
 	line-height: 70px;
-}
-
-.profile_img {
-	height: 30px;
-    width: 10%;
 }
 
 ul.nav.navbar-nav.navbar-right li img + a{

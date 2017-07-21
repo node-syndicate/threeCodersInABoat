@@ -29,22 +29,25 @@ html(lang="en")
                             a(href='/lifestyle') Lifestyle
                         li
                             a(href='/enviroment') Enviroment
+
+                    ul.nav.navbar-nav.navbar-right
+                        if user
+                            li
+                                a.profile-link(href='/profile')
+                                    div
+                                        img(src='../../static/imgs/defaultProfile.png', alt='default profile picture')
+                                    = user.username
+                            li
+                                a(href='/logout') Log Out
+                        else
+                            li
+                                a(href='/login') Log In
                     form.navbar-form.navbar-right(action='/search' method='get')
                         .input-group
                             input.form-control(type='text', placeholder='Search')
                             .input-group-btn
                                 button.btn.btn-default(type='submit')
                                     i.glyphicon.glyphicon-search
-                    ul.nav.navbar-nav.navbar-right
-                        if user
-                            li
-                                img.img-circle.profile_img(src='/static/imgs/No_person.jpg' alt='No user image')
-                                a(href='/profile')= user.username
-                            li
-                                a(href='/logout') Log Out
-                        else
-                            li
-                                a(href='/login') Log In
             block header
         main.main-container
             block main
