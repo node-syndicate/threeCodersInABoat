@@ -38,6 +38,7 @@ html(lang="en")
                     ul.nav.navbar-nav.navbar-right
                         if user
                             li
+                                img.img-circle.profile_img(src='/static/imgs/No_person.jpg' alt='No user image')
                                 a(href='/profile')= user.username
                             li
                                 a(href='/logout') Log Out

@@ -29,3 +29,12 @@ body {
 	height: 100px;
 	line-height: 70px;
 }
+
+.profile_img {
+	height: 30px;
+    width: 10%;
+}
+
+ul.nav.navbar-nav.navbar-right li img + a{
+	display: inline;
+}
