@@ -4,19 +4,21 @@ append head
     link(rel="stylesheet", href="/static/css/news_item.css")
     title The News That Get You Sober
 append main
-        if title
-            h1.newsItemH 
-                = title
-        else
-            h1.newsItemH
-             |Вълнуваща новина
-        if img
-            img.newsItemImg(src=img, alt="News Image")
-        else
-            img(src='https://static.pexels.com/photos/507757/pexels-photo-507757.jpeg' alt="News Image")
-        if text
-            p.newsItemP
-                = text
-        else
-            p.newsItemP
-                |Очаквайте подробности!
+    div.row
+        div.col-md-8.col-md-offset-2
+            if img
+                img.newsItemImg(src=img, alt="News Image")
+            else
+                img.newsItemImg(src='https://static.pexels.com/photos/507757/pexels-photo-507757.jpeg' alt="News Image")
+            if title
+                h1.newsItemH 
+                    = title
+            else
+                h1.newsItemH
+                |Вълнуваща новина
+            if text
+                p.newsItemP
+                    = text
+            else
+                p.newsItemP
+                    |Очаквайте подробности!
