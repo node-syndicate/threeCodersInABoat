@@ -16,7 +16,6 @@ const init = (data) => {
         showNews(req, res) {
             data.news.getAll()
                 .then((result) => {
-                    console.log(result);
                     return res.render('home', { news: result });
                 });
         },

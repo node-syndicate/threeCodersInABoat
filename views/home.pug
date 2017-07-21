@@ -16,4 +16,5 @@ append main
         each val in news
             h1= val.fields.headline
             h5!= val.fields.trailText
+            h5= val.webPublicationDate
             img(src= val.fields.thumbnail)
