@@ -1,5 +1,6 @@
-class News {
+class New {
     // validations
+    // new xD
 }
 
-module.exports = News;
+module.exports = New;

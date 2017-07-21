@@ -8,6 +8,19 @@ const init = (data) => {
             return res.redirect('/login');
         },
 
+        updateNews(req, res, next) {
+            data.news.updateNews();
+            return next();
+        },
+
+        showNews(req, res) {
+            data.news.getAll()
+                .then((result) => {
+                    console.log(result);
+                    return res.render('home', { news: result });
+                });
+        },
+
         logOut(req, res) {
             req.logout();
             req.flash('register', ['You are logged out']);

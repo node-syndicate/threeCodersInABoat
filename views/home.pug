@@ -12,3 +12,8 @@ append header
 append main
     h1 this is the website, welcome
     p some fancy explanation about the purpose of the site
+    #news
+        each val in news
+            h1= val.fields.headline
+            h5!= val.fields.trailText
+            img(src= val.fields.thumbnail)
