@@ -10,21 +10,23 @@ append header
                     each val in msg
                         div.alert.alert-success= val
 append main
+    
     #news
-        .container
-            .row
-                .col-sm-8.news-large-thumbnail
-                    a(href='')
-                        img(src=news[0].fields.thumbnail, alt='')
-                        .news-large-title
-                            h1= news[0].fields.headline
-                            p!= news[0].fields.trailText
-                .col-sm-4.news-small-container
-                    a.news-small-title(href='/latest') Latest news
-                    .news-small-thumbnail-container
-                        each val in news
-                            a(href='')
-                                .news-small-thumbnail
-                                    img(src= val.fields.thumbnail, alt='')
-                                    h3= val.fields.headline
+        if news[0].fields
+            .container
+                .row
+                    .col-sm-8.news-large-thumbnail
+                        a(href='')
+                            img(src=news[0].fields.thumbnail, alt='')
+                            .news-large-title
+                                h1= news[0].fields.headline
+                                p!= news[0].fields.trailText
+                    .col-sm-4.news-small-container
+                        a.news-small-title(href='/latest') Latest news
+                        .news-small-thumbnail-container
+                            each val in news
+                                a(href='')
+                                    .news-small-thumbnail
+                                        img(src= val.fields.thumbnail, alt='')
+                                        h3= val.fields.headline
                                 

@@ -10,7 +10,7 @@ const init = (data) => {
         next();
     });
     require('./routers').attachTo(app, data);
-
+    data.news.updateNews();
     return Promise.resolve(app);
 };
 

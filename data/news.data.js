@@ -29,6 +29,7 @@ class NewsData extends BaseData {
                                     || item.sectionId === 'business'
                                     || item.sectionId === 'lifeandstyle';
                             });
+                        console.log(result);
                         res(result);
                     });
             });
