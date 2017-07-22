@@ -7,7 +7,7 @@ const attachTo = (server) => {
             io.emit('chat message', msg);
         });
 
-        socket.io('disconnect', () => {
+        socket.on('disconnect', () => {
             console.log('a user disconnected');
         });
     });
