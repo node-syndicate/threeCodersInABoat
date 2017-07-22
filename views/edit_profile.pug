@@ -1,0 +1,54 @@
+extends layout/main
+append head
+    title thesobernews | Your Profile
+
+append main
+        form.well.form-horizontal(action="/edit_profile" method="post"  id="contact_form")
+            fieldset
+                legend
+                    center
+                        h2
+                            b 
+                                |Edit Your Profile
+            div.container
+                #err
+                if err
+                    each val in err
+                        div.alert.alert-danger= val.msg
+            div.form-group
+                        label.col-md-4.control-label
+                            |Username
+                        div.col-md-4.inputGroupContainer
+                            div.input-group
+                                span.input-group-addon
+                                    i.glyphicon.glyphicon-user
+                                input.form-control(name="username" placeholder="Username"  type="text")
+
+            div.form-group
+                label.col-md-4.control-label
+                    |E-Mail Address
+                div.col-md-4.inputGroupContainer
+                    div.input-group
+                        span.input-group-addon
+                            i.glyphicon.glyphicon-envelope
+                        input.form-control(name="email" placeholder="E-Mail Address"  type="text")
+
+            div.form-group
+                label.col-md-4.control-label
+                    |Upload photo
+                div.col-md-4.inputGroupContainer
+                    div.input-group
+                        span.input-group-addon
+                            i.glyphicon.glyphicon-picture
+                        input.form-control(name="filebutton" placeholder=""  type="file")
+
+
+            div.form-group
+                label.col-md-4.control-label
+                div.col-md-4
+                    br
+                    |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    button.btn.btn-warning(type="submit")  
+                        |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT 
+                        span.glyphicon.glyphicon-send
+                        |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp

@@ -1,0 +1,14 @@
+extends layout/main
+append head
+    title thesobernews | Your Profile
+append main
+    div.row
+        div.col-md-8.col-md-offset-2
+            img.profileImg(src='../static/imgs/defaultProfile.png' alt="Profile Image")
+            h1=user.username
+            h3=user.email
+            a.btn.btn-warning(href='/profile/edit_profile')  
+                            |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEdit
+                            |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+

@@ -10,12 +10,6 @@ append main
                 img.newsItemImg(src=img, alt="News Image")
             else
                 img.newsItemImg(src='https://static.pexels.com/photos/507757/pexels-photo-507757.jpeg' alt="News Image")
-            if title
-                h1.newsItemH 
-                    = title
-            else
-                h1.newsItemH
-                |Вълнуваща новина
             if text
                 p.newsItemP
                     = text
