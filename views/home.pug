@@ -27,6 +27,22 @@ append main
                             each val in news
                                 a(href='')
                                     .news-small-thumbnail
+                                        .small-cover
                                         img(src= val.fields.thumbnail, alt='')
                                         h3= val.fields.headline
+    #unsNews
+        if unsNews[0].fields    
+            .container
+                .row
+                    each val in unsNews
+                        .col-sm-6.col-xs-12.col-md-3.news-middle-thumbnail
+                            a(href='')
+                                .hover-cover
+                                if val.fields.thumbnail
+                                    img(src= val.fields.thumbnail, alt='')
+                                else
+                                    img(src='./../static/imgs/defaultArticle.png', alt='')
+                                h2= val.fields.headline
+                                p= val.fields.trailText
+
                                 

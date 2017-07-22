@@ -7,15 +7,17 @@ const init = (data) => {
             }
             return res.redirect('/login');
         },
-        
+
         showNews(req, res) {
             data.news.getAll()
                 .then((result) => {
-            result.sort((a, b) => {
+            const unsortedResult = result;
+            const sortedResult = result.sort((a, b) => {
                 return (a.webPublicationDate > b.webPublicationDate)
                 ? -1 : ((b.webPublicationDate > a.webPublicationDate) ? 1 : 0);
             });
-                    return res.render('home', { news: result });
+
+                    return res.render('home', { news: sortedResult, unsNews: unsortedResult });
                 });
         },
 

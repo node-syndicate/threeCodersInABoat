@@ -8,7 +8,7 @@ class NewsData extends BaseData {
 
     newsApiRequest() {
         const https = require('https');
-        const url = 'https://content.guardianapis.com/search?api-key=f93068f8-2f5e-43b5-8f2b-b76905e4ab38&page-size=50&show-fields=headline,trailText,thumbnail,bodyText';
+        const url = 'https://content.guardianapis.com/search?api-key=f93068f8-2f5e-43b5-8f2b-b76905e4ab38&page-size=200&show-fields=headline,trailText,thumbnail,bodyText';
         let body = '';
         return new Promise((res, rej) => {
             https.get(url, (resp) => {
@@ -29,7 +29,6 @@ class NewsData extends BaseData {
                                     || item.sectionId === 'business'
                                     || item.sectionId === 'lifeandstyle';
                             });
-                        console.log(result);
                         res(result);
                     });
             });

@@ -1,3 +1,7 @@
+.container {
+	margin-top: 10px;
+}
+
 .news-large-thumbnail {
 	position: relative;
 	padding: 0;
@@ -58,15 +62,26 @@
 .news-small-thumbnail {
 	background-color: #f8f8f8;
 	border-bottom: 1px solid lightgrey;
-	padding: 10px 10px;;
+	padding: 10px 10px;
+	position: relative;
+}
+
+.small-cover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.news-small-thumbnail-container > a:hover .small-cover {
+	background-color: rgba(88, 88, 88, 0.1);
 }
 
 .news-small-thumbnail-container > a:hover {
 	text-decoration: none;
 	color: black;
 }
-
-
 
 .news-small-thumbnail > h3 {
 	color: black;
@@ -86,4 +101,55 @@
 	 display: inline-block; 
 	margin: 0;
 	width: 80%;;
+}
+
+.news-middle-thumbnail {
+	background-color: #f8f8f8;
+	padding: 15px;
+	height: 370px;
+	overflow: hidden;
+}
+
+.news-middle-thumbnail img {
+	display: block;
+	margin: auto;
+	width: 97%;
+}
+
+.news-middle-thumbnail h2 {
+	margin-top: 10px;
+	font-size:  22px;
+	color: grey;
+	text-align: left;
+}
+
+.news-middle-thumbnail p {
+	color: grey;
+}
+
+.news-middle-thumbnail .hover-cover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.news-middle-thumbnail > a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+.news-middle-thumbnail > a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.news-middle-thumbnail > a:hover .hover-cover {
+	background-color: rgba(88, 88, 88, 0.3);
+}
+
+.news-middle-thumbnail > a:hover img {
+	transition: 0.5s;
+	width: 100%;
 }
