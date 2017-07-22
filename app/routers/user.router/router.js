@@ -1,6 +1,6 @@
 const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
-    const multer = require('multer');
+    const uploader = require('../../../helpers/uploading');
 
     app
         .get('/login', controller.checkNotAuthentication, (req, res) => {
@@ -23,7 +23,7 @@ const attachTo = (app, data) => {
             (req, res) => controller.register(req, res))
         .post('/profile/edit_profile',
             (req, res, next) => controller.validateEdit(req, res, next),
-            (req, res, next) => controller.editUser(req, res))
+            (req, res, next) => controller.editUser(req, res, next))
         .get('/logout', (req, res) => controller.logOut(req, res));
 };
 

@@ -79,11 +79,11 @@ const init = (data) => {
                 )(req, res);
         },
 
-        editUser(req, res) {
-            data.users.updateUser(req.body)
+        editUser(req, res, next) {
+            data.users.updateUser(req.body, req)
             .then((user) => {
-                req.user.email = req.body.email;
-                res.redirect('/profile');
+               req.user.email = req.body.email;
+               res.redirect('/profile');
             })
             .catch((err) => {
                 req.flash('register', err);
@@ -99,5 +99,4 @@ const init = (data) => {
     };
     return controller;
 };
-
 module.exports = { init };
