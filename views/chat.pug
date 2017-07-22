@@ -1,0 +1,18 @@
+extends layout/main
+append head
+    title thesobernews | Your Profile
+    link(rel="stylesheet", href="/static/css/chat.css")
+append main
+  .chat-box
+    ul#chat-messages
+      li
+        b Chat-welcomer: 
+        |  Hi! Have a good day!
+  .chat-form
+    form(method='post', action='')
+      input.input-msg-box(name='message', type='text', autocomplete='off', id="inputTxtBox")
+      button.btn.btn-primary Submit
+  script(src='../libs/socket.io-client/dist/socket.io.js')
+  script(src="https://code.jquery.com/jquery-1.11.1.js")
+  script(src="/static/scripts/chat.js")
+    
