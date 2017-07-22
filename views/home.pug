@@ -11,7 +11,6 @@ append header
                         div.alert.alert-success= val
 append main
     
-    #news
         if news[0].fields
             .container
                 .row
@@ -30,9 +29,8 @@ append main
                                         .small-cover
                                         img(src= val.fields.thumbnail, alt='')
                                         h3= val.fields.headline
-    #unsNews
         if unsNews[0].fields    
-            .container
+            .container.sub-news
                 .row
                     each val in unsNews
                         .col-sm-6.col-xs-12.col-md-3.news-middle-thumbnail
