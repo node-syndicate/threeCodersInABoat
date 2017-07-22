@@ -14,39 +14,44 @@ html(lang="en")
             nav.navbar.navbar-default.navbar-fixed-top
                 div.container
                     div.navbar-header
+                        button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
+                            span.icon-bar
+                            span.icon-bar
+                            span.icon-bar
                         a.navbar-brand(href='/')
                             span the
                             | sober
                             span news
-                    ul.nav.navbar-nav
-                        li
-                            a(href='/world') World
-                        li
-                            a(href='/sport') Sport
-                        li
-                            a(href='/politics') Politics
-                        li
-                            a(href='/lifestyle') Lifestyle
-                        li
-                            a(href='/enviroment') Enviroment
-                    ul.nav.navbar-nav.navbar-right
-                        if user
+                    .collapse.navbar-collapse
+                        ul.nav.navbar-nav
                             li
-                                a.profile-link(href='/profile')
-                                    div
-                                        img(src='../../static/imgs/defaultProfile.png', alt='default profile picture')
-                                    = user.username
+                                a(href='/world/all') World
                             li
-                                a(href='/logout') Log Out
-                        else
+                                a(href='/sport/all') Sport
                             li
-                                a(href='/login') Log In
-                    form.navbar-form.navbar-right(action='/search' method='get')
-                        .input-group
-                            input.form-control(type='text', placeholder='Search')
-                            .input-group-btn
-                                button.btn.btn-default(type='submit')
-                                    i.glyphicon.glyphicon-search
+                                a(href='/politics/all') Politics
+                            li
+                                a(href='/lifestyle/all') Lifestyle
+                            li
+                                a(href='/enviroment/all') Enviroment
+                        ul.nav.navbar-nav.navbar-right
+                            if user
+                                li
+                                    a.profile-link(href='/profile')
+                                        div
+                                            img(src='../../static/imgs/defaultProfile.png', alt='default profile picture')
+                                        = user.username
+                                li
+                                    a(href='/logout') Log Out
+                            else
+                                li
+                                    a(href='/login') Log In
+                        form.navbar-form.navbar-right(action='/search' method='get')
+                            .input-group
+                                input.form-control(type='text', placeholder='Search')
+                                .input-group-btn
+                                    button.btn.btn-default(type='submit')
+                                        i.glyphicon.glyphicon-search
             block header
         main.main-container
             block main
