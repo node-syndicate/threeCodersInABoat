@@ -1,0 +1,89 @@
+.news-large-thumbnail {
+	position: relative;
+	padding: 0;
+	height: 450px;
+	overflow: hidden;
+}
+
+.news-large-thumbnail .news-large-title:hover {
+	background-color: rgba(255, 255, 255, 0.6);
+	color: black;
+}
+
+.news-large-title {
+	background-color: rgba(155, 155, 176, 0.6);
+	color: white;
+	position: absolute;
+	padding: 10px;
+	bottom: 0;
+}
+
+.news-large-title > h1 {
+	margin: 0;
+}
+
+.news-large-thumbnail > a > img{
+	width: 100%;
+}
+
+.news-small-container {
+	background-clip:content-box;
+	background-color: #f4f4f4;
+	position: relative;
+	padding-right: 0;
+}
+
+.news-small-thumbnail-container {
+	margin-top: 25px;
+	overflow: auto;
+	height: 425px;
+}
+
+.news-small-title {
+	left: 50%;
+    top: 0%;
+    transform: translateX(-50%);
+	position: absolute;
+	text-align: center;
+	text-transform: uppercase;
+	color: black;
+	padding: 5px;
+}
+
+.news-small-title:hover{
+	color: grey;
+	text-decoration: none;
+}
+
+.news-small-thumbnail {
+	background-color: #f8f8f8;
+	border-bottom: 1px solid lightgrey;
+	padding: 10px 10px;;
+}
+
+.news-small-thumbnail-container > a:hover {
+	text-decoration: none;
+	color: black;
+}
+
+
+
+.news-small-thumbnail > h3 {
+	color: black;
+	font-size: 13px;
+	display: inline-block;
+	padding-left: 10px;
+	word-break: break-all;
+}
+
+.news-small-thumbnail > img {
+	width: 55px;
+	vertical-align: top;
+	display: inline-block;
+}
+
+.news-small-thumbnail > h3 {
+	 display: inline-block; 
+	margin: 0;
+	width: 80%;;
+}
