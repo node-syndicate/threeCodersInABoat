@@ -25,6 +25,17 @@ const init = (data) => {
                 });
         },
 
+        validateEdit(req, res, next) {
+            validator.edit(req)
+                .then((result) => {
+                    if (result.isEmpty()) {
+                        return next();
+                    }
+                    req.flash('register', result.array());
+                    return res.redirect('/profile/edit_profile');
+                });
+        },
+
         checkNotAuthentication(req, res, next) {
             if (!req.isAuthenticated()) {
                 return next();
@@ -66,6 +77,24 @@ const init = (data) => {
                         failureFlash: true,
                     }
                 )(req, res);
+        },
+
+        editUser(req, res) {
+            data.users.updateUser(req.body)
+            .then((user) => {
+                passport.authenticate(
+                    'local',
+                    {
+                        successRedirect: '/',
+                        failureRedirect: '/profile/edit_profile',
+                        failureFlash: true,
+                    }
+                )(req, res);
+            })
+            .catch((err) => {
+                req.flash('register', err);
+                return res.redirect('/profile/edit_profile');
+            });
         },
 
         logOut(req, res) {

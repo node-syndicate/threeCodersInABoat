@@ -45,6 +45,17 @@ class UsersData extends BaseData {
                 return true;
             });
     }
+
+    updateUser(data) {
+         return super.findOne({ email: data.email })
+            .then((existingUser) => {
+                if (existingUser && existingUser.username!==data.username) {
+                        const err = [{ msg: 'This email is already in use' }];
+                        throw err;
+                }
+                 return super.updateOne({ username: data.username }, { $set: { 'email': data.email } });
+            });
+    }
 }
 
 module.exports = UsersData;

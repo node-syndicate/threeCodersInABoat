@@ -3,7 +3,7 @@ append head
     title thesobernews | Your Profile
 
 append main
-        form.well.form-horizontal(action="/edit_profile" method="post"  id="contact_form")
+        form.well.form-horizontal(action="/profile/edit_profile" method="post"  id="contact_form")
             fieldset
                 legend
                     center
@@ -23,6 +23,14 @@ append main
                                 span.input-group-addon
                                     i.glyphicon.glyphicon-user
                                 input.form-control(name="username" placeholder="Username"  type="text")
+            div.form-group
+                label.col-md-4.control-label
+                    |Password
+                div.col-md-4.inputGroupContainer
+                    div.input-group
+                        span.input-group-addon
+                            i.glyphicon.glyphicon-user
+                        input.form-control(name="password" placeholder="Password"  type="password")
 
             div.form-group
                 label.col-md-4.control-label

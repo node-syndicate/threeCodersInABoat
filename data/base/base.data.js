@@ -25,6 +25,10 @@ class BaseMongoDbData {
         return this.collection.findOne(props);
     }
 
+    updateOne(filter, value) {
+        return this.collection.updateOne(filter, value);
+    }
+
     _getCollectionName() {
         return this.ModelClass.name.toLowerCase() + 's';
     }

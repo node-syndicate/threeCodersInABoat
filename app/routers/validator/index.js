@@ -17,7 +17,18 @@ const login = (req) => {
     return req.getValidationResult(); // returns promise with all the errors
 };
 
+
+
+const edit = (req) => {
+    req.checkBody('username', 'Username is missing.').notEmpty();
+    req.checkBody('password', 'Password is missing.').notEmpty();
+    req.checkBody('email', 'Email is badly formated.').isEmail();
+
+    return req.getValidationResult(); // returns promise with all the errors
+};
+
 module.exports = {
     register,
     login,
+    edit,
 };
