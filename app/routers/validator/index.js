@@ -20,8 +20,6 @@ const login = (req) => {
 
 
 const edit = (req) => {
-    req.checkBody('username', 'Username is missing.').notEmpty();
-    req.checkBody('password', 'Password is missing.').notEmpty();
     req.checkBody('email', 'Email is badly formated.').isEmail();
 
     return req.getValidationResult(); // returns promise with all the errors

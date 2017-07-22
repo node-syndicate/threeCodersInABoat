@@ -13,7 +13,7 @@ const attachTo = (app, data) => {
             res.render('profile');
         })
         .get('/profile/edit_profile', controller.checkAuthentication, (req, res) => {
-            res.render('edit_profile');
+            res.render('edit_profile', { err: req.flash('register') });
         })
         .post('/login',
             (req, res, next) => controller.validateLog(req, res, next),

@@ -82,14 +82,8 @@ const init = (data) => {
         editUser(req, res) {
             data.users.updateUser(req.body)
             .then((user) => {
-                passport.authenticate(
-                    'local',
-                    {
-                        successRedirect: '/',
-                        failureRedirect: '/profile/edit_profile',
-                        failureFlash: true,
-                    }
-                )(req, res);
+                req.user.email = req.body.email;
+                res.redirect('/profile');
             })
             .catch((err) => {
                 req.flash('register', err);

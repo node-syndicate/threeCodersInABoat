@@ -22,15 +22,7 @@ append main
                             div.input-group
                                 span.input-group-addon
                                     i.glyphicon.glyphicon-user
-                                input.form-control(name="username" placeholder="Username"  type="text")
-            div.form-group
-                label.col-md-4.control-label
-                    |Password
-                div.col-md-4.inputGroupContainer
-                    div.input-group
-                        span.input-group-addon
-                            i.glyphicon.glyphicon-user
-                        input.form-control(name="password" placeholder="Password"  type="password")
+                                input.form-control(name="username" placeholder="Username"  type="text" value=user.username disabled)
 
             div.form-group
                 label.col-md-4.control-label
@@ -39,7 +31,7 @@ append main
                     div.input-group
                         span.input-group-addon
                             i.glyphicon.glyphicon-envelope
-                        input.form-control(name="email" placeholder="E-Mail Address"  type="text")
+                        input.form-control(name="email" placeholder="E-Mail Address"  type="text" value=user.email)
 
             div.form-group
                 label.col-md-4.control-label
