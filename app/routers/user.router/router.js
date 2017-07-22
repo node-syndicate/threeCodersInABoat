@@ -7,10 +7,10 @@ const attachTo = (app, data) => {
         .get('/register', controller.checkNotAuthentication, (req, res) => {
                 return res.render('register', { err: req.flash('register') });
         })
-        .get('/profile', (req, res) => {
+        .get('/profile', controller.checkAuthentication, (req, res) => {
             res.render('profile');
         })
-        .get('/profile/edit_profile', (req, res) => {
+        .get('/profile/edit_profile', controller.checkAuthentication, (req, res) => {
             res.render('edit_profile');
         })
         .post('/login',
