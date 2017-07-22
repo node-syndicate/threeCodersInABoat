@@ -1,5 +1,6 @@
 const validator = require('../validator');
 const passport = require('passport');
+const uploader = require('../../../helpers/uploading');
 
 const init = (data) => {
     const controller = {
@@ -79,11 +80,23 @@ const init = (data) => {
                 )(req, res);
         },
 
-        editUser(req, res, next) {
+        editUser(req, res) {
             data.users.updateUser(req.body, req)
-            .then((user) => {
+            .then((confirm) => {
                req.user.email = req.body.email;
-               res.redirect('/profile');
+              return uploader(req, res, (err) => {
+                    console.log('test');
+                    console.log(JSON.stringify(err));
+                    console.log(JSON.stringify(req.body));
+                        if (!req.file) {
+                            req.flash('register', { msg: 'No file was selected' });
+                        } else {
+                            req.flash('register', { msg: 'File uploaded!' });
+                        }
+                });
+            })
+            .then((image) =>{
+                res.redirect('/profile');
             })
             .catch((err) => {
                 req.flash('register', err);
