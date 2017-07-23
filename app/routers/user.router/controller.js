@@ -27,14 +27,14 @@ const init = (data) => {
         },
 
         validateEdit(req, res, next) {
-            validator.edit(req)
-                .then((result) => {
-                    if (result.isEmpty()) {
-                        return next();
-                    }
-                    req.flash('register', result.array());
-                    return res.redirect('/profile/edit_profile');
-                });
+            // validator.edit(req)
+            //     .then((result) => {
+            //         if (result.isEmpty()) {
+            //             return next();
+            //         }
+            //         req.flash('register', result.array());
+            //         return res.redirect('/profile/edit_profile');
+            //     });
         },
 
         checkNotAuthentication(req, res, next) {
@@ -81,9 +81,11 @@ const init = (data) => {
         },
 
         editUser(req, res) {
+            console.log(req.body);
             data.users.updateUser(req.body, req)
             .then((confirm) => {
                req.user.email = req.body.email;
+               uploader.single('filebutton');
               return uploader(req, res, (err) => {
                     console.log('test');
                     console.log(JSON.stringify(err));

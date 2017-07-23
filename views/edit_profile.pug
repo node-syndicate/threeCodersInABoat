@@ -3,7 +3,7 @@ append head
     title thesobernews | Your Profile
 
 append main
-        form.well.form-horizontal(action="/profile/edit_profile" method="post"  id="contact_form")
+        form.well.form-horizontal(action="/profile/edit_profile" method="post"  id="contact_form" enctype="multipart/form-data")
             fieldset
                 legend
                     center
@@ -40,7 +40,7 @@ append main
                     div.input-group
                         span.input-group-addon
                             i.glyphicon.glyphicon-picture
-                        input.form-control(name="filebutton" placeholder=""  type="file")
+                        input.form-control(name="img" placeholder=""  type="file")
 
 
             div.form-group
