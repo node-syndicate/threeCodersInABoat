@@ -15,6 +15,9 @@ const attachTo = (app, data) => {
         .get('/profile/edit', controller.checkAuthentication, (req, res) => {
             res.render('edit-profile', { err: req.flash('register') });
         })
+        .get('/profile/chat', controller.checkAuthentication, (req, res) => {
+            res.render('chat');
+        })
         .post('/login',
             (req, res, next) => controller.validateLog(req, res, next),
             (req, res) => controller.login(req, res))
