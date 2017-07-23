@@ -84,18 +84,16 @@ const init = (data) => {
             data.users.updateUser(req.body, req)
             .then((confirm) => {
                req.user.email = req.body.email;
-              return uploader(req, res, (err) => {
-                    console.log('test');
-                    console.log(JSON.stringify(err));
-                    console.log(JSON.stringify(req.body));
-                        if (!req.file) {
-                            req.flash('register', { msg: 'No file was selected' });
-                        } else {
-                            req.flash('register', { msg: 'File uploaded!' });
-                        }
-                });
-            })
-            .then((image) =>{
+            //   return uploader(req, res, (err) => {
+            //         console.log('test');
+            //         console.log(JSON.stringify(err));
+            //         console.log(JSON.stringify(req.body));
+            //             if (!req.file) {
+            //                 req.flash('register', { msg: 'No file was selected' });
+            //             } else {
+            //                 req.flash('register', { msg: 'File uploaded!' });
+            //             }
+            //     });
                 res.redirect('/profile');
             })
             .catch((err) => {

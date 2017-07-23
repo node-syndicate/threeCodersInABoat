@@ -1,6 +1,6 @@
 const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
-    // const uploader = require('../../../helpers/uploading');
+    const upload = require('../../../helpers/uploading');
 
     app
         .get('/login', controller.checkNotAuthentication, (req, res) => {
@@ -22,6 +22,7 @@ const attachTo = (app, data) => {
             (req, res, next) => controller.validateReg(req, res, next),
             (req, res) => controller.register(req, res))
         .post('/profile/edit_profile',
+            upload.single('filebutton'),
             (req, res, next) => controller.validateEdit(req, res, next),
             (req, res) => controller.editUser(req, res),
             (req, res) => {
