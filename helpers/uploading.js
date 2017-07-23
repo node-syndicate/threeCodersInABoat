@@ -1,15 +1,21 @@
-    const multer = require('multer');
+const multer = require('multer');
 
-
-
-    const storage = multer.diskStorage({
-        destination: (req, file, cb) => {
-            cb(null, '../static/imgs')
-        },
-        filename: (req, file, cb) => {
-            cb(null, file.fieldname + '-' + Date.now() + '.jpg');
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        return cb(null, 'static/imgs/avatar');
+    },
+    filename: (req, file, cb) => {
+        if (!file.originalname.match(/\.(png|jpeg|jpg|wav|tif|gif)$/)) {
+            const err = new Error();
+            err.code = 'filetype';
+            return cb(err);
         }
-    });
-    let upload = multer({ dest: './../static' });
+
+        // return cb(null, file.originalname + '-' + Date.now());
+        return cb(null, file.originalname);
+    },
+});
+
+const upload = multer({ storage: storage });
 
 module.exports = upload;

@@ -33,7 +33,7 @@ const init = (data) => {
             //             return next();
             //         }
             //         req.flash('register', result.array());
-            //         return res.redirect('/profile/edit_profile');
+            //         return res.redirect('/profile/edit');
             //     });
         },
 
@@ -85,24 +85,21 @@ const init = (data) => {
             data.users.updateUser(req.body, req)
             .then((confirm) => {
                req.user.email = req.body.email;
-               uploader.single('filebutton');
-              return uploader(req, res, (err) => {
-                    console.log('test');
-                    console.log(JSON.stringify(err));
-                    console.log(JSON.stringify(req.body));
-                        if (!req.file) {
-                            req.flash('register', { msg: 'No file was selected' });
-                        } else {
-                            req.flash('register', { msg: 'File uploaded!' });
-                        }
-                });
-            })
-            .then((image) =>{
+            //   return uploader(req, res, (err) => {
+            //         console.log('test');
+            //         console.log(JSON.stringify(err));
+            //         console.log(JSON.stringify(req.body));
+            //             if (!req.file) {
+            //                 req.flash('register', { msg: 'No file was selected' });
+            //             } else {
+            //                 req.flash('register', { msg: 'File uploaded!' });
+            //             }
+            //     });
                 res.redirect('/profile');
             })
             .catch((err) => {
                 req.flash('register', err);
-                return res.redirect('/profile/edit_profile');
+                return res.redirect('/profile/edit');
             });
         },
 

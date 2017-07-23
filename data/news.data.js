@@ -22,7 +22,7 @@ class NewsData extends BaseData {
                             .filter((item) => item.type === 'article')
                             .filter(
                             (item) => {
-                                return item.sectionId === 'enviroment'
+                                return item.sectionId === 'environment'
                                     || item.sectionId === 'world'
                                     || item.sectionId === 'sport'
                                     || item.sectionId === 'politics'
