@@ -1,0 +1,31 @@
+.chat-box {
+  border: 1px solid black;
+  margin: 25px auto;
+}
+
+#chat-messages {
+  margin: 25px auto;
+  list-style-type: none;
+  box-sizing: border-box;
+}
+
+#chat-messages li {
+  font-size: 14px;
+  margin: 10px 25px;
+  background-color: #ddd;
+  padding: 20px;
+}
+
+#chat-messages li:nth-child(odd) {
+  background-color: #bbb;
+}
+
+.chat-form {
+  text-align: center;
+} 
+
+.input-msg-box {
+  margin-right: 50px;
+  width: 500px;
+  height: 50px;
+}
