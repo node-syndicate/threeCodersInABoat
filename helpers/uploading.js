@@ -7,14 +7,15 @@ const storage = multer.diskStorage({
         return cb(null, 'static/imgs/avatar');
     },
     filename: (req, file, cb) => {
-        if (!file.originalname.match(/\.(png|jpeg|jpg|wav|tif|gif)$/)) {
+        if (!file.originalname.match(/\.(png|jpeg|jpg)$/)) {
             const err = new Error();
             err.code = 'filetype';
             return cb(err);
         }
-
+        const temp = (file.originalname + '').split('.');
+        const fileExt = temp[temp.length-1];
         // return cb(null, file.originalname + '-' + Date.now());
-        return cb(null, file.originalname);
+        return cb(null, req.user.username +'.'+ fileExt);
     },
 });
 

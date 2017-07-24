@@ -4,7 +4,7 @@ append head
 append main
     div.row
         div.col-md-8.col-md-offset-2
-                img.profileImg(alt="Profile Image" src="data:image/png;base64," + img)
+                img.profileImg(alt="Profile Image" src=user.img)
                 h1=user.username
                 h3=user.email
                 a.btn.btn-warning(href='/profile/edit')  

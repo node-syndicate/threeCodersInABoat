@@ -2,6 +2,7 @@ const attachTo = (app, data) => {
     const controller = require('./controller').init(data);
     const { upload } = require('../../../helpers/uploading');
 
+
     app
         .get('/login', controller.checkNotAuthentication, (req, res) => {
                 return res.render('login', { err: req.flash('register') });
@@ -10,14 +11,10 @@ const attachTo = (app, data) => {
                 return res.render('register', { err: req.flash('register') });
         })
         .get('/profile', controller.checkAuthentication, (req, res) => {
-            
-            const test = data.users.findOne( { 'username': req.user.username });
-            console.log(JSON.stringify(test) + 'user');
-            // console.log(req.user.img.encoded + 'encoded');
-            // const image = req.user.img.default || req.user.img.encoded.value();
-            // console.log(req.user.img.default + 'default');
+                     console.log(JSON.stringify(req.user));
+                     res.render('profile');
+
             // res.render('profile', { img: image });
-            res.render('profile');
         })
         .get('/profile/edit', controller.checkAuthentication, (req, res) => {
             res.render('edit-profile', { err: req.flash('register') });

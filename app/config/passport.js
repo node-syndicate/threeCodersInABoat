@@ -29,6 +29,7 @@ const config = ({ users }) => {
             _id: user._id,
             username: user.username,
             email: user.email,
+            img: user.img,
         };
         done(null, sessionUser);
     });

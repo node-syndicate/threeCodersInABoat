@@ -1,7 +1,8 @@
 const BaseData = require('./base/base.data');
 const User = require('../models/user');
 const hashPass = require('../helpers/hashing');
-const { getNewProfilePicture } = require('../helpers/uploading');
+const fs = require('fs');
+const files = fs.readdirSync('static/imgs/avatar/');
 
 
 class UsersData extends BaseData {
@@ -56,11 +57,25 @@ class UsersData extends BaseData {
                         const err = [{ msg: 'This email is already in use' }];
                         throw err;
                 }
+                    let image = '';
                 if (req.file) {
-                    const image = getNewProfilePicture(req);
-                    return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email, img: image } });
+                    files.forEach((file) => {
+                        if (file.indexOf(req.user.username)>= 0) {
+                            const temp = file.split('.');
+                                if (temp[0] === req.user.username) {
+                                    image = 'static/imgs/avatar/' + file;
+                                    return (image);
+                                }
+                        }
+                    });
                 }
-                 return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email } });
+            return (image);
+            })
+            .then((newImage) => {
+                if (req.file) {
+                    return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email, img: newImage } });
+                }
+                return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email } });
             });
     }
 }

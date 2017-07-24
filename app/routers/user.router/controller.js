@@ -1,7 +1,5 @@
 const validator = require('../validator');
 const passport = require('passport');
-const { getDefaultProfilePricture } = require('../../../helpers/uploading');
-
 
 
 const init = (data) => {
@@ -54,7 +52,7 @@ const init = (data) => {
         },
 
         register(req, res) {
-            const defImg = getDefaultProfilePricture();
+            const defImg = 'static/imgs/defaultProfile.png';
             data.users.register(req.body, defImg)
             .then((user) => {
                 passport.authenticate(
@@ -87,17 +85,12 @@ const init = (data) => {
             console.log(req.body);
             data.users.updateUser(req.body, req)
             .then((confirm) => {
-               req.user.email = req.body.email;
-            //   return uploader(req, res, (err) => {
-            //         console.log('test');
-            //         console.log(JSON.stringify(err));
-            //         console.log(JSON.stringify(req.body));
-            //             if (!req.file) {
-            //                 req.flash('register', { msg: 'No file was selected' });
-            //             } else {
-            //                 req.flash('register', { msg: 'File uploaded!' });
-            //             }
-            //     });
+               return data.users.findOne({ username: req.user.username });
+            })
+            .then((foundUser) => {
+                req.user.email = foundUser.email;
+                req.user.img = foundUser.img;
+                console.log(JSON.stringify(foundUser));
                 res.redirect('/profile');
             })
             .catch((err) => {
