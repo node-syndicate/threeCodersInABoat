@@ -1,4 +1,6 @@
 const multer = require('multer');
+const fs = require('fs');
+const Binary = require('mongodb').Binary;
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -18,4 +20,32 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-module.exports = upload;
+const getDefaultProfilePricture = () => {
+    const newImg =
+        fs.readFileSync('static/imgs/defaultProfile.png');
+
+    const image = {
+        default: new Binary(newImg.toString('base64')),
+    };
+
+    return image;
+};
+
+const getNewProfilePicture = (req) => {
+    const newImg = fs.readFileSync(req.file.path);
+
+    const image = {
+        contentType: req.file.mimetype,
+        size: req.file.size,
+        encoded: new Binary(newImg.toString('base64')),
+    };
+
+    return image;
+};
+
+
+module.exports = {
+    upload,
+    getDefaultProfilePricture,
+    getNewProfilePicture,
+};

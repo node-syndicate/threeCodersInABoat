@@ -20,6 +20,7 @@ const login = (req) => {
 
 
 const edit = (req) => {
+    req.checkBody('email', 'Please enter an email.').notEmpty();
     req.checkBody('email', 'Email is badly formated.').isEmail();
 
     return req.getValidationResult(); // returns promise with all the errors

@@ -1,6 +1,8 @@
 const validator = require('../validator');
 const passport = require('passport');
-const uploader = require('../../../helpers/uploading');
+const { getDefaultProfilePricture } = require('../../../helpers/uploading');
+
+
 
 const init = (data) => {
     const controller = {
@@ -27,14 +29,14 @@ const init = (data) => {
         },
 
         validateEdit(req, res, next) {
-            // validator.edit(req)
-            //     .then((result) => {
-            //         if (result.isEmpty()) {
-            //             return next();
-            //         }
-            //         req.flash('register', result.array());
-            //         return res.redirect('/profile/edit');
-            //     });
+            validator.edit(req)
+                .then((result) => {
+                    if (result.isEmpty()) {
+                        return next();
+                    }
+                    req.flash('register', result.array());
+                    return res.redirect('/profile/edit');
+                });
         },
 
         checkNotAuthentication(req, res, next) {
@@ -52,7 +54,8 @@ const init = (data) => {
         },
 
         register(req, res) {
-            data.users.register(req.body)
+            const defImg = getDefaultProfilePricture();
+            data.users.register(req.body, defImg)
             .then((user) => {
                 passport.authenticate(
                     'local',

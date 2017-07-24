@@ -4,11 +4,11 @@ append head
 append main
     div.row
         div.col-md-8.col-md-offset-2
-            img.profileImg(src='../static/imgs/defaultProfile.png' alt="Profile Image")
-            h1=user.username
-            h3=user.email
-            a.btn.btn-warning(href='/profile/edit')  
-                            |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEdit
-                            |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                img.profileImg(alt="Profile Image" src="data:image/png;base64," + img)
+                h1=user.username
+                h3=user.email
+                a.btn.btn-warning(href='/profile/edit')  
+                                |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspEdit
+                                |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 
 

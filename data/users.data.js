@@ -1,6 +1,7 @@
 const BaseData = require('./base/base.data');
 const User = require('../models/user');
 const hashPass = require('../helpers/hashing');
+const { getNewProfilePicture } = require('../helpers/uploading');
 
 
 class UsersData extends BaseData {
@@ -8,7 +9,7 @@ class UsersData extends BaseData {
         super(db, User);
     }
 
-    register(data) {
+    register(data, img) {
         return super.findOne({ username: data.username })
             .then((existingUser) => {
                 if (existingUser) {
@@ -29,6 +30,8 @@ class UsersData extends BaseData {
                     username: data.username,
                     password: hash,
                     email: data.email,
+                    img: img,
+                    favs: [],
                 };
                 return super.create(user);
             });
@@ -52,6 +55,10 @@ class UsersData extends BaseData {
                 if (existingUser && existingUser.username!==req.user.username) {
                         const err = [{ msg: 'This email is already in use' }];
                         throw err;
+                }
+                if (req.file) {
+                    const image = getNewProfilePicture(req);
+                    return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email, img: image } });
                 }
                  return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email } });
             });
