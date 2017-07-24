@@ -21,32 +21,8 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-const getDefaultProfilePricture = () => {
-    const newImg =
-        fs.readFileSync('static/imgs/defaultProfile.png');
-
-    const image = {
-        default: new Binary(newImg.toString('base64')),
-    };
-
-    return image;
-};
-
-const getNewProfilePicture = (req) => {
-    const newImg = fs.readFileSync(req.file.path);
-
-    const image = {
-        contentType: req.file.mimetype,
-        size: req.file.size,
-        encoded: new Binary(newImg.toString('base64')),
-    };
-
-    return image;
-};
 
 
 module.exports = {
     upload,
-    getDefaultProfilePricture,
-    getNewProfilePicture,
 };

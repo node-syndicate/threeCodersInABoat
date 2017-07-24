@@ -13,8 +13,6 @@ const attachTo = (app, data) => {
         .get('/profile', controller.checkAuthentication, (req, res) => {
                      console.log(JSON.stringify(req.user));
                      res.render('profile');
-
-            // res.render('profile', { img: image });
         })
         .get('/profile/edit', controller.checkAuthentication, (req, res) => {
             res.render('edit-profile', { err: req.flash('register') });
