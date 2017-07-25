@@ -34,7 +34,7 @@ gulp.task('pre-test', () => {
 gulp.task('tests:unit', ['pre-test'], () => {
     return gulp.src('./tests/unit/**/*.js')
                 .pipe(mocha({
-                    reporter: 'nyan',
+                    // reporter: 'nyan',
                 }))
                 .pipe(istanbul.writeReports());
 });

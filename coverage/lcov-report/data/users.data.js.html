@@ -22,12 +22,12 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/38</span>
+        <span class='fraction'>0/29</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/18</span>
+        <span class='fraction'>0/12</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/38</span>
+        <span class='fraction'>0/29</span>
       </div>
     </div>
   </div>
@@ -122,11 +122,7 @@
 77
 78
 79
-80
-81
-82
-83
-84</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+80</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -186,21 +182,17 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -268,23 +260,19 @@ class UsersData extends BaseData {
 <span class="cstat-no" title="statement not covered" >                        const err = [{ msg: 'This email is already in use' }];</span>
 <span class="cstat-no" title="statement not covered" >                        throw err;</span>
                 }
-<span class="cstat-no" title="statement not covered" >                    let image = '';</span>
 <span class="cstat-no" title="statement not covered" >                if (req.file) {</span>
-<span class="cstat-no" title="statement not covered" >                    files.forEach((file) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >                        if (file.indexOf(req.user.username)&gt;= 0) {</span>
-<span class="cstat-no" title="statement not covered" >                            const temp = file.split('.');</span>
-<span class="cstat-no" title="statement not covered" >                                if (temp[0] === req.user.username) {</span>
-<span class="cstat-no" title="statement not covered" >                                    image = 'static/imgs/avatar/' + file;</span>
-<span class="cstat-no" title="statement not covered" >                                    return (image);</span>
-                                }
-                        }
-                    });
-                }
-<span class="cstat-no" title="statement not covered" >            return (image);</span>
-            })
-            .then((newImage) =&gt; {
-<span class="cstat-no" title="statement not covered" >                if (req.file) {</span>
-<span class="cstat-no" title="statement not covered" >                    return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email, img: newImage } });</span>
+                            // TO DO deleting previouse version of the profile img
+&nbsp;
+                            //     files.forEach((file) =&gt; {
+                            //     if (file.indexOf(req.user.username)&gt;= 0) {
+                            //     const temp = file.split('.');
+                            //         if (temp[0] === req.user.username) {
+                            // //             fs.unlink('static/imgs/avatar/' + file);
+                            //                  console.log(fs.statSync('static/imgs/avatar/' + file));
+                            //             }
+                            //         }
+                            //     });
+<span class="cstat-no" title="statement not covered" >                    return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email, img: req.file.destination+'/'+ req.file.filename } });</span>
                 }
 <span class="cstat-no" title="statement not covered" >                return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email } });</span>
             });
@@ -298,7 +286,7 @@ class UsersData extends BaseData {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 24 2017 22:39:56 GMT+0300 (FLE Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jul 25 2017 20:08:24 GMT+0300 (FLE Daylight Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

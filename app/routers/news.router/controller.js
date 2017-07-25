@@ -4,7 +4,7 @@ const init = (data) => {
             const category = req.url.split('/')[1];
             data.news.filterBy({ sectionId: category })
                 .then((result) => {
-                    // return res.render('news')
+                    // return res.render('news');
                 });
             next();
         },

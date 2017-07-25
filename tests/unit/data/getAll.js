@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const BaseData = require('../../../data/base/base.data');
 
 describe('BaseData.getAll()', () => {
-    describe('when there are items in db', () => {
+    describe('when method called', () => {
         const db = {
             collection: () => { },
         };
@@ -40,7 +40,7 @@ describe('BaseData.getAll()', () => {
             db.collection.restore();
         });
 
-        it('expect to return items', () => {
+        it('expect it to return all items', () => {
            return data.getAll()
                     .then((models) => {
                         expect(models).to.deep.equal(items);
@@ -48,3 +48,5 @@ describe('BaseData.getAll()', () => {
         });
     });
 });
+
+
