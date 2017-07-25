@@ -52,7 +52,7 @@ const init = (data) => {
         },
 
         register(req, res) {
-            const defImg = 'static/imgs/defaultProfile.png';
+            const defImg = 'static/imgs/defaultProfile.jpg';
             data.users.register(req.body, defImg)
             .then((user) => {
                 passport.authenticate(

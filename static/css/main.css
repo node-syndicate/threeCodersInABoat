@@ -54,3 +54,8 @@ body {
 ul.nav.navbar-nav.navbar-right li img + a{
 	display: inline;
 }
+
+.profileImg {
+	width: 30%;
+	height: 200px;
+}

@@ -41,7 +41,7 @@ html(lang="en")
                                 li
                                     a.profile-link(href='/profile')
                                         div
-                                            img(src='../../static/imgs/defaultProfile.png', alt='default profile picture')
+                                            img(src=user.img, alt='default profile picture')
                                         span #{user.username}
                                 li
                                     a(href='/logout') Log Out

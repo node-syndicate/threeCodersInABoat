@@ -1,6 +1,4 @@
 const multer = require('multer');
-const fs = require('fs');
-const Binary = require('mongodb').Binary;
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
