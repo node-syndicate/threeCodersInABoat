@@ -8,9 +8,9 @@ class NewsData extends BaseData {
 
     filter(props) {
         return this.collection.find(props.key)
-            .skip(props.fromPage)
-            .limit(props.items)
             .sort(props.sortKey)
+            .skip(props.fromItem)
+            .limit(props.items)
             .toArray();
     }
 
@@ -39,7 +39,6 @@ class NewsData extends BaseData {
                                     || item.sectionId === 'world'
                                     || item.sectionId === 'sport'
                                     || item.sectionId === 'politics'
-                                    || item.sectionId === 'business'
                                     || item.sectionId === 'lifeandstyle';
                             });
                         res(result);

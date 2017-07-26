@@ -12,14 +12,14 @@ const init = ({ news }) => {
             const latestNews =
                 news
                     .filter({
-                        sortKey: { webPublicationDate: 1 },
-                        fromPage: 0,
+                        sortKey: { webPublicationDate: -1 },
+                        fromItem: 0,
                         items: 20,
                     });
             const randomNews = news.random(20);
             Promise.all([latestNews, randomNews])
                 .then((result) => {
-                    return res.render('home', { news: result[0].reverse(), unsNews: result[1] });
+                    return res.render('home', { news: result[0], unsNews: result[1] });
                 });
         },
 

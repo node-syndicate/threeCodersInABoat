@@ -6,6 +6,8 @@ append main
 	if news[0].fields    
 				.container.sub-news
 					.row
+						.category-title
+							h1= news[0].sectionId
 						each val in news
 							.col-sm-6.col-xs-12.col-md-3.news-middle-thumbnail
 								a(href='')
@@ -15,7 +17,7 @@ append main
 									else
 										img(src='./../static/imgs/defaultArticle.png', alt='')
 									h2= val.fields.headline
-									p= val.fields.trailText
+									p!= val.fields.trailText
 					button.get-news more news
 append scripts
 	script(src="./../static/scripts/news-ajax-handler.js")
