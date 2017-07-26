@@ -1,4 +1,4 @@
-const init = (data) => {
+const init = ({ news }) => {
     const controller = {
 
         checkAuthentication(req, res, next) {
@@ -9,15 +9,17 @@ const init = (data) => {
         },
 
         showNews(req, res) {
-            data.news.getAll()
+            const latestNews =
+                news
+                    .filter({
+                        sortKey: { webPublicationDate: 1 },
+                        fromPage: 0,
+                        pages: 20,
+                    });
+            const randomNews = news.random(20);
+            Promise.all([latestNews, randomNews])
                 .then((result) => {
-            const unsortedResult = result;
-            const sortedResult = result.sort((a, b) => {
-                return (a.webPublicationDate > b.webPublicationDate)
-                ? -1 : ((b.webPublicationDate > a.webPublicationDate) ? 1 : 0);
-            });
-
-                    return res.render('home', { news: sortedResult, unsNews: unsortedResult });
+                    return res.render('home', { news: result[0].reverse(), unsNews: result[1] });
                 });
         },
 

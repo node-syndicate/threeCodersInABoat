@@ -16,7 +16,10 @@ append main
                 .row
                     .col-sm-8.news-large-thumbnail
                         a(href='')
-                            img(src=news[0].fields.thumbnail, alt='')
+                            if news[0].fields.thumbnail
+                                img(src= news[0].fields.thumbnail, alt='')
+                            else
+                                img(src='./../static/imgs/defaultArticle.png', alt='')
                             .news-large-title
                                 h1= news[0].fields.headline
                                 p!= news[0].fields.trailText
@@ -27,7 +30,10 @@ append main
                                 a(href='')
                                     .news-small-thumbnail
                                         .small-cover
-                                        img(src= val.fields.thumbnail, alt='')
+                                        if val.fields.thumbnail
+                                            img(src= val.fields.thumbnail, alt='')
+                                        else
+                                            img(src='./../static/imgs/defaultArticle.png', alt='')
                                         h3= val.fields.headline
         if unsNews[0].fields    
             .container.sub-news
@@ -41,6 +47,7 @@ append main
                                 else
                                     img(src='./../static/imgs/defaultArticle.png', alt='')
                                 h2= val.fields.headline
-                                p= val.fields.trailText
+                                p!= val.fields.trailText
+                                
 
                                 

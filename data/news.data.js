@@ -6,6 +6,19 @@ class NewsData extends BaseData {
         super(db, News);
     }
 
+    filter(props) {
+        return this.collection.find(props.key)
+            .skip(props.fromPage)
+            .limit(props.pages)
+            .sort(props.sortKey)
+            .toArray();
+    }
+
+    random(number) {
+        return this.collection
+            .aggregate([{ $sample: { size: number } }]).toArray();
+    }
+
     newsApiRequest() {
         const https = require('https');
         const url = 'https://content.guardianapis.com/search?api-key=f93068f8-2f5e-43b5-8f2b-b76905e4ab38&page-size=200&show-fields=headline,trailText,thumbnail,bodyText';
@@ -38,17 +51,17 @@ class NewsData extends BaseData {
     updateNews() {
         setInterval(() => {
             this.newsApiRequest()
-            .then((result) => {
-                result.forEach((element) => {
-                    this.findOne({ id: element.id })
-                        .then((item) => {
-                            if (item) {
-                                return;
-                            }
-                            this.create(element);
-                        });
+                .then((result) => {
+                    result.forEach((element) => {
+                        this.findOne({ id: element.id })
+                            .then((item) => {
+                                if (item) {
+                                    return;
+                                }
+                                this.create(element);
+                            });
+                    });
                 });
-            });
         }, 20000);
     }
 }
