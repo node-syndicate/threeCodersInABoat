@@ -1,6 +1,5 @@
 extends layout/main
 append head
-	link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.min.css")
 	link(rel="stylesheet", href="/static/css/news-list.css")
 	title #{category} news | Get Sober
 append main
@@ -17,3 +16,6 @@ append main
 										img(src='./../static/imgs/defaultArticle.png', alt='')
 									h2= val.fields.headline
 									p= val.fields.trailText
+					button.get-news more news
+append scripts
+	script(src="./../static/scripts/news-ajax-handler.js")

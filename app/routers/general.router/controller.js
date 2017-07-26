@@ -14,7 +14,7 @@ const init = ({ news }) => {
                     .filter({
                         sortKey: { webPublicationDate: 1 },
                         fromPage: 0,
-                        pages: 20,
+                        items: 20,
                     });
             const randomNews = news.random(20);
             Promise.all([latestNews, randomNews])

@@ -11,7 +11,6 @@ const attachTo = (app, data) => {
                 return res.render('register', { err: req.flash('register') });
         })
         .get('/profile', controller.checkAuthentication, (req, res) => {
-                     console.log(JSON.stringify(req.user));
                      res.render('profile');
         })
         .get('/profile/edit', controller.checkAuthentication, (req, res) => {

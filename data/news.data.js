@@ -9,7 +9,7 @@ class NewsData extends BaseData {
     filter(props) {
         return this.collection.find(props.key)
             .skip(props.fromPage)
-            .limit(props.pages)
+            .limit(props.items)
             .sort(props.sortKey)
             .toArray();
     }
