@@ -1,0 +1,19 @@
+extends layout/main
+append head
+	link(rel="stylesheet", href="/libs/bootstrap/dist/css/bootstrap.min.css")
+	link(rel="stylesheet", href="/static/css/news-list.css")
+	title #{category} news | Get Sober
+append main
+	if news[0].fields    
+				.container.sub-news
+					.row
+						each val in news
+							.col-sm-6.col-xs-12.col-md-3.news-middle-thumbnail
+								a(href='')
+									.hover-cover
+									if val.fields.thumbnail
+										img(src= val.fields.thumbnail, alt='')
+									else
+										img(src='./../static/imgs/defaultArticle.png', alt='')
+									h2= val.fields.headline
+									p= val.fields.trailText

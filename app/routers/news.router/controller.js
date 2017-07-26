@@ -1,12 +1,13 @@
 const init = (data) => {
     const controller = {
-        getAllNewsByCategory(req, res, next) {
-            const category = req.url.split('/')[1];
+        displayNewsByCategory(req, res, next) {
+            const category = req.query.categories;
             data.news.filterBy({ sectionId: category })
                 .then((result) => {
-                    // return res.render('news');
+                    return res.render('news-list', {
+                        news: result,
+                        category: category });
                 });
-            next();
         },
     };
     return controller;
