@@ -7,8 +7,8 @@ $(() => {
         const file = $('input[name=img]')[0].files[0];
         formData.append('img', file);
         formData.append('email', newEmail);
-        
-         $.ajax({
+
+        $.ajax({
             url: '/edit' + username,
             method: 'PUT',
             contentType: false,
@@ -18,7 +18,7 @@ $(() => {
                 console.log(response);
                 console.log(event.target);
                 window.location.assign('/profile');
-            }
+            },
         });
-    })
+    });
 });
