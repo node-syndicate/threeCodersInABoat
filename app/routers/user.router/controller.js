@@ -33,7 +33,7 @@ const init = (data) => {
                         return next();
                     }
                     req.flash('register', result.array());
-                    return res.redirect('/profile/edit');
+                    return res.redirect('/profile');
                 });
         },
 

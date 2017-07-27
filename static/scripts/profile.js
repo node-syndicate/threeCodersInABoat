@@ -21,7 +21,8 @@ $(() => {
             data: formData,
             success: (response) => {
                 console.log(response);
-               // $('div.row, form.well.form-horizontal').toggleClass( 'hidden' );
+                location.reload();
+                // $('div.row, form.well.form-horizontal').toggleClass( 'hidden' );
             }
         });
     });

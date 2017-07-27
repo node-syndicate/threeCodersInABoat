@@ -27,18 +27,13 @@ const attachTo = (app, data) => {
             (req, res) => controller.register(req, res))
         .put('/profile/:id', upload.single('img'),
             (req, res, next) => controller.validateEdit(req, res, next),
-            (req, res) => controller.editUser(req, res),
-            (req, res) => {
-                console.log(req.body);
-                console.log(req.file);
-                res.send('user updated');
-        })
+            (req, res) => controller.editUser(req, res)
         // .post('/profile/edit',
         //     upload.single('img'),
         //     (req, res, next) => controller.validateEdit(req, res, next),
         //     (req, res) => controller.editUser(req, res),
         //     (req, res) => {
-        //         // uploader(req, res, (err) => {
+        //         // upload(req, res, (err) => {
         //         //     console.log('test');
         //         //     console.log(JSON.stringify(err));
         //         //     console.log(JSON.stringify(req.body));
