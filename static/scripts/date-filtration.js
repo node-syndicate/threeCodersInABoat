@@ -1,6 +1,6 @@
 $(() => {
     let fullDate;
-    $('#datepicker').datepicker({ 
+    $('#datepicker').datepicker({
         dateFormat: 'yy-mm-dd',
         onSelect: () => {
             const date = $('#datepicker').datepicker('getDate').getDate();
@@ -8,6 +8,6 @@ $(() => {
             const year = $('#datepicker').datepicker('getDate').getFullYear();
             fullDate = [date, month, year];
             // console.log('date', fullDate);
-    }
- });
+        },
+    });
 });
