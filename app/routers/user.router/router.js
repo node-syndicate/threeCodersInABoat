@@ -16,7 +16,7 @@ const attachTo = (app, data) => {
         // .get('/profile/edit', controller.checkAuthentication, (req, res) => {
         //     res.render('edit-profile', { err: req.flash('register') });
         // })
-        .get('/profile/chat', controller.checkAuthentication, (req, res) => {
+        .get('/chat', controller.checkAuthentication, (req, res) => {
             res.render('chat');
         })
         .post('/login',
@@ -27,7 +27,7 @@ const attachTo = (app, data) => {
             (req, res) => controller.register(req, res))
         .put('/profile/:id', upload.single('img'),
             (req, res, next) => controller.validateEdit(req, res, next),
-            (req, res) => controller.editUser(req, res)
+            (req, res) => controller.editUser(req, res))
         // .post('/profile/edit',
         //     upload.single('img'),
         //     (req, res, next) => controller.validateEdit(req, res, next),
