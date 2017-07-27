@@ -91,11 +91,11 @@ const init = (data) => {
                 req.user.email = foundUser.email;
                 req.user.img = foundUser.img;
                 console.log(JSON.stringify(foundUser));
-                res.redirect('/profile');
+                res.redirect(303, '/profile');
             })
             .catch((err) => {
                 req.flash('register', err);
-                return res.redirect('/profile/edit');
+                return res.redirect('/profile');
             });
         },
 

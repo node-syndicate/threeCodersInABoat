@@ -59,3 +59,7 @@ ul.nav.navbar-nav.navbar-right li img + a{
 	width: 30%;
 	height: 200px;
 }
+
+.hidden {
+	display: none;
+}
