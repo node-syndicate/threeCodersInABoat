@@ -59,7 +59,6 @@ class UsersData extends BaseData {
                 }
                 if (req.file) {
                             // TO DO deleting previouse version of the profile img
-
                             //     files.forEach((file) => {
                             //     if (file.indexOf(req.user.username)>= 0) {
                             //     const temp = file.split('.');

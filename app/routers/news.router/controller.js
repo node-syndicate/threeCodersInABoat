@@ -1,3 +1,5 @@
+const ObjectId = require('mongodb').ObjectId;
+
 const init = ({ news }) => {
     const controller = {
         displayNewsByCategory(req, res, next) {
@@ -32,7 +34,15 @@ const init = ({ news }) => {
                 });
         },
 
-        // displayNewsByCategoryAndPage(req, res, next)
+        article(req, res, next) {
+            console.log('chep');
+            const articleId = req.query.id;
+            const id = new ObjectId(articleId);
+            news.findOne({ _id: id })
+                .then((result) => {
+                    return res.render('news-article', { news: result });
+                });
+        },
     };
     return controller;
 };

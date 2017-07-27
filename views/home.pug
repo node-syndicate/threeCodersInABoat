@@ -10,12 +10,12 @@ append header
                     each val in msg
                         div.alert.alert-success= val
 append main
-    
+
         if news[0].fields
             .container
                 .row
                     .col-sm-8.news-large-thumbnail
-                        a(href='')
+                        a(href=`/articles?id=${news[0]._id}`)
                             if news[0].fields.thumbnail
                                 img(src= news[0].fields.thumbnail, alt='')
                             else
@@ -27,7 +27,7 @@ append main
                         a.news-small-title(href='/latest') Latest news
                         .news-small-thumbnail-container
                             each val in news
-                                a(href='')
+                                a(href=`/articles?id=${val._id}`)
                                     .news-small-thumbnail
                                         .small-cover
                                         if val.fields.thumbnail
@@ -40,7 +40,7 @@ append main
                 .row
                     each val in unsNews
                         .col-sm-6.col-xs-12.col-md-3.news-middle-thumbnail
-                            a(href='')
+                            a(href=`/articles?id=${val._id}`)
                                 .hover-cover
                                 if val.fields.thumbnail
                                     img(src= val.fields.thumbnail, alt='')
