@@ -1,3 +1,5 @@
+const ObjectId = require('mongodb').ObjectId;
+
 const init = ({ news }) => {
     const controller = {
         displayNewsByCategory(req, res, next) {
@@ -14,7 +16,21 @@ const init = ({ news }) => {
                         category: category });
                 });
         },
-
+        displayNewsByFilter(req, res, next) {
+            const category = req.query.categories;
+            const filter = new RegExp(req.query.filter, 'i');
+            news.filter({
+                key: { sectionId: category, webPublicationDate: { $regex: filter } },
+                sortKey: { webPublicationDate: -1 },
+                fromItem: 0,
+                items: 20,
+            })
+                .then((result) => {
+                    return res.render('news-list', {
+                        news: result,
+                        category: category });
+                });
+        },
         pagination(req, res, next) {
             const category = req.query.categories;
             const page = req.query.page;
@@ -32,7 +48,15 @@ const init = ({ news }) => {
                 });
         },
 
-        // displayNewsByCategoryAndPage(req, res, next)
+        article(req, res, next) {
+            console.log('chep');
+            const articleId = req.query.id;
+            const id = new ObjectId(articleId);
+            news.findOne({ _id: id })
+                .then((result) => {
+                    return res.render('news-article', { news: result });
+                });
+        },
     };
     return controller;
 };

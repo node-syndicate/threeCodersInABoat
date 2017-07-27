@@ -1,6 +1,8 @@
 extends layout/main
 append head
 	link(rel="stylesheet", href="/static/css/news-list.css")
+	link(rel="stylesheet", href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
+	script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
 	title #{category} news | Get Sober
 append main
 	if news[0].fields    
@@ -8,9 +10,11 @@ append main
 					.row
 						.category-title
 							h1= news[0].sectionId
+							span Filter by date: 
+							input#datepicker(type="text",name="datepicker")
 						each val in news
 							.col-sm-6.col-xs-12.col-md-3.news-middle-thumbnail
-								a(href='')
+								a(href=`/articles?id=${val._id}`)
 									.hover-cover
 									if val.fields.thumbnail
 										img(src= val.fields.thumbnail, alt='')
@@ -21,3 +25,4 @@ append main
 					button.get-news more news
 append scripts
 	script(src="./../static/scripts/news-ajax-handler.js")
+	script(src="./../static/scripts/date-filtration.js")

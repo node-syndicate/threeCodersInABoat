@@ -1,0 +1,18 @@
+extends layout/main
+
+append head
+    link(rel="stylesheet", href="/static/css/news-article.css")
+    title #{news.webTitle} | The News That Get You Sober
+append main
+    if news
+        .container
+            .row
+                h1= news.fields.headline
+                .col-md-8.col-md-offset-2
+                if news.fields.thumbnail
+                    img.newsItemImg(src=news.fields.thumbnail, alt="News Image")
+                else
+                    img.newsItemImg(src='./../static/imgs/defaultArticle.png' alt="News Image")
+                p= news.fields.bodyText
+                textarea.comment-input(name='comments-area', placeholder='Leave a comment')
+                button.comment-button Comment
