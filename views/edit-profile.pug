@@ -3,7 +3,7 @@ append head
     title thesobernews | Your Profile
 
 append main
-        form.well.form-horizontal(action="/profile/edit" method="post"  id="contact_form" enctype="multipart/form-data")
+        form.well.form-horizontal(id="contact_form" enctype="multipart/form-data")
             fieldset
                 legend
                     center
@@ -47,8 +47,10 @@ append main
                 label.col-md-4.control-label
                 div.col-md-4
                     br
-                    |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-                    button.btn.btn-warning(type="submit")  
-                        |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT 
+                    button#submit.btn.btn-warning(type = 'submit')
+                        |SUBMIT 
                         span.glyphicon.glyphicon-send
-                        |&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+
+append scripts
+    script(src="../static/scripts/profile.js")

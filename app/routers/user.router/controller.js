@@ -33,7 +33,7 @@ const init = (data) => {
                         return next();
                     }
                     req.flash('register', result.array());
-                    return res.redirect('/profile');
+                    return res.redirect('/edit');
                 });
         },
 
@@ -95,7 +95,7 @@ const init = (data) => {
             })
             .catch((err) => {
                 req.flash('register', err);
-                return res.redirect('/profile');
+                return res.redirect('/edit');
             });
         },
 

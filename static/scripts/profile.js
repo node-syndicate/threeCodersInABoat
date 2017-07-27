@@ -1,10 +1,5 @@
 $(() => {
-    $('button#edit').on('click', () => {
-        $('div.row, form.well.form-horizontal').toggleClass( 'hidden' );
-    });
-
-
-    $('button#submit').on('click', (event) => {
+    $('form.well.form-horizontal').on('submit', (event) => {
         event.preventDefault();
         const formData = new FormData();
         const username = $('input[name=username]').val();
@@ -14,16 +9,16 @@ $(() => {
         formData.append('email', newEmail);
         
          $.ajax({
-            url: '/profile/' + username,
+            url: '/edit' + username,
             method: 'PUT',
             contentType: false,
             processData: false,
             data: formData,
             success: (response) => {
                 console.log(response);
-                location.reload();
-                // $('div.row, form.well.form-horizontal').toggleClass( 'hidden' );
+                console.log(event.target);
+                window.location.assign('/profile');
             }
         });
-    });
+    })
 });

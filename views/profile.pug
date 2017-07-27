@@ -7,59 +7,8 @@ append main
                 img.profileImg(alt="Profile Image" src=user.img)
                 h1=user.username
                 h3=user.email
-                button#edit.btn.btn-warning
+                a#edit.btn.btn-warning(href = "/edit")
                                 |Edit
 
 
-    form.well.form-horizontal.hidden(id="contact_form" enctype="multipart/form-data")
-                fieldset
-                    legend
-                        center
-                            h2
-                                b 
-                                    |Edit Your Profile
-                div.container
-                    #err
-                    if err
-                        each val in err
-                            div.alert.alert-danger= val.msg
-                div.form-group
-                            label.col-md-4.control-label
-                                |Username
-                            div.col-md-4.inputGroupContainer
-                                div.input-group
-                                    span.input-group-addon
-                                        i.glyphicon.glyphicon-user
-                                    input.form-control(name="username" placeholder="Username"  type="text" value=user.username disabled)
-
-                div.form-group
-                    label.col-md-4.control-label
-                        |E-Mail Address
-                    div.col-md-4.inputGroupContainer
-                        div.input-group
-                            span.input-group-addon
-                                i.glyphicon.glyphicon-envelope
-                            input.form-control(name="email" placeholder="E-Mail Address"  type="text" value=user.email)
-
-                div.form-group
-                    label.col-md-4.control-label
-                        |Upload photo
-                    div.col-md-4.inputGroupContainer
-                        div.input-group
-                            span.input-group-addon
-                                i.glyphicon.glyphicon-picture
-                            input.form-control(name="img" placeholder=""  type="file")
-
-
-                div.form-group
-                    label.col-md-4.control-label
-                    div.col-md-4
-                        br
-                        button#submit.btn.btn-warning
-                            |SUBMIT 
-                            span.glyphicon.glyphicon-send
-
-
-append scripts
-    script(src="/static/scripts/profile.js")
 
