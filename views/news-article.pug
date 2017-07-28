@@ -13,6 +13,6 @@ append main
                     img.newsItemImg(src=news.fields.thumbnail, alt="News Image")
                 else
                     img.newsItemImg(src='./../static/imgs/defaultArticle.png' alt="News Image")
-                p= news.fields.bodyText
+                p!= news.fields.bodyText
                 textarea.comment-input(name='comments-area', placeholder='Leave a comment')
                 button.comment-button Comment
