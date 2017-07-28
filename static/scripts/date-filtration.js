@@ -10,7 +10,6 @@ $(() => {
                 contentType: 'application/json',
                 data: $.param({ 'categories': category, 'date': fullDate }),
                 success: (response) => {
-                    console.log(response);
                     $('input[name=datepicker]').val('');
                     $('.divider').html(response);
                     $('.get-news').hide();

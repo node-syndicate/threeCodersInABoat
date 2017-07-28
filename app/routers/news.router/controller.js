@@ -16,29 +16,11 @@ const init = ({ news }) => {
                         category: category });
                 });
         },
-        // displayNewsByFilter(req, res, next) {
-        //     const category = req.query.categories;
-        //     const filter = new RegExp(req.query.filter, 'i');
-        //     news.filter({
-        //         key: { sectionId: category, webPublicationDate: { $regex: filter } },
-        //         sortKey: { webPublicationDate: -1 },
-        //         fromItem: 0,
-        //         items: 20,
-        //     })
-        //         .then((result) => {
-        //             return res.render('news-list', {
-        //                 news: result,
-        //                 category: category });
-        //         });
-        // },
 
         displayNewsByCategoryAndDate(req, res, next) {
             const category = req.query.categories;
             const date = req.query.date || '*';
-            console.log(category);
-            console.log(date);
             const rgx = new RegExp(date);
-            console.log(rgx);
             news.filter({
                 key: { sectionId: category, webPublicationDate: { $regex: rgx } },
                 sortKey: { webPublicationDate: -1 },
@@ -46,7 +28,6 @@ const init = ({ news }) => {
                 items: 20,
                 })
             .then((result) => {
-                console.log('done');
                     return res.render('news-list-page', {
                         news: result,
                         date: date,
@@ -68,7 +49,6 @@ const init = ({ news }) => {
         pagination(req, res, next) {
             const category = req.query.categories;
             const page = req.query.page;
-
             news.filter({
                 key: { sectionId: category },
                 sortKey: { webPublicationDate: -1 },
@@ -83,7 +63,6 @@ const init = ({ news }) => {
         },
 
         article(req, res, next) {
-            console.log('chep');
             const articleId = req.query.id;
             const id = new ObjectId(articleId);
             news.findOne({ _id: id })
@@ -92,6 +71,7 @@ const init = ({ news }) => {
                 });
         },
     };
+
     return controller;
 };
 

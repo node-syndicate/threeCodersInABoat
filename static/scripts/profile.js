@@ -15,8 +15,6 @@ $(() => {
             processData: false,
             data: formData,
             success: (response) => {
-                console.log(response);
-                console.log(event.target);
                 window.location.assign('/profile');
             },
         });

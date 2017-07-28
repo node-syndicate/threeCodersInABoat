@@ -82,7 +82,6 @@ const init = (data) => {
         },
 
         editUser(req, res) {
-            console.log(req.body);
             data.users.updateUser(req.body, req)
             .then((confirm) => {
                return data.users.findOne({ username: req.user.username });
@@ -90,7 +89,6 @@ const init = (data) => {
             .then((foundUser) => {
                 req.user.email = foundUser.email;
                 req.user.img = foundUser.img;
-                console.log(JSON.stringify(foundUser));
                 res.redirect(303, '/profile');
             })
             .catch((err) => {
