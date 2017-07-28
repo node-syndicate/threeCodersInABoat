@@ -3,13 +3,16 @@ append head
 	link(rel="stylesheet", href="/static/css/news-list.css")
 	link(rel="stylesheet", href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css")
 	script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.js")
-	title #{category} news | Get Sober
+	if category
+		title #{category} news | Get Sober
+	else
+		title Found news | Get Sober
 append main
 	if news[0].fields    
 				.container.sub-news
 					.row
 						.category-title
-							h1= news[0].sectionId
+							h1#categoryHeader= news[0].sectionId
 							span Filter by date: 
 							input#datepicker(type="text",name="datepicker")
 						each val in news

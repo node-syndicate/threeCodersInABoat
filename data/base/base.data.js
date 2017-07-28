@@ -29,6 +29,12 @@ class BaseMongoDbData {
         return this.collection.updateOne(filter, value);
     }
 
+    findByText(string) {
+            // this.collection.dropIndexes();
+            this.collection.createIndex( { webTitle: 'text' });
+            return this.collection.find( { $text: { $search: string } } ).toArray();
+    }
+
     _getCollectionName() {
         return this.ModelClass.name.toLowerCase() + 's';
     }

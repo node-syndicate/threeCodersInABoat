@@ -49,9 +49,9 @@ html(lang="en")
                                 else
                                     li
                                         a(href='/login') Log In
-                            form.navbar-form.navbar-right(action='/search' method='get')
+                            form#search-form.navbar-form.navbar-right(action='/search' method='get')
                                 .input-group
-                                    input.form-control(type='text', placeholder='Search')
+                                    input.form-control(name='search', type='text', placeholder='Search')
                                     .input-group-btn
                                         button.btn.btn-default(type='submit')
                                             i.glyphicon.glyphicon-search
@@ -68,3 +68,4 @@ html(lang="en")
                         li
                             a(href='/about') About
         block scripts
+        //- script(src="/static/scripts/search.js")
