@@ -47,7 +47,7 @@ const init = ({ news }) => {
                 })
             .then((result) => {
                 console.log('done');
-                    return res.render('news-list', {
+                    return res.render('news-list-page', {
                         news: result,
                         date: date,
                         category: category });
@@ -56,11 +56,11 @@ const init = ({ news }) => {
 
         displayNewsBySearchedString(req, res) {
             const string = req.query.search;
-           
             news.findByText(string)
                 .then((result) => {
-                    return res.render('news-list', {
+                    return res.render('search', {
                         news: result,
+                        query: string,
                     });
                 });
         },

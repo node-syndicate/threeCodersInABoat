@@ -16,9 +16,9 @@ class BaseMongoDbData {
 
     create(model) {
         return this.collection.insert(model)
-        .then(() => {
-            return model;
-        });
+            .then(() => {
+                return model;
+            });
     }
 
     findOne(props) {
@@ -30,9 +30,10 @@ class BaseMongoDbData {
     }
 
     findByText(string) {
-            // this.collection.dropIndexes();
-            this.collection.createIndex( { webTitle: 'text' });
-            return this.collection.find( { $text: { $search: string } } ).toArray();
+        this.collection.createIndex({ webTitle: 'text' });
+        return this.collection
+            .find({ $text: { $search: string } })
+            .toArray();
     }
 
     _getCollectionName() {
