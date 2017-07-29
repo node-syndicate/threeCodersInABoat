@@ -13,7 +13,8 @@ const init = ({ news }) => {
                 .then((result) => {
                     return res.render('news-list', {
                         news: result,
-                        category: category });
+                        category: category
+                    });
                 });
         },
 
@@ -26,12 +27,13 @@ const init = ({ news }) => {
                 sortKey: { webPublicationDate: -1 },
                 fromItem: 0,
                 items: 20,
-                })
-            .then((result) => {
+            })
+                .then((result) => {
                     return res.render('news-list-page', {
                         news: result,
                         date: date,
-                        category: category });
+                        category: category
+                    });
                 });
         },
 
@@ -58,7 +60,8 @@ const init = ({ news }) => {
                 .then((result) => {
                     res.render('news-list-page', {
                         news: result,
-                        category: category });
+                        category: category
+                    });
                 });
         },
 
@@ -71,12 +74,31 @@ const init = ({ news }) => {
                 });
         },
 
-        getArticleComments(req, res, next) {
-            console.log('get comments');
-        },
-
         setArticleComment(req, res, next) {
-            console.log('set comment');
+            const date = req.body.date;
+            const articleId = req.body.articleId;
+            const comment = req.body.comment;
+            const username = req.user.username;
+            const commentData = { date, comment, username };
+            news.findOne({ _id: new ObjectId(articleId) })
+                .then((article) => {
+                    if (!article.comments) {
+                        article.comments = [];
+                        article.comments.push(commentData);
+                    } else {
+                        article.comments.push(commentData);
+                    }
+                    return article;
+                })
+                .then((article) => {
+                    return news.saveComments(article);
+                })
+                .then(() => {
+                    return res.render('comments', commentData);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
 
         updateArticleComment(req, res, next) {
@@ -84,7 +106,24 @@ const init = ({ news }) => {
         },
 
         removeArticleComment(req, res, next) {
-            console.log('delete comment');
+            const articleId = req.body.articleId;
+            news.findOne({ _id: new ObjectId(articleId) })
+                .then((article) => {
+                    const index = article.comments
+                        .findIndex(
+                            (item) => item.username === req.user.username);
+                    article.comments.splice(index, 1);
+                    return article;
+                })
+                .then((article) => {
+                    return news.saveComments(article);
+                })
+                .then(() => {
+                    return res.end();
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
     };
 

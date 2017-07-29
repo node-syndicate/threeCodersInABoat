@@ -14,15 +14,24 @@ append main
                 else
                     img.newsItemImg(src='./../static/imgs/defaultArticle.png' alt="News Image")
                 p!= news.fields.bodyText
-                textarea.comment-input(name='comments-area', placeholder='Leave a comment' articleID=news._id)
-                button.comment-button Comment
-                .comments-container
-                    if comments
-                        each val in comments
-                            p=val.username
-                            p=val.comment
-                            if val.username = user.username
-                                button.delete delete baby
-                                button.edit edit baby
+                if user
+                    textarea.comment-input(name='comments-area', placeholder='Leave a comment')
+                    button.comment-button Comment
+                else
+                    textarea.comment-input(name='comments-area', placeholder='Please register or login to comment')
+                    a(href="/login") Click here to login
+                .comments-container(articleID=news._id)
+                    if news.comments
+                        each val in news.comments
+                            .comment-item
+                                p.comment-content= val.date
+                                p.comment-username= val.username
+                                p.comment-content= val.comment
+                                if user
+                                    if val.username == user.username
+                                        button.comment-delete X
+                                        button.comment-edit Edit
+append scripts
+    script(src='./../static/scripts/comments.js')
 
 

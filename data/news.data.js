@@ -63,6 +63,10 @@ class NewsData extends BaseData {
                 });
         }, 20000);
     }
+
+    saveComments(article) {
+        return this.collection.save(article);
+    }
 }
 
 module.exports = NewsData;
