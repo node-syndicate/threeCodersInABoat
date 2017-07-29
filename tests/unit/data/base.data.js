@@ -104,10 +104,10 @@ describe('BaseData', () => {
     });
     describe('getAll()', () => {
         it('to get all items from collection', () => {
-           return data.getAll()
-              .then((itemsFound) => {
-                expect(itemsFound).to.deep.equal(foundItems);
-              });
+            return data.getAll()
+                .then((itemsFound) => {
+                    expect(itemsFound).to.deep.equal(foundItems);
+                });
         });
     });
     describe('updateOne()', () => {
