@@ -5,14 +5,19 @@ const attachTo = (app, data) => {
             if (req.xhr) {
                 if (req.query.date) {
                     controller.displayNewsByCategoryAndDate(req, res, next);
+                } else {
+                    controller.pagination(req, res, next);
                 }
-                controller.pagination(req, res, next);
             } else {
                 controller.displayNewsByCategory(req, res, next);
             }
         })
         .get('/articles', controller.article)
-        .get('/search', controller.displayNewsBySearchedString);
+        .get('/search', controller.displayNewsBySearchedString)
+        .get('/comments', controller.getArticleComments)
+        .post('/comments', controller.setArticleComment)
+        .put('/comments', controller.updateArticleComment)
+        .delete('/comments', controller.removeArticleComment);
 };
 
 module.exports = {

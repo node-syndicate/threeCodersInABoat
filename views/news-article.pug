@@ -14,5 +14,15 @@ append main
                 else
                     img.newsItemImg(src='./../static/imgs/defaultArticle.png' alt="News Image")
                 p!= news.fields.bodyText
-                textarea.comment-input(name='comments-area', placeholder='Leave a comment')
+                textarea.comment-input(name='comments-area', placeholder='Leave a comment' articleID=news._id)
                 button.comment-button Comment
+                .comments-container
+                    if comments
+                        each val in comments
+                            p=val.username
+                            p=val.comment
+                            if val.username = user.username
+                                button.delete delete baby
+                                button.edit edit baby
+
+

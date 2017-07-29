@@ -70,6 +70,22 @@ const init = ({ news }) => {
                     return res.render('news-article', { news: result });
                 });
         },
+
+        getArticleComments(req, res, next) {
+            console.log('get comments');
+        },
+
+        setArticleComment(req, res, next) {
+            console.log('set comment');
+        },
+
+        updateArticleComment(req, res, next) {
+            console.log('update comment');
+        },
+
+        removeArticleComment(req, res, next) {
+            console.log('delete comment');
+        },
     };
 
     return controller;
