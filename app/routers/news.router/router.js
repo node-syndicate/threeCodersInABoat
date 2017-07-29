@@ -12,9 +12,11 @@ const attachTo = (app, data) => {
                 controller.displayNewsByCategory(req, res, next);
             }
         })
+
         .get('/articles', controller.article)
+
         .get('/search', controller.displayNewsBySearchedString)
-        .get('/comments', controller.getArticleComments)
+
         .post('/comments', controller.setArticleComment)
         .put('/comments', controller.updateArticleComment)
         .delete('/comments', controller.removeArticleComment);

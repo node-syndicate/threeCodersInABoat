@@ -1,5 +1,5 @@
 TN:
-SF:C:\Users\User1\Desktop\threeCodersInABoat\data\data.js
+SF:/home/svrakata/Programming/JavaScript/nodeTelerikTW/testfield/data/data.js
 FNF:0
 FNH:0
 DA:1,0
@@ -13,7 +13,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\User1\Desktop\threeCodersInABoat\data\index.js
+SF:/home/svrakata/Programming/JavaScript/nodeTelerikTW/testfield/data/index.js
 FNF:0
 FNH:0
 DA:1,0
@@ -23,19 +23,27 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\User1\Desktop\threeCodersInABoat\data\news.data.js
+SF:/home/svrakata/Programming/JavaScript/nodeTelerikTW/testfield/data/news.data.js
 FN:5,(anonymous_1)
 FN:9,(anonymous_2)
 FN:17,(anonymous_3)
 FN:22,(anonymous_4)
 FN:50,(anonymous_5)
+<<<<<<< HEAD
 FNF:5
 FNH:3
 FNDA:2,(anonymous_1)
+=======
+FN:67,(anonymous_6)
+FNF:6
+FNH:2
+FNDA:1,(anonymous_1)
+>>>>>>> 59ccf6844671bade5006be46df5eaadf8dc5f8a1
 FNDA:1,(anonymous_2)
 FNDA:1,(anonymous_3)
 FNDA:0,(anonymous_4)
 FNDA:0,(anonymous_5)
+FNDA:0,(anonymous_6)
 DA:1,1
 DA:2,1
 DA:6,2
@@ -60,9 +68,16 @@ DA:55,0
 DA:57,0
 DA:58,0
 DA:60,0
+<<<<<<< HEAD
 DA:68,1
 LF:25
 LH:6
+=======
+DA:68,0
+DA:72,1
+LF:26
+LH:5
+>>>>>>> 59ccf6844671bade5006be46df5eaadf8dc5f8a1
 BRDA:38,1,0,0
 BRDA:38,1,1,0
 BRDA:38,1,2,0
@@ -74,7 +89,7 @@ BRF:7
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\User1\Desktop\threeCodersInABoat\data\users.data.js
+SF:/home/svrakata/Programming/JavaScript/nodeTelerikTW/testfield/data/users.data.js
 FN:9,(anonymous_1)
 FN:13,(anonymous_2)
 FN:41,(anonymous_3)
@@ -132,7 +147,7 @@ BRF:12
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\User1\Desktop\threeCodersInABoat\data\base\base.data.js
+SF:/home/svrakata/Programming/JavaScript/nodeTelerikTW/testfield/data/base/base.data.js
 FN:2,(anonymous_1)
 FN:9,(anonymous_2)
 FN:13,(anonymous_3)
@@ -171,7 +186,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\User1\Desktop\threeCodersInABoat\models\news.js
+SF:/home/svrakata/Programming/JavaScript/nodeTelerikTW/testfield/models/news.js
 FNF:0
 FNH:0
 DA:6,0
@@ -181,7 +196,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\User1\Desktop\threeCodersInABoat\models\user.js
+SF:/home/svrakata/Programming/JavaScript/nodeTelerikTW/testfield/models/user.js
 FN:3,(anonymous_1)
 FN:7,(anonymous_2)
 FNF:2
