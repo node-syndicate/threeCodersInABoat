@@ -1,3 +1,5 @@
+/* globals $ */
+
 $(() => {
   const socket = io();
   $('form').submit(() => {

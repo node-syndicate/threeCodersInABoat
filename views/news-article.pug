@@ -24,13 +24,20 @@ append main
                     if news.comments
                         each val in news.comments
                             .comment-item
-                                p.comment-content= val.date
-                                p.comment-username= val.username
-                                p.comment-content= val.comment
-                                if user
-                                    if val.username == user.username
-                                        button.comment-delete X
-                                        button.comment-edit Edit
+                                .bare-comment
+                                    p.comment-date= val.date
+                                    p.comment-username= val.username
+                                    p.comment-content= val.comment
+                                    if user
+                                        if val.username == user.username
+                                            button.comment-delete X
+                                            button.comment-edit Edit
+                                    else
+                                        a(href="/login") Click here to login
+                                .editor
+                                    textarea.edit-input(name='comments-area')= val.comment
+                                    button.comment-submit(id=val.id) Submit
+                                    button.comment-cancel Cancel
 append scripts
     script(src='./../static/scripts/comments.js')
 

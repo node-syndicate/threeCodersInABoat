@@ -79,7 +79,8 @@ const init = ({ news }) => {
             const articleId = req.body.articleId;
             const comment = req.body.comment;
             const username = req.user.username;
-            const commentData = { date, comment, username };
+            const id = username + Date.now();
+            const commentData = { id, date, comment, username };
             news.findOne({ _id: new ObjectId(articleId) })
                 .then((article) => {
                     if (!article.comments) {
@@ -102,7 +103,28 @@ const init = ({ news }) => {
         },
 
         updateArticleComment(req, res, next) {
-            console.log('update comment');
+            const date = req.body.date;
+            const articleId = req.body.articleId;
+            const comment = req.body.comment;
+            const id = req.body.id;
+            news.findOne({ _id: new ObjectId(articleId) })
+                .then((article) => {
+                    const index = article.comments
+                        .findIndex(
+                            (item) => item.id === id);
+                    article.comments[index].comment = comment;
+                    article.comments[index].date = date;
+                    return article;
+                })
+                .then((article) => {
+                    return news.saveComments(article);
+                })
+                .then(() => {
+                    res.send(JSON.stringify({ date, comment }));
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
 
         removeArticleComment(req, res, next) {

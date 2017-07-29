@@ -1,3 +1,5 @@
+/* globals $ */
+
 $(() => {
     let page = 0;
     $('.get-news').on('click', () => {
