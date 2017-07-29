@@ -3,180 +3,105 @@ const sinon = require('sinon');
 
 const BaseData = require('../../../data/base/base.data');
 
-describe('BaseData.create(model)', () => {
-    describe('when method called', () => {
-        const db = {
-            collection: () => { },
+describe('BaseData', () => {
+    const db = {
+        collection: () => { },
+    };
+    let items = [];
+    let foundItems = [];
+
+    let ModelClass = null;
+    const validator = null;
+    let data = null;
+    const newModel = {
+        _id: '596b2a0ae6239d22044adb29',
+    };
+
+    const insert = (model) => {
+        return Promise.resolve(model);
+    };
+
+    const toArray = () => {
+        return Promise.resolve(foundItems);
+    };
+
+    const find = (props) => {
+        return {
+            toArray,
         };
-        let items = [];
+    };
+    const findOne = (props) => {
+        return Promise.resolve(props);
+    };
 
-        let ModelClass = null;
-        const validator = null;
-        let data = null;
-        const newModel = null;
+    beforeEach(() => {
+        items = [newModel];
+        foundItems = [
+            {
+                sectionId: 'world',
+                sectionName: 'World news',
+                webTitle: 'Russian man at Trump Jr meeting had partner with Soviet intelligence ties',
+            },
+            {
+                sectionId: 'world',
+                sectionName: 'World news',
+                webTitle: 'Passchendaele, 100 years on: a final great act of remembrance',
 
-        const insert = (model) => {
-            return Promise.resolve(model)
-                    .then(() => {
-                        return model;
-                    });
+            },
+        ];
+        sinon.stub(db, 'collection')
+            .callsFake(() => {
+                return { insert, find, findOne };
+            });
+        ModelClass = class {
         };
+        data = new BaseData(db, ModelClass, validator);
+    });
 
-        beforeEach(() => {
-            items = [newModel];
-            sinon.stub(db, 'collection')
-                .callsFake(() => {
-                    return { insert };
-                });
-            ModelClass = class {
+    afterEach(() => {
+        db.collection.restore();
+    });
 
+    describe('create()', () => {
+        it('to insert items in db', () => {
+            const modelToCreate = {
+                _id: '596b2a0ae6239d22044adb29',
             };
-            data = new BaseData(db, ModelClass, validator);
-        });
-
-        afterEach(() => {
-            db.collection.restore();
-        });
-
-        it('expect it to insert items in db', () => {
-           return data.create(newModel)
-                    .then((model) => {
-                        expect(items).to.deep.include(model);
-                    });
+            return data.create(modelToCreate)
+                .then((createdModel) => {
+                    expect(items).to.deep.include(modelToCreate);
+                });
         });
     });
-});
 
-describe('BaseData.filterBy(props)', () => {
-    describe('when method called', () => {
-        const db = {
-            collection: () => { },
-        };
-        let items = [];
-
-        let ModelClass = null;
-        const validator = null;
-        let data = null;
-        const options = null;
-
-        const toArray = () => {
-            return Promise.resolve(items);
-        };
-
-        const find = (props) => {
-            return {
-                toArray,
+    describe('filterBy()', () => {
+        it('to filter items by options', () => {
+            const optionsToFilterBy = {
+                sectionId: 'world',
             };
-        };
-
-        beforeEach(() => {
-            items = [1, 2, 3, 4];
-            sinon.stub(db, 'collection')
-                .callsFake(() => {
-                    return { find };
+            return data.filterBy(optionsToFilterBy)
+                .then((itemsFound) => {
+                    expect(itemsFound).to.deep.equal(foundItems);
                 });
-            ModelClass = class {
-
-            };
-            data = new BaseData(db, ModelClass, validator);
-        });
-
-        afterEach(() => {
-            db.collection.restore();
-        });
-
-        it('expect it to return items filtered by given options', () => {
-           return data.filterBy(options)
-                    .then((models) => {
-                        expect(models).to.deep.equal(items);
-                    });
         });
     });
-});
-
-describe('BaseData.findOne(props)', () => {
-    describe('when method called', () => {
-        const db = {
-            collection: () => { },
-        };
-        const item = {};
-
-        let ModelClass = null;
-        const validator = null;
-        let data = null;
-        const options = {};
-
-        const findOne = (props) => {
-            return Promise.resolve(props);
-        };
-
-
-        beforeEach(() => {
-            sinon.stub(db, 'collection')
-                .callsFake(() => {
-                    return { findOne };
-                });
-            ModelClass = class {
-
+    describe('findOne()', () => {
+        it('to find particular item by options', () => {
+            const optionsToFilterBy = {
+                _id: '596b2a0ae6239d22044adb29',
             };
-            data = new BaseData(db, ModelClass, validator);
-        });
-
-        afterEach(() => {
-            db.collection.restore();
-        });
-
-        it('expect to return a found certain item', () => {
-           return data.findOne(options)
-                    .then((model) => {
-                        expect(model).to.deep.equal(item);
-                    });
+            return data.findOne(optionsToFilterBy)
+                .then((item) => {
+                    expect(items).to.deep.include(item);
+                });
         });
     });
-});
-
-describe('BaseData.getAll()', () => {
-    describe('when method called', () => {
-        const db = {
-            collection: () => { },
-        };
-        let items = [];
-
-        let ModelClass = null;
-        const validator = null;
-        let data = null;
-
-        const toArray = () => {
-            return Promise.resolve(items);
-        };
-
-        const find = () => {
-            return {
-                toArray,
-            };
-        };
-
-        beforeEach(() => {
-            items = [1, 2, 3, 4];
-            sinon.stub(db, 'collection')
-                .callsFake(() => {
-                    return { find };
-                });
-            ModelClass = class {
-
-            };
-            data = new BaseData(db, ModelClass, validator);
-        });
-
-        afterEach(() => {
-            db.collection.restore();
-        });
-
-        it('expect it to return all items', () => {
+    describe('getAll()', () => {
+        it('to get all items from collection', () => {
            return data.getAll()
-                    .then((models) => {
-                        expect(models).to.deep.equal(items);
-                    });
+              .then((itemsFound) => {
+                expect(itemsFound).to.deep.equal(foundItems);
+              });
         });
     });
 });
