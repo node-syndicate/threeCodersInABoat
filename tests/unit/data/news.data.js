@@ -6,7 +6,7 @@ const News = require('../../../models/news');
 
 describe('NewsData', () => {
     const db = {
-        collection: () => { },
+        collection: () => {},
     };
     let data = null;
     let news = [];
@@ -39,6 +39,12 @@ describe('NewsData', () => {
         };
     };
 
+    const aggregate = (number) => {
+        return {
+            toArray,
+        };
+    };
+
     beforeEach(() => {
         news = [{
             _id: '597269ed96c1f8283c6e469a',
@@ -59,7 +65,7 @@ describe('NewsData', () => {
     ];
         sinon.stub(db, 'collection')
             .callsFake(() => {
-                return { find };
+                return { find, aggregate };
             });
         data = new NewsData(db, News);
     });
@@ -80,6 +86,16 @@ describe('NewsData', () => {
                 .then((found) => {
                     expect(found).to.deep.include(news[1]);
                 });
+        });
+    });
+
+    describe('random()', () => {
+        it('to get a number of random news', () => {
+            const number = 2;
+            return data.random(number)
+                    .then((found) => {
+                        expect(found).to.has.lengthOf(2);
+                    });
         });
     });
 });
