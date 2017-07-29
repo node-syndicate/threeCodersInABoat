@@ -1,5 +1,5 @@
 .chat-box {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 25px auto;
 }
 
@@ -12,12 +12,13 @@
 #chat-messages li {
   font-size: 14px;
   margin: 10px 25px;
-  background-color: #ddd;
+  background-color: #f0ad4e;
   padding: 20px;
+  border-radius: 5px;
 }
 
 #chat-messages li:nth-child(odd) {
-  background-color: #bbb;
+  background-color: #f5ca8c;
 }
 
 .chat-form {

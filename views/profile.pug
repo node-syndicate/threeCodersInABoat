@@ -1,6 +1,7 @@
 extends layout/main
 append head
     title thesobernews | Your Profile
+    link(rel="stylesheet", href="/static/css/profile.css")
 append main
     div.row
         div.col-md-8.col-md-offset-2
@@ -9,6 +10,8 @@ append main
                 h3=user.email
                 a#edit.btn.btn-warning(href = "/edit")
                                 |Edit
+                a#chat.btn.btn-warning(href = "/chat")
+                                |Chat
 
 
 
