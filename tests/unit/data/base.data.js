@@ -16,7 +16,6 @@ describe('BaseData', () => {
     const newModel = {
         _id: '596b2a0ae6239d22044adb29',
     };
-
     const insert = (model) => {
         return Promise.resolve(model);
     };
@@ -32,6 +31,13 @@ describe('BaseData', () => {
     };
     const findOne = (props) => {
         return Promise.resolve(props);
+    };
+    let updateOne = (filter, value) => {
+        return Promise.resolve(filter, value);
+    };
+    const createIndex = () => {
+        const index = { webTitle: 'text' };
+        return Promise.resolve(index);
     };
 
     beforeEach(() => {
@@ -51,7 +57,7 @@ describe('BaseData', () => {
         ];
         sinon.stub(db, 'collection')
             .callsFake(() => {
-                return { insert, find, findOne };
+                return { insert, find, findOne, updateOne, createIndex };
             });
         ModelClass = class {
         };
@@ -86,7 +92,7 @@ describe('BaseData', () => {
         });
     });
     describe('findOne()', () => {
-        it('to find particular item by options', () => {
+        it('to find a particular item by options', () => {
             const optionsToFilterBy = {
                 _id: '596b2a0ae6239d22044adb29',
             };
@@ -102,6 +108,32 @@ describe('BaseData', () => {
               .then((itemsFound) => {
                 expect(itemsFound).to.deep.equal(foundItems);
               });
+        });
+    });
+    describe('updateOne()', () => {
+        before(() => {
+            updateOne = (filter, value) => {
+                foundItems[0].type = 'article';
+            };
+        });
+        it('to update a particular item', () => {
+            const filter = 'Russian man at Trump Jr meeting had partner with Soviet intelligence ties';
+            const value = 'article';
+            data.updateOne(filter, value);
+            expect(foundItems).to.deep.include({
+                sectionId: 'world',
+                sectionName: 'World news',
+                webTitle: 'Russian man at Trump Jr meeting had partner with Soviet intelligence ties',
+                type: 'article',
+            });
+        });
+    });
+    describe('findByText()', () => {
+        it('to find an item by string filtration', () => {
+            return data.findByText('wo')
+                .then((found) => {
+                    expect(found).to.deep.equal(foundItems);
+                });
         });
     });
 });

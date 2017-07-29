@@ -9,11 +9,8 @@ gulp.task('server', () => {
 gulp.task('pre-test', () => {
     gulp.src([
         './data/**/*.js',
-        './app/**/*.js',
-        './config/**/*.js',
-        './db/**/*.js',
+        './app/routes/**/*.js',
         './models/**/*.js',
-        './server.js',
     ])
         .pipe(istanbul({
             includeUntested: true,
