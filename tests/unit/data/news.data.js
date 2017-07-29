@@ -11,6 +11,11 @@ describe('NewsData', () => {
     let data = null;
     let news = [];
 
+    const article = {
+        comments: ['that is kewl', 'i am bored', 'unit testing is driving me mad'],
+    };
+    const comment = 'oh new one here hi';
+
     const toArray = () => {
         return Promise.resolve(news);
     };
@@ -45,6 +50,10 @@ describe('NewsData', () => {
         };
     };
 
+    const save = (piece) => {
+        piece.comments.push(comment);
+    };
+
     beforeEach(() => {
         news = [{
             _id: '597269ed96c1f8283c6e469a',
@@ -65,7 +74,7 @@ describe('NewsData', () => {
     ];
         sinon.stub(db, 'collection')
             .callsFake(() => {
-                return { find, aggregate };
+                return { find, aggregate, save };
             });
         data = new NewsData(db, News);
     });
@@ -96,6 +105,13 @@ describe('NewsData', () => {
                     .then((found) => {
                         expect(found).to.has.lengthOf(2);
                     });
+        });
+    });
+
+    describe('save()', () => {
+        it('to save comment on an article', () => {
+            data.saveComments(article);
+            expect(article.comments).to.deep.include(comment);
         });
     });
 });
