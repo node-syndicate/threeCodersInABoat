@@ -1,4 +1,4 @@
-/* globals $ */
+/* globals $  io*/
 
 $(() => {
   const socket = io();
