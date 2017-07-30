@@ -39,7 +39,7 @@ class UsersData extends BaseData {
     }
 
     checkPassword(username, password) {
-        this.collection.find({
+       return super.findOne({
             username,
         })
             .then((user) => {
@@ -53,6 +53,7 @@ class UsersData extends BaseData {
     updateUser(data, req) {
          return super.findOne({ email: data.email })
             .then((existingUser) => {
+                console.log(existingUser);
                 if (existingUser && existingUser.username!==req.user.username) {
                         const err = [{ msg: 'This email is already in use' }];
                         throw err;
