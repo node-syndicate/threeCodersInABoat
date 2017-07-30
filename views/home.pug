@@ -24,7 +24,7 @@ append main
                                 h1= news[0].fields.headline
                                 p!= news[0].fields.trailText
                     .col-sm-4.news-small-container
-                        a.news-small-title(href='/latest') Latest news
+                        a.news-small-title(href='/') Latest news
                         .news-small-thumbnail-container
                             each val in news
                                 a(href=`/articles?id=${val._id}`)

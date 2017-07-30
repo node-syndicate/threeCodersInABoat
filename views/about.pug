@@ -1,0 +1,29 @@
+extends layout/main
+append head
+	title About us | theSOBERnews
+append main
+	.container
+		.row
+			#about-container
+				.about-header
+					h1 thesobernews
+					h3 A small news website, where you can read the most recent events in the world, create profile and comment articles
+					h3
+					| This is a project for the course 'JavaScript Applications' at 
+					a(href='http://telerikacademy.com/') Telerik Academy
+					| .
+				.list-group
+					h2 Team threeCodersInABoat:
+					a.list-group-item(href='http://telerikacademy.com/Users/ililcheva') Ива Илчева
+					a.list-group-item(href='http://telerikacademy.com/Users/TsvetelinaM') Цветелина Миланова
+					a.list-group-item(href='http://telerikacademy.com/Users/svrakata') Камен Каменов
+					h2 Technologies:
+					ul.list-group
+						li.list-group-item NodeJS
+						li.list-group-item Express
+						li.list-group-item jQuery
+				
+				h5 
+					| All of the news data is provided from 
+					a(href="https://www.theguardian.com/uk") theGuardian 
+					| API and will be taken off the web space as soon as the presantation is done. All of the data is used for educational purposes only and have no commercial intensions.

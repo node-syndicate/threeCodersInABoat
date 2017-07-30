@@ -23,6 +23,10 @@ const init = ({ news }) => {
                 });
         },
 
+        showAbout(req, res) {
+            res.render('about');
+        },
+
         logOut(req, res) {
             req.logout();
             req.flash('register', ['You are logged out']);

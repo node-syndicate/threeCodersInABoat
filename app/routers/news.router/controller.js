@@ -32,7 +32,7 @@ const init = ({ news }) => {
                     return res.render('news-list-page', {
                         news: result,
                         date: date,
-                        category: category
+                        category: category,
                     });
                 });
         },
@@ -60,7 +60,7 @@ const init = ({ news }) => {
                 .then((result) => {
                     res.render('news-list-page', {
                         news: result,
-                        category: category
+                        category: category,
                     });
                 });
         },
