@@ -12,7 +12,11 @@ describe('NewsData', () => {
     let news = [];
 
     const article = {
-        comments: ['that is kewl', 'i am bored', 'unit testing is driving me mad'],
+        comments: [
+            'that is kewl',
+            'i am bored',
+            'unit testing is driving me mad',
+        ],
     };
     const comment = 'oh new one here hi';
 
@@ -108,10 +112,11 @@ describe('NewsData', () => {
         });
     });
 
-    describe('save()', () => {
+    describe('saveComments()', () => {
         it('to save comment on an article', () => {
             data.saveComments(article);
             expect(article.comments).to.deep.include(comment);
         });
     });
+
 });

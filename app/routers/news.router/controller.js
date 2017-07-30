@@ -4,7 +4,7 @@ const init = ({ news }) => {
     const controller = {
         displayNewsByCategory(req, res, next) {
             const category = req.query.categories;
-            news.filter({
+            return news.filter({
                 key: { sectionId: category },
                 sortKey: { webPublicationDate: -1 },
                 fromItem: 0,
@@ -13,7 +13,7 @@ const init = ({ news }) => {
                 .then((result) => {
                     return res.render('news-list', {
                         news: result,
-                        category: category
+                        category: category,
                     });
                 });
         },
@@ -22,7 +22,7 @@ const init = ({ news }) => {
             const category = req.query.categories;
             const date = req.query.date || '*';
             const rgx = new RegExp(date);
-            news.filter({
+            return news.filter({
                 key: { sectionId: category, webPublicationDate: { $regex: rgx } },
                 sortKey: { webPublicationDate: -1 },
                 fromItem: 0,
@@ -32,14 +32,14 @@ const init = ({ news }) => {
                     return res.render('news-list-page', {
                         news: result,
                         date: date,
-                        category: category
+                        category: category,
                     });
                 });
         },
 
         displayNewsBySearchedString(req, res) {
             const string = req.query.search;
-            news.findByText(string)
+            return news.findByText(string)
                 .then((result) => {
                     return res.render('search', {
                         news: result,
@@ -51,7 +51,7 @@ const init = ({ news }) => {
         pagination(req, res, next) {
             const category = req.query.categories;
             const page = req.query.page;
-            news.filter({
+            return news.filter({
                 key: { sectionId: category },
                 sortKey: { webPublicationDate: -1 },
                 fromItem: page * 20,
@@ -68,7 +68,7 @@ const init = ({ news }) => {
         article(req, res, next) {
             const articleId = req.query.id;
             const id = new ObjectId(articleId);
-            news.findOne({ _id: id })
+            return news.findOne({ _id: id })
                 .then((result) => {
                     return res.render('news-article', { news: result });
                 });
@@ -80,7 +80,7 @@ const init = ({ news }) => {
             const comment = req.body.comment;
             const username = req.user.username;
             const commentData = { date, comment, username };
-            news.findOne({ _id: new ObjectId(articleId) })
+            return news.findOne({ _id: new ObjectId(articleId) })
                 .then((article) => {
                     if (!article.comments) {
                         article.comments = [];
@@ -107,7 +107,7 @@ const init = ({ news }) => {
 
         removeArticleComment(req, res, next) {
             const articleId = req.body.articleId;
-            news.findOne({ _id: new ObjectId(articleId) })
+            return news.findOne({ _id: new ObjectId(articleId) })
                 .then((article) => {
                     const index = article.comments
                         .findIndex(
