@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/17</span>
+        <span class='fraction'>0/10</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/17</span>
+        <span class='fraction'>0/10</span>
       </div>
     </div>
   </div>
@@ -103,18 +103,14 @@
 58
 59
 60
-61</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+61
+62
+63
+64</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -126,13 +122,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,7 +148,22 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -167,57 +173,60 @@
 <span class="cstat-no" title="statement not covered" >    const controller = require('./controller').init(data);</span>
 <span class="cstat-no" title="statement not covered" >    const { upload } = require('../../../helpers/uploading');</span>
 &nbsp;
-&nbsp;
 <span class="cstat-no" title="statement not covered" >    app</span>
         .get('/login', controller.checkNotAuthentication, (req, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >                return res.render('login', { err: req.flash('register') });</span>
+<span class="cstat-no" title="statement not covered" >            res.render('login', { err: req.flash('register') });</span>
         })
         .get('/register', controller.checkNotAuthentication, (req, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >                return res.render('register', { err: req.flash('register') });</span>
+<span class="cstat-no" title="statement not covered" >            res.render('register', { err: req.flash('register') });</span>
         })
         .get('/profile', controller.checkAuthentication, (req, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >                     res.render('profile');</span>
+<span class="cstat-no" title="statement not covered" >            res.render('profile');</span>
         })
-        .get('/profile/edit', controller.checkAuthentication, (req, res) =&gt; {
+        .get('/edit', controller.checkAuthentication, (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >            res.render('edit-profile', { err: req.flash('register') });</span>
         })
-        .get('/profile/chat', controller.checkAuthentication, (req, res) =&gt; {
+        .get('/chat', controller.checkAuthentication, (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >            res.render('chat');</span>
         })
-        .post('/login',
-            (req, res, next) =&gt; <span class="cstat-no" title="statement not covered" >controller.validateLog(req, res, next),</span>
-            (req, res) =&gt; <span class="cstat-no" title="statement not covered" >controller.login(req, res))</span>
-        .post('/register',
-            (req, res, next) =&gt; <span class="cstat-no" title="statement not covered" >controller.validateReg(req, res, next),</span>
-            (req, res) =&gt; <span class="cstat-no" title="statement not covered" >controller.register(req, res))</span>
-        .post('/profile/edit',
+        .post('/login', controller.validateLog, controller.login)
+        .post('/register', controller.validateReg, controller.register)
+        .put(
+            '/edit:id',
             upload.single('img'),
-            (req, res, next) =&gt; <span class="cstat-no" title="statement not covered" >controller.validateEdit(req, res, next),</span>
-            (req, res) =&gt; <span class="cstat-no" title="statement not covered" >controller.editUser(req, res),</span>
-            (req, res) =&gt; {
-                // uploader(req, res, (err) =&gt; {
-                //     console.log('test');
-                //     console.log(JSON.stringify(err));
-                //     console.log(JSON.stringify(req.body));
-                //     // if (err) {
-                //     //     if (err.code === 'LIMIT_FILE_SIZE') {
-                //     //         req.flash('register', { msg: 'File size is too large. Max limit is 10MB' });
-                //     //     } else if (err.code === 'filetype') {
-                //     //         req.flash('register', { msg: 'Filetype is invalid. Must be .png' });
-                //     //     } else {
-                //     //         req.flash('register', { msg: 'Unable to upload file' });
-                //     //     }
-                //     // } else {
-                //         if (!req.file) {
-                //             req.flash('register', { msg: 'No file was selected' });
-                //         } else {
-                //             req.flash('register', { msg: 'File uploaded!' });
-                //         }
-                //     // }
-                // });
-            }
-            )
-        .get('/logout', (req, res) =&gt; <span class="cstat-no" title="statement not covered" >controller.logOut(req, res))</span>;
+            controller.validateEdit,
+            controller.editUser
+        )
+        .get('/logout', controller.logOut);
+&nbsp;
+&nbsp;
+    // .post('/profile/edit',
+    //     upload.single('img'),
+    //     (req, res, next) =&gt; controller.validateEdit(req, res, next),
+    //     (req, res) =&gt; controller.editUser(req, res),
+    //     (req, res) =&gt; {
+    //         // upload(req, res, (err) =&gt; {
+    //         //     console.log('test');
+    //         //     console.log(JSON.stringify(err));
+    //         //     console.log(JSON.stringify(req.body));
+    //         //     // if (err) {
+    //         //     //     if (err.code === 'LIMIT_FILE_SIZE') {
+    //         //     //         req.flash('register', { msg: 'File size is too large. Max limit is 10MB' });
+    //         //     //     } else if (err.code === 'filetype') {
+    //         //     //         req.flash('register', { msg: 'Filetype is invalid. Must be .png' });
+    //         //     //     } else {
+    //         //     //         req.flash('register', { msg: 'Unable to upload file' });
+    //         //     //     }
+    //         //     // } else {
+    //         //         if (!req.file) {
+    //         //             req.flash('register', { msg: 'No file was selected' });
+    //         //         } else {
+    //         //             req.flash('register', { msg: 'File uploaded!' });
+    //         //         }
+    //         //     // }
+    //         // });
+    //     }
+    //     )
 };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >module.exports = {</span>
@@ -229,7 +238,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 27 2017 15:23:46 GMT+0300 (FLE Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 30 2017 16:27:24 GMT+0300 (FLE Daylight Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

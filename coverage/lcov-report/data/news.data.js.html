@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for data/news.data.js</title>
+    <title>Code coverage report for data\news.data.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -92,54 +92,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<<<<<<< HEAD
-=======
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
->>>>>>> 57ff9a39d5f4965f642b030b79c97d2ab6a89023
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -166,54 +118,6 @@ class NewsData extends BaseData {
             .aggregate([{ $sample: { size: number } }]).toArray();
     }
 &nbsp;
-<<<<<<< HEAD
-=======
-    // newsApiRequest() {
-    //     const https = require('https');
-    //     const url = 'https://content.guardianapis.com/search?api-key=f93068f8-2f5e-43b5-8f2b-b76905e4ab38&amp;page-size=200&amp;show-fields=headline,trailText,thumbnail,bodyText';
-    //     let body = '';
-    //     return new Promise((res, rej) =&gt; {
-    //         https.get(url, (resp) =&gt; {
-    //             resp
-    //                 .on('data', (chunk) =&gt; {
-    //                     body += chunk;
-    //                 })
-    //                 .on('end', () =&gt; {
-    //                     body = JSON.parse(body);
-    //                     const result = body.response.results
-    //                         .filter((item) =&gt; item.type === 'article')
-    //                         .filter(
-    //                         (item) =&gt; {
-    //                             return item.sectionId === 'environment'
-    //                                 || item.sectionId === 'world'
-    //                                 || item.sectionId === 'sport'
-    //                                 || item.sectionId === 'politics'
-    //                                 || item.sectionId === 'lifeandstyle';
-    //                         });
-    //                     res(result);
-    //                 });
-    //         });
-    //     });
-    // }
-&nbsp;
-    // updateNews() {
-    //     setInterval(() =&gt; {
-    //         this.newsApiRequest()
-    //             .then((result) =&gt; {
-    //                 result.forEach((element) =&gt; {
-    //                     this.findOne({ id: element.id })
-    //                         .then((item) =&gt; {
-    //                             if (item) {
-    //                                 return;
-    //                             }
-    //                             this.create(element);
-    //                         });
-    //                 });
-    //             });
-    //     }, 20000);
-    // }
-&nbsp;
->>>>>>> 57ff9a39d5f4965f642b030b79c97d2ab6a89023
     saveComments(article) {
         return this.collection.save(article);
     }
@@ -226,11 +130,7 @@ module.exports = NewsData;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-<<<<<<< HEAD
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 30 2017 15:20:50 GMT+0300 (FLE Daylight Time)
-=======
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Jul 29 2017 22:40:50 GMT+0300 (EEST)
->>>>>>> 57ff9a39d5f4965f642b030b79c97d2ab6a89023
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 30 2017 16:27:24 GMT+0300 (FLE Daylight Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

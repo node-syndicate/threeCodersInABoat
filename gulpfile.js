@@ -9,7 +9,7 @@ gulp.task('server', () => {
 gulp.task('pre-test', () => {
     gulp.src([
         './data/**/*.js',
-        './app/routes/**/*.js',
+        './app/routers/**/*.js',
         './models/**/*.js',
     ])
         .pipe(istanbul({

@@ -5,7 +5,7 @@ const passport = require('passport');
 const init = (data) => {
     const controller = {
         validateReg(req, res, next) {
-            validator.register(req)
+            return validator.register(req)
                 .then((result) => {
                     if (result.isEmpty()) {
                         return next();
@@ -16,7 +16,7 @@ const init = (data) => {
         },
 
         validateLog(req, res, next) {
-            validator.login(req)
+            return validator.login(req)
                 .then((result) => {
                     if (result.isEmpty()) {
                         return next();
@@ -27,7 +27,7 @@ const init = (data) => {
         },
 
         validateEdit(req, res, next) {
-            validator.edit(req)
+            return validator.edit(req)
                 .then((result) => {
                     if (result.isEmpty()) {
                         return next();
@@ -53,7 +53,7 @@ const init = (data) => {
 
         register(req, res) {
             const defImg = 'static/imgs/defaultProfile.png';
-            data.users.register(req.body, defImg)
+            return data.users.register(req.body, defImg)
             .then((user) => {
                 passport.authenticate(
                     'local',
@@ -71,7 +71,7 @@ const init = (data) => {
         },
 
         login(req, res) {
-            passport.authenticate(
+            return passport.authenticate(
                     'local',
                     {
                         successRedirect: '/',
@@ -82,7 +82,7 @@ const init = (data) => {
         },
 
         editUser(req, res) {
-            data.users.updateUser(req.body, req)
+            return data.users.updateUser(req.body, req)
             .then((confirm) => {
                return data.users.findOne({ username: req.user.username });
             })

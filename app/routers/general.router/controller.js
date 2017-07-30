@@ -17,20 +17,20 @@ const init = ({ news }) => {
                         items: 20,
                     });
             const randomNews = news.random(20);
-            Promise.all([latestNews, randomNews])
+            return Promise.all([latestNews, randomNews])
                 .then((result) => {
                     return res.render('home', { news: result[0], unsNews: result[1] });
                 });
         },
 
         showAbout(req, res) {
-            res.render('about');
+            return res.render('about');
         },
 
         logOut(req, res) {
             req.logout();
             req.flash('register', ['You are logged out']);
-            res.redirect('/login');
+            return res.redirect('/login');
         },
     };
     return controller;

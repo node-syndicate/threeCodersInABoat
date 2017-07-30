@@ -22,7 +22,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/45</span>
+        <span class='fraction'>0/43</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
@@ -37,7 +37,7 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/45</span>
+        <span class='fraction'>0/43</span>
       </div>
     </div>
   </div>
@@ -151,9 +151,7 @@
 106
 107
 108
-109
-110
-111</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+109</td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -238,12 +236,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -270,7 +266,7 @@
 <span class="cstat-no" title="statement not covered" >const init = (data) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    const controller = {</span>
         validateReg<span class="fstat-no" title="function not covered" >(req, res, next) {</span>
-<span class="cstat-no" title="statement not covered" >            validator.register(req)</span>
+<span class="cstat-no" title="statement not covered" >            return validator.register(req)</span>
                 .then((result) =&gt; {
 <span class="cstat-no" title="statement not covered" >                    if (result.isEmpty()) {</span>
 <span class="cstat-no" title="statement not covered" >                        return next();</span>
@@ -281,7 +277,7 @@
         },
 &nbsp;
         validateLog<span class="fstat-no" title="function not covered" >(req, res, next) {</span>
-<span class="cstat-no" title="statement not covered" >            validator.login(req)</span>
+<span class="cstat-no" title="statement not covered" >            return validator.login(req)</span>
                 .then((result) =&gt; {
 <span class="cstat-no" title="statement not covered" >                    if (result.isEmpty()) {</span>
 <span class="cstat-no" title="statement not covered" >                        return next();</span>
@@ -292,13 +288,13 @@
         },
 &nbsp;
         validateEdit<span class="fstat-no" title="function not covered" >(req, res, next) {</span>
-<span class="cstat-no" title="statement not covered" >            validator.edit(req)</span>
+<span class="cstat-no" title="statement not covered" >            return validator.edit(req)</span>
                 .then((result) =&gt; {
 <span class="cstat-no" title="statement not covered" >                    if (result.isEmpty()) {</span>
 <span class="cstat-no" title="statement not covered" >                        return next();</span>
                     }
 <span class="cstat-no" title="statement not covered" >                    req.flash('register', result.array());</span>
-<span class="cstat-no" title="statement not covered" >                    return res.redirect('/profile/edit');</span>
+<span class="cstat-no" title="statement not covered" >                    return res.redirect('/edit');</span>
                 });
         },
 &nbsp;
@@ -318,7 +314,7 @@
 &nbsp;
         register<span class="fstat-no" title="function not covered" >(req, res) {</span>
 <span class="cstat-no" title="statement not covered" >            const defImg = 'static/imgs/defaultProfile.png';</span>
-<span class="cstat-no" title="statement not covered" >            data.users.register(req.body, defImg)</span>
+<span class="cstat-no" title="statement not covered" >            return data.users.register(req.body, defImg)</span>
             .then((user) =&gt; {
 <span class="cstat-no" title="statement not covered" >                passport.authenticate(</span>
                     'local',
@@ -336,7 +332,7 @@
         },
 &nbsp;
         login<span class="fstat-no" title="function not covered" >(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >            passport.authenticate(</span>
+<span class="cstat-no" title="statement not covered" >            return passport.authenticate(</span>
                     'local',
                     {
                         successRedirect: '/',
@@ -347,20 +343,18 @@
         },
 &nbsp;
         editUser<span class="fstat-no" title="function not covered" >(req, res) {</span>
-<span class="cstat-no" title="statement not covered" >            console.log(req.body);</span>
-<span class="cstat-no" title="statement not covered" >            data.users.updateUser(req.body, req)</span>
+<span class="cstat-no" title="statement not covered" >            return data.users.updateUser(req.body, req)</span>
             .then((confirm) =&gt; {
 <span class="cstat-no" title="statement not covered" >               return data.users.findOne({ username: req.user.username });</span>
             })
             .then((foundUser) =&gt; {
 <span class="cstat-no" title="statement not covered" >                req.user.email = foundUser.email;</span>
 <span class="cstat-no" title="statement not covered" >                req.user.img = foundUser.img;</span>
-<span class="cstat-no" title="statement not covered" >                console.log(JSON.stringify(foundUser));</span>
-<span class="cstat-no" title="statement not covered" >                res.redirect('/profile');</span>
+<span class="cstat-no" title="statement not covered" >                res.redirect(303, '/profile');</span>
             })
             .catch((err) =&gt; {
 <span class="cstat-no" title="statement not covered" >                req.flash('register', err);</span>
-<span class="cstat-no" title="statement not covered" >                return res.redirect('/profile/edit');</span>
+<span class="cstat-no" title="statement not covered" >                return res.redirect('/edit');</span>
             });
         },
 &nbsp;
@@ -379,7 +373,7 @@
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jul 27 2017 15:23:46 GMT+0300 (FLE Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 30 2017 16:27:24 GMT+0300 (FLE Daylight Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
