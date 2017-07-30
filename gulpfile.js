@@ -7,7 +7,7 @@ gulp.task('server', () => {
 });
 
 gulp.task('pre-test', () => {
-    gulp.src([
+    return gulp.src([
         './data/**/*.js',
         './app/routers/**/*.js',
         './models/**/*.js',
