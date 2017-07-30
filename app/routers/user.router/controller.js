@@ -10,6 +10,7 @@ const init = (data) => {
                     if (result.isEmpty()) {
                         return next();
                     }
+                    console.log(result.array());
                     req.flash('register', result.array());
                     return res.redirect('/register');
                 });

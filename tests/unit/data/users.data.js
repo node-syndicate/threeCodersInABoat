@@ -46,18 +46,6 @@ describe('UserData', () => {
         return Promise.resolve(users);
     };
 
-    // const updateOne = (filter, value) => {
-    //     let foundUser = null;
-    //     users.forEach((user) => {
-    //       if (user[Object.keys(filter)[0]] === filter[Object.keys(filter)[0]]) {
-    //         foundUser = user;
-    //         foundUser.email = value;
-    //       }
-    //     });
-
-    //     return Promise.resolve(users);
-    // };
-
     let updateOne = (filter, value) => {
         return Promise.resolve(filter, value);
     };

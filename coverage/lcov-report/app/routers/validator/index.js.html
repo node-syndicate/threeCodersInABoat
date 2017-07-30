@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">23.53% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/17</span>
+        <span class='fraction'>17/17</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,13 +35,13 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">23.53% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/17</span>
+        <span class='fraction'>17/17</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -77,31 +77,31 @@
 32
 33
 34</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
@@ -110,31 +110,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const register = (req) =&gt; {
-<span class="cstat-no" title="statement not covered" >    req.checkBody('username', 'Username is missing.').notEmpty();</span>
-<span class="cstat-no" title="statement not covered" >    req.checkBody('username', 'The username must be between 6 and 10 symbols and include only letters, numbers and underscores.')</span>
+    req.checkBody('username', 'Username is missing.').notEmpty();
+    req.checkBody('username', 'The username must be between 6 and 10 symbols and include only letters, numbers and underscores.')
         .matches(/\S[_a-zA-Z0-9]{5,10}/);
-<span class="cstat-no" title="statement not covered" >    req.checkBody('password', 'Password is missing.').notEmpty();</span>
-<span class="cstat-no" title="statement not covered" >    req.checkBody('password', 'The password must be at least 6 symbols long and contain at least one uppercase, lowercase and a number.').matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}/);</span>
-<span class="cstat-no" title="statement not covered" >    req.checkBody('password', 'Passwords do not match.').equals(req.body.confirmPassword);</span>
-<span class="cstat-no" title="statement not covered" >    req.checkBody('email', 'Email is badly formated.').isEmail();</span>
+    req.checkBody('password', 'Password is missing.').notEmpty();
+    req.checkBody('password', 'The password must be at least 6 symbols long and contain at least one uppercase, lowercase and a number.').matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}/);
+    req.checkBody('password', 'Passwords do not match.').equals(req.body.confirmPassword);
+    req.checkBody('email', 'Email is badly formated.').isEmail();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return req.getValidationResult(); </span>// returns promise with all the errors
+    return req.getValidationResult(); // returns promise with all the errors
 };
 &nbsp;
 const login = (req) =&gt; {
-<span class="cstat-no" title="statement not covered" >    req.checkBody('username', 'Username is missing.').notEmpty();</span>
-<span class="cstat-no" title="statement not covered" >    req.checkBody('password', 'Password is missing.').notEmpty();</span>
+    req.checkBody('username', 'Username is missing.').notEmpty();
+    req.checkBody('password', 'Password is missing.').notEmpty();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return req.getValidationResult(); </span>// returns promise with all the errors
+    return req.getValidationResult(); // returns promise with all the errors
 };
 &nbsp;
 &nbsp;
 &nbsp;
 const edit = (req) =&gt; {
-<span class="cstat-no" title="statement not covered" >    req.checkBody('email', 'Please enter an email.').notEmpty();</span>
-<span class="cstat-no" title="statement not covered" >    req.checkBody('email', 'Email is badly formated.').isEmail();</span>
+    req.checkBody('email', 'Please enter an email.').notEmpty();
+    req.checkBody('email', 'Email is badly formated.').isEmail();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return req.getValidationResult(); </span>// returns promise with all the errors
+    return req.getValidationResult(); // returns promise with all the errors
 };
 &nbsp;
 module.exports = {
@@ -148,7 +148,7 @@ module.exports = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Jul 30 2017 22:30:24 GMT+0300 (FLE Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 31 2017 00:44:35 GMT+0300 (FLE Daylight Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
