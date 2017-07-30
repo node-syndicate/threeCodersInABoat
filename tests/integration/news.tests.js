@@ -15,20 +15,7 @@ describe('General routes', () => {
                 app = _app;
             });
     });
-    describe('GET /', () => {
-        it('to return status 200', (done) => {
-            request(app)
-                .get('/')
-                .expect(200)
-                .end((err, res) => {
-                    if (err) {
-                        return done(err);
-                    }
-                    return done();
-                });
-        });
-    });
-    describe('GET /about', () => {
+    describe('GET /articles', () => {
         it('to return status 200', (done) => {
             request(app)
                 .get('/about')

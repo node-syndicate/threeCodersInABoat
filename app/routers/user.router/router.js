@@ -4,19 +4,19 @@ const attachTo = (app, data) => {
 
     app
         .get('/login', controller.checkNotAuthentication, (req, res) => {
-            res.render('login', { err: req.flash('register') });
+            return res.render('login', { err: req.flash('register') });
         })
         .get('/register', controller.checkNotAuthentication, (req, res) => {
-            res.render('register', { err: req.flash('register') });
+            return res.render('register', { err: req.flash('register') });
         })
         .get('/profile', controller.checkAuthentication, (req, res) => {
-            res.render('profile');
+            return res.render('profile');
         })
         .get('/edit', controller.checkAuthentication, (req, res) => {
-            res.render('edit-profile', { err: req.flash('register') });
+            return res.render('edit-profile', { err: req.flash('register') });
         })
         .get('/chat', controller.checkAuthentication, (req, res) => {
-            res.render('chat');
+            return res.render('chat');
         })
         .post('/login', controller.validateLog, controller.login)
         .post('/register', controller.validateReg, controller.register)
