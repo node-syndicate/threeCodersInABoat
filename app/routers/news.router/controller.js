@@ -60,7 +60,7 @@ const init = ({ news }) => {
                 .then((result) => {
                     res.render('news-list-page', {
                         news: result,
-                        category: category
+                        category: category,
                     });
                 });
         },
@@ -79,8 +79,14 @@ const init = ({ news }) => {
             const articleId = req.body.articleId;
             const comment = req.body.comment;
             const username = req.user.username;
+<<<<<<< HEAD
             const commentData = { date, comment, username };
             return news.findOne({ _id: new ObjectId(articleId) })
+=======
+            const id = username + Date.now();
+            const commentData = { id, date, comment, username };
+            news.findOne({ _id: new ObjectId(articleId) })
+>>>>>>> 57ff9a39d5f4965f642b030b79c97d2ab6a89023
                 .then((article) => {
                     if (!article.comments) {
                         article.comments = [];
@@ -102,7 +108,28 @@ const init = ({ news }) => {
         },
 
         updateArticleComment(req, res, next) {
-            console.log('update comment');
+            const date = req.body.date;
+            const articleId = req.body.articleId;
+            const comment = req.body.comment;
+            const id = req.body.id;
+            news.findOne({ _id: new ObjectId(articleId) })
+                .then((article) => {
+                    const index = article.comments
+                        .findIndex(
+                            (item) => item.id === id);
+                    article.comments[index].comment = comment;
+                    article.comments[index].date = date;
+                    return article;
+                })
+                .then((article) => {
+                    return news.saveComments(article);
+                })
+                .then(() => {
+                    res.send(JSON.stringify({ date, comment }));
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         },
 
         removeArticleComment(req, res, next) {

@@ -17,9 +17,10 @@
 
 .news-middle-thumbnail h2 {
 	margin-top: 10px;
-	font-size:  22px;
+	font-size:  20px;
 	color: grey;
 	text-align: left;
+	line-height: 20px;
 }
 
 .news-middle-thumbnail p {
@@ -51,4 +52,9 @@
 .news-middle-thumbnail > a:hover img {
 	transition: 0.5s;
 	width: 100%;
+}
+
+.get-news {
+	margin: 20px auto;
+	text-transform: uppercase;
 }

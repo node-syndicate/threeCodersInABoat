@@ -7,30 +7,39 @@ append main
     if news
         .container
             .row
-                h1= news.fields.headline
+                h1.article-title= news.fields.headline
                 .col-md-8.col-md-offset-2
                 if news.fields.thumbnail
-                    img.newsItemImg(src=news.fields.thumbnail, alt="News Image")
+                    .img-container
+                        img.article-img(src=news.fields.thumbnail, alt="News Image")
                 else
-                    img.newsItemImg(src='./../static/imgs/defaultArticle.png' alt="News Image")
-                p!= news.fields.bodyText
+                    .img-container  
+                        img.article-img(src='./../static/imgs/defaultArticle.png' alt="News Image")
+                p.article-text!= news.fields.bodyText
                 if user
-                    textarea.comment-input(name='comments-area', placeholder='Leave a comment')
-                    button.comment-button Comment
+                    .comment-input-container
+                        textarea.comment-input(name='comments-area', placeholder='Leave a comment')
+                        button.comment-button.btn.btn-default Comment
                 else
-                    textarea.comment-input(name='comments-area', placeholder='Please register or login to comment')
-                    a(href="/login") Click here to login
+                    .comment-input-container
+                        textarea.comment-input(name='comments-area', placeholder='Please register or login to comment')
+                        a.btn.btn-default(href="/login") Login
                 .comments-container(articleID=news._id)
                     if news.comments
                         each val in news.comments
                             .comment-item
-                                p.comment-content= val.date
-                                p.comment-username= val.username
-                                p.comment-content= val.comment
-                                if user
-                                    if val.username == user.username
-                                        button.comment-delete X
-                                        button.comment-edit Edit
+                                .bare-comment
+                                    p.comment-username= val.username
+                                    p.comment-date= val.date
+                                    p.comment-content= val.comment
+                                    if user
+                                        if val.username == user.username
+                                            button.comment-edit.btn.btn-default Edit
+                                            button.comment-delete.btn.btn-default X
+                                .editor
+                                    textarea.edit-input(name='comments-area')= val.comment
+                                    button.comment-submit.btn.btn-default(id=val.id) Submit
+                                    button.comment-cancel.btn.btn-default Cancel
 append scripts
     script(src='./../static/scripts/comments.js')
 

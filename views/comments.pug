@@ -1,9 +1,14 @@
 .comment-item
-	if date
-		p.comment-date= date
-	if username
-		p.comment-username= username
-	if comment
-		p.comment-content= comment
-	button.comment-delete X
-	button.comment-edit Edit
+	.bare-comment
+		if date
+			p.comment-username= username
+		if username
+			p.comment-date= date
+		if comment
+			p.comment-content= comment
+		button.comment-edit.btn.btn-default Edit
+		button.comment-delete.btn.btn-default X
+	.editor
+		textarea.edit-input(name='comments-area')= comment
+		button.comment-submit.btn.btn-default(id=id) Submit
+		button.comment-cancel.btn.btn-default Cancel

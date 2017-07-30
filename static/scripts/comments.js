@@ -1,3 +1,5 @@
+/* globals $ */
+
 $(() => {
     const date = (() => {
         const d = new Date();
@@ -47,30 +49,44 @@ $(() => {
         }
     });
 
-    $('.comment-container').on('click', (e) => {
+    $('.comments-container').on('click', (e) => {
         const target = e.target;
         const commentItem = $(target).parent();
-        const commentDate = $('.comment-date').text();
-        const commentUsername = $('.comment-username').text();
-        const commentContent = $('.comment-content').text();
         if ($(target).hasClass('comment-edit')) {
-            commentItem.html('')
+            $(commentItem).hide();
+            $(commentItem).next().show();
         }
-        if ($(target).hasClass('comment-edited')) {
+    });
+
+    $('.comments-container').on('click', (e) => {
+        const target = e.target;
+        const commentEditor = $(target).parent();
+        const commentBare = commentEditor.prev();
+        if ($(target).hasClass('comment-submit')) {
+            const comment = $(target).prev().val();
+            const id = $(target).attr('id');
             $.ajax({
                 url: '/comments',
                 method: 'PUT',
                 contentType: 'application/json',
-                data: JSON.stringify({ articleId }),
+                data: JSON.stringify({ id, comment, articleId, date }),
                 success: (response) => {
-                    // hide editor 
-                    // show edited comment
+                    const result = JSON.parse(response);
+                    $(commentEditor).hide();
+                    $(commentBare).children('.comment-date').text(result.date);
+                    $(commentBare).children('.comment-content').text(result.comment);
+                    $(commentBare).show();
                 },
             });
         }
+    });
 
-        if ($(target).hasClass('comment-cancel-edit')){
-
+    $('.comments-container').on('click', (e) => {
+        const target = e.target;
+        const commentItem = $(target).parent();
+        if ($(target).hasClass('comment-cancel')) {
+            $(commentItem).hide();
+            $(commentItem).prev().show();
         }
     });
 });

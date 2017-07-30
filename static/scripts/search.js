@@ -1,4 +1,4 @@
-delete this after comments are done
+// delete this after comments are done
 $(() => {
     $('form#search-form').on('submit', (event) => {
         event.preventDefault();

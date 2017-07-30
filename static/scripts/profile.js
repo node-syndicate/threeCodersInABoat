@@ -1,3 +1,5 @@
+/* globals $ */
+
 $(() => {
     $('form.well.form-horizontal').on('submit', (event) => {
         event.preventDefault();

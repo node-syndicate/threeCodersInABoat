@@ -1,10 +1,31 @@
+/* globals $ */
+
 $(() => {
   const socket = io();
+  const entityMap = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;',
+  "'": '&#39;',
+  '/': '&#x2F;',
+  '`': '&#x60;',
+  '=': '&#x3D;'
+};
+
+const escapeHtml = (string) => {
+  return String(string).replace(/[&<>"'`=\/]/g, (s) => {
+    return entityMap[s];
+  });
+};
+
   $('form').submit(() => {
     if ($.trim($('#inputTxtBox').val()) === '') {
       // no alerts, check es lint and www for more on the subject
     } else {
-      socket.emit('chat message', $('.input-msg-box').val());
+      const chatMsg = $('.input-msg-box').val();
+
+      socket.emit('chat message', escapeHtml(chatMsg));
     }
     $('.input-msg-box').val('');
     return false;
