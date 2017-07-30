@@ -30,27 +30,27 @@ html(lang="en")
                         #myNavbar.collapse.navbar-collapse
                             ul.nav.navbar-nav
                                 li
-                                    a(href='/news?categories=world') World
+                                    a#world-anchor(href='/news?categories=world') World
                                 li
-                                    a(href='/news?categories=sport') Sport
+                                    a#sport-anchor(href='/news?categories=sport') Sport
                                 li
-                                    a(href='/news?categories=politics') Politics
+                                    a#politics-anchor(href='/news?categories=politics') Politics
                                 li
-                                    a(href='/news?categories=lifeandstyle') Lifestyle
+                                    a#lifestyle-anchor(href='/news?categories=lifeandstyle') Lifestyle
                                 li
-                                    a(href='/news?categories=environment') Environment
+                                    a#environment-anchor(href='/news?categories=environment') Environment
                             ul.nav.navbar-nav.navbar-right
                                 if user
                                     li
-                                        a.profile-link(href='/profile')
+                                        a#profile-anchor.profile-link(href='/profile')
                                             div
                                                 img(src=user.img, alt='default profile picture')
-                                            span #{user.username}
+                                            span#username-span #{user.username}
                                     li
-                                        a(href='/logout') Log Out
+                                        a#logout-anchor(href='/logout') Log Out
                                 else
                                     li
-                                        a(href='/login') Log In
+                                        a#login-anchor(href='/login') Log In
                             form#search-form.navbar-form.navbar-right(action='/search' method='get')
                                 .input-group
                                     input.form-control(name='search', type='text', placeholder='Search')

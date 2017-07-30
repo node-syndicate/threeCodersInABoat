@@ -3,7 +3,7 @@ append head
 	link(rel="stylesheet", href="/static/css/news-list.css")
 	title Search news | Get Sober fast
 append main
-	if news[0]   
+	if news.length > 0   
 		.container.sub-news
 			.row
 				.category-title

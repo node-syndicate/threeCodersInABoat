@@ -10,8 +10,7 @@ append header
                     each val in msg
                         div.alert.alert-success= val
 append main
-
-        if news[0].fields
+        if news.length > 0
             .container
                 .row
                     .col-sm-8.news-large-thumbnail
@@ -35,7 +34,7 @@ append main
                                         else
                                             img(src='./../static/imgs/defaultArticle.png', alt='')
                                         h3= val.fields.headline
-        if unsNews[0].fields    
+        if unsNews.length > 0 
             .container.sub-news
                 .row
                     each val in unsNews

@@ -30,7 +30,7 @@ gulp.task('tests:unit', ['pre-test'], () => {
 });
 
 const config = {
-    connectionString: 'mongodb://localhost/test-db',
+    connectionString: 'mongodb://127.0.0.1:27017/test-database',
     port: 3002,
 };
 
@@ -61,7 +61,7 @@ gulp.task('test-server:stop', () => {
         });
 });
 
-gulp.task('test:browser', ['test-server'], () => {
+gulp.task('test:browser', ['test-server:start'], () => {
     return gulp.src('./tests/browser/**/*.js')
         .pipe(mocha({
             reporter: 'spec',
