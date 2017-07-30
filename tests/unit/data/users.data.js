@@ -84,8 +84,9 @@ describe('UserData', () => {
         it('check the password for a user', () => {
             const username = 'Test35';
             const password = '$2a$08$mEP5O.pPqm4woww92oJAwO/z4TC3EHznLYeQZ.mkvgTsois1X9bXq';
-            // const boolean = data.checkPassword(username, password);
+            const boolean = data.checkPassword(username, password);
             // return expect(boolean).to.be.equal(true);
+            console.log(boolean);
             return data.checkPassword(username, password);
         });
     });

@@ -58,16 +58,6 @@ class UsersData extends BaseData {
                         throw err;
                 }
                 if (req.file) {
-                            // TO DO deleting previouse version of the profile img
-                            //     files.forEach((file) => {
-                            //     if (file.indexOf(req.user.username)>= 0) {
-                            //     const temp = file.split('.');
-                            //         if (temp[0] === req.user.username) {
-                            // //             fs.unlink('static/imgs/avatar/' + file);
-                            //                  console.log(fs.statSync('static/imgs/avatar/' + file));
-                            //             }
-                            //         }
-                            //     });
                     return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email, img: req.file.destination+'/'+ req.file.filename } });
                 }
                 return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email } });
