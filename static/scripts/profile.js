@@ -17,7 +17,16 @@ $(() => {
             processData: false,
             data: formData,
             success: (response) => {
-                window.location.assign('/profile');
+                console.log(response);
+                $('div.mainContainer').html('');
+                if (response[0].msg) {
+                    console.log('test');
+                    response.forEach((err) => {
+                        $('div.mainContainer').append(`<div class="alert alert-danger">${err.msg}</div>`);
+                    });
+                } else {
+                    window.location.assign('/profile');
+                }
             },
         });
     });

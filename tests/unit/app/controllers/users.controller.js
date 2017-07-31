@@ -493,7 +493,6 @@ describe('user controller', () => {
         });
     });
 
-
     describe('editUser()', () => {
         it('Expect to redirect to /edit when user is not edited', () => {
             req = require('../../req-res').getRequestMock({
@@ -511,15 +510,15 @@ describe('user controller', () => {
                     },
                 });
 
-            const spy = sinon.spy(res, 'redirect');
-            const route = '/profile';
+            const spy = sinon.spy(res, 'send');
+            const arr = [];
 
             return controller.editUser(req, res)
                 .then(() => {
                     sinon.assert.calledWith(spy, route);
                 })
                 .catch((err) => {
-                    sinon.assert.calledWith(spy, '/edit');
+                    sinon.assert.calledWith(spy, arr);
                 });
         });
     });

@@ -1,5 +1,6 @@
 const validator = require('../validator');
 const passport = require('passport');
+const { upload } = require('../../../helpers/uploading');
 
 
 const init = (data) => {
@@ -33,7 +34,7 @@ const init = (data) => {
                         return next();
                     }
                     req.flash('register', result.array());
-                    return res.redirect('/edit');
+                    return res.send(req.flash('register'));
                 });
         },
 
@@ -80,6 +81,22 @@ const init = (data) => {
                     }
                 )(req, res);
         },
+        
+        uploadeImage(req, res, next) {
+                upload(req, res, (err) => {
+                    if (err) {
+                        if (err.code === 'LIMIT_FILE_SIZE') {
+                            req.flash('register', [{ msg: 'File size is too large. Max limit is 10MB' }]);
+                        } else if (err.code === 'filetype') {
+                            req.flash('register', [{ msg: 'Filetype is invalid. Must be .png/.jpeg/.jpg' }]);
+                        } else {
+                            req.flash('register', [{ msg: 'Unable to upload file' }]);
+                        }
+                        return res.send(req.flash('register'));
+                    }
+                    return next();
+                });
+        },
 
         editUser(req, res) {
             return data.users.updateUser(req.body, req)
@@ -93,7 +110,7 @@ const init = (data) => {
             })
             .catch((err) => {
                 req.flash('register', err);
-                return res.redirect('/edit');
+                return res.send(req.flash('register'));
             });
         },
 
