@@ -6,8 +6,8 @@ append main
     div.row
         div.col-md-8.col-md-offset-2
                 img.profileImg(alt="Profile Image" src=user.img)
-                h1=user.username
-                h3=user.email
+                h1#username-edit-page=user.username
+                h3#email-edit-page=user.email
                 a#edit.btn.btn-warning(href = "/edit")
                                 |Edit
                 a#chat.btn.btn-warning(href = "/chat")
