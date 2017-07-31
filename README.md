@@ -1,25 +1,6 @@
-# rules 
-1. html - use semantics where posible
-2. css:
-  * use classes over ids;
-  * use: .modulename, .modulename-submodule, .modulename-subcomponent;
-  * more [here](https://smacss.com/);
-3. javascript:
-  * rules are kindly provided by Telerik Academy, feel free to obey
+# Team 3CodersInABoat --- Project work
+  ## News Website with user system and comments
 
-# TODO:
-  
-#### private
-  0. FIX ROUTES
-  1. любими / бележки
-  2. профил - НЕ спа апп
-  3. галерия
-  4. чат
-
-#### да питаме Дончо
-  1. Как да оправим раутовете ако не сме ги оправили
-  2. юнит тестинга 
-  3. ноу адър фингс
 
 # Course Project
 _Web applications with Node.js_
