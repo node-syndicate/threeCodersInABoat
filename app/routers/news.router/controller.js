@@ -23,7 +23,8 @@ const init = ({ news }) => {
             const date = req.query.date || '*';
             const rgx = new RegExp(date);
             return news.filter({
-                key: { sectionId: category, webPublicationDate: { $regex: rgx } },
+                key: { sectionId: category,
+                        webPublicationDate: { $regex: rgx } },
                 sortKey: { webPublicationDate: -1 },
                 fromItem: 0,
                 items: 20,

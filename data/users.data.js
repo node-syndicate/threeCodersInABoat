@@ -58,9 +58,13 @@ class UsersData extends BaseData {
                         throw err;
                 }
                 if (req.file) {
-                    return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email, img: req.file.destination+'/'+ req.file.filename } });
+                    return super.updateOne({ username: req.user.username },
+                         { $set: { 'email': data.email,
+                             img: req.file.destination+'/'+ req.file.filename },
+                            });
                 }
-                return super.updateOne({ username: req.user.username }, { $set: { 'email': data.email } });
+                return super.updateOne({ username: req.user.username },
+                    { $set: { 'email': data.email } });
             });
     }
 }

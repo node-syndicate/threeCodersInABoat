@@ -65,7 +65,8 @@ describe('NewsData', () => {
             sectionId: 'world',
             sectionName: 'World news',
             webPublicationDate: '2017-07-21T15:55:37Z',
-            webTitle: 'Russian man at Trump Jr meeting had partner with Soviet intelligence ties',
+            webTitle: `Russian man at Trump Jr meeting 
+                        had partner with Soviet intelligence ties`,
         },
         {
             id: '597269g7j2nm09lkp0c6e469a',
@@ -73,7 +74,8 @@ describe('NewsData', () => {
             sectionId: 'sport',
             sectionName: 'Sport',
             webPublicationDate: '2017-07-29T13:24:50Z',
-            webTitle: 'England v South Africa: hosts look to build on big lead in third Test â€“Â live!',
+            webTitle: `England v South Africa: hosts look to 
+                        build on big lead in third Test â€“Â live!`,
         },
     ];
         sinon.stub(db, 'collection')
@@ -118,5 +120,5 @@ describe('NewsData', () => {
             expect(article.comments).to.deep.include(comment);
         });
     });
-
 });
+

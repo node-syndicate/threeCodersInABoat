@@ -46,12 +46,12 @@ describe('BaseData', () => {
             {
                 sectionId: 'world',
                 sectionName: 'World news',
-                webTitle: 'Russian man at Trump Jr meeting had partner with Soviet intelligence ties',
+                webTitle: `Russian man at Trump Jr meeting`,
             },
             {
                 sectionId: 'world',
                 sectionName: 'World news',
-                webTitle: 'Passchendaele, 100 years on: a final great act of remembrance',
+                webTitle: `Passchendaele, 100 years on`,
 
             },
         ];
@@ -117,13 +117,13 @@ describe('BaseData', () => {
             };
         });
         it('to update a particular item', () => {
-            const filter = 'Russian man at Trump Jr meeting had partner with Soviet intelligence ties';
+            const filter = `Russian man at Trump Jr meeting`;
             const value = 'article';
             data.updateOne(filter, value);
             expect(foundItems).to.deep.include({
                 sectionId: 'world',
                 sectionName: 'World news',
-                webTitle: 'Russian man at Trump Jr meeting had partner with Soviet intelligence ties',
+                webTitle: `Russian man at Trump Jr meeting`,
                 type: 'article',
             });
         });

@@ -78,7 +78,7 @@ $(() => {
                     $(commentEditor).hide();
                     $(commentBare).children('.comment-date').text(result.date);
                     $(commentBare).children('.comment-content')
-                        .text(result.comment);
+                                    .text(result.comment);
                     $(commentBare).show();
                 },
             });

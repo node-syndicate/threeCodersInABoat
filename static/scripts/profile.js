@@ -22,7 +22,10 @@ $(() => {
                 if (response[0].msg) {
                     console.log('test');
                     response.forEach((err) => {
-                        $('div.mainContainer').append(`<div class="alert alert-danger">${err.msg}</div>`);
+                        $('div.mainContainer')
+                            .append(`
+                                <div class="alert alert-danger">${err.msg}</div>
+                            `);
                     });
                 } else {
                     window.location.assign('/profile');

@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>7/10</span>
+        <span class='fraction'>6/9</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">70% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>7/10</span>
+        <span class='fraction'>6/9</span>
       </div>
     </div>
   </div>
@@ -75,41 +75,10 @@
 30
 31
 32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
-<span class="cline-any cline-yes">8×</span>
-<span class="cline-any cline-yes">8×</span>
+33</td><td class="line-coverage quiet"><span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">10×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -124,35 +93,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,7 +109,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const attachTo = (app, data) =&gt; {
     const controller = require('./controller').init(data);
-    const { upload } = require('../../../helpers/uploading');
 &nbsp;
     app
         .get('/login', controller.checkNotAuthentication, (req, res) =&gt; {
@@ -190,40 +129,11 @@
         .post('/login', controller.validateLog, controller.login)
         .post('/register', controller.validateReg, controller.register)
         .put('/edit:id',
-            upload.single('img'),
+            controller.uploadeImage,
             controller.validateEdit,
             controller.editUser
         )
         .get('/logout', controller.logOut);
-&nbsp;
-&nbsp;
-    // .post('/profile/edit',
-    //     upload.single('img'),
-    //     (req, res, next) =&gt; controller.validateEdit(req, res, next),
-    //     (req, res) =&gt; controller.editUser(req, res),
-    //     (req, res) =&gt; {
-    //         // upload(req, res, (err) =&gt; {
-    //         //     console.log('test');
-    //         //     console.log(JSON.stringify(err));
-    //         //     console.log(JSON.stringify(req.body));
-    //         //     // if (err) {
-    //         //     //     if (err.code === 'LIMIT_FILE_SIZE') {
-    //         //     //         req.flash('register', { msg: 'File size is too large. Max limit is 10MB' });
-    //         //     //     } else if (err.code === 'filetype') {
-    //         //     //         req.flash('register', { msg: 'Filetype is invalid. Must be .png' });
-    //         //     //     } else {
-    //         //     //         req.flash('register', { msg: 'Unable to upload file' });
-    //         //     //     }
-    //         //     // } else {
-    //         //         if (!req.file) {
-    //         //             req.flash('register', { msg: 'No file was selected' });
-    //         //         } else {
-    //         //             req.flash('register', { msg: 'File uploaded!' });
-    //         //         }
-    //         //     // }
-    //         // });
-    //     }
-    //     )
 };
 &nbsp;
 module.exports = {
@@ -235,7 +145,7 @@ module.exports = {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 31 2017 03:42:17 GMT+0300 (FLE Daylight Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Jul 31 2017 18:30:19 GMT+0300 (FLE Daylight Time)
 </div>
 </div>
 <script src="../../../prettify.js"></script>

@@ -6,7 +6,6 @@ const attachTo = (server) => {
         });
 
         socket.on('disconnect', () => {
-            // what happens here?
         });
     });
 };

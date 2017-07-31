@@ -11,10 +11,18 @@ const config = ({ users }) => {
                 users.findOne({ username: username })
                 .then((user) => {
                     if (!user) {
-                        return done(null, false, req.flash('register', { msg: 'Invalid username or password.' } ));
+                        return done(null, false,
+                            req.flash('register',
+                                { msg: 'Invalid username or password.' }
+                            )
+                        );
                     }
                     if (!hashPass.compare(password, user.password)) {
-                        return done(null, false, req.flash('register', { msg: 'Invalid username or password.' }));
+                        return done(null, false,
+                            req.flash('register',
+                                { msg: 'Invalid username or password.' }
+                            )
+                        );
                     }
                     return done(null, user);
                 })
