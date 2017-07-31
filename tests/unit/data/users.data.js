@@ -54,16 +54,14 @@ describe('UserData', () => {
             {
                 _id: '59767bf99a451a23e8578f7a',
                 username: 'Test34',
-                password: `$2a$08$OEEpbf1gbTuH/Gns6s67fOYw
-                            RsxN2S8.VWrgWKvDp5Qb/5hyUOnXG`,
+                password: `$2a$08$OEEpbf1gbTuH/`,
                 email: 'Test34@abv.bg',
                 img: 'static/imgs/avatar/Test34.jpg',
                 favs: [] },
             {
                 _id: '59767e547aadb61adc225edc',
                 username: 'Test35',
-                password: `$2a$08$mEP5O.pPqm4woww92oJAwO/z4T
-                            C3EHznLYeQZ.mkvgTsois1X9bXq`,
+                password: `$2a$08$mEP5O.pPqm4woww92oJAwO/`,
                 email: 'Test35@abv.bg',
                 img: 'static/imgs/avatar/Test35.jpg',
                 favs: [],
@@ -132,8 +130,7 @@ describe('UserData', () => {
     describe('checkPassword(username, password)', () => {
         it('check the correct password for a user', () => {
             const username = 'Test35';
-            const password = `$2a$08$mEP5O.pPqm4woww92oJAw
-                                O/z4TC3EHznLYeQZ.mkvgTsois1X9bXq`;
+            const password = `$2a$08$mEP5O.pPqm4woww92oJAwO/`;
 
             return data.checkPassword(username, password)
                     .then((bool) =>{
@@ -165,8 +162,7 @@ describe('UserData', () => {
             const newUser = {
                 _id: '59767bf99a451a23e8578f7a',
                 username: 'Test34',
-                password: `$2a$08$OEEpbf1gbTuH/Gns6s67f
-                            OYwRsxN2S8.VWrgWKvDp5Qb/5hyUOnXG`,
+                password: `$2a$08$OEEpbf1gbTuH/`,
                 email: 'Test38@abv.bg',
                 img: 'static/imgs/avatar/Test34.jpg',
                 favs: [] };
@@ -185,8 +181,7 @@ describe('UserData', () => {
             const newUser = {
                 _id: '59767bf99a451a23e8578f7a',
                 username: 'Test34',
-                password: `$2a$08$OEEpbf1gbTuH/Gns6s67
-                            fOYwRsxN2S8.VWrgWKvDp5Qb/5hyUOnXG`,
+                password: `$2a$08$OEEpbf1gbTuH/`,
                 email: 'Test38@abv.bg',
                 img: 'static/imgs/avatar/Test34.jpg',
                 favs: [] };
@@ -204,8 +199,7 @@ describe('UserData', () => {
             const newUser = {
                 _id: '59767bf99a451a23e8578f7a',
                 username: 'Test34',
-                password: `$2a$08$OEEpbf1gbTuH/Gns6s
-                            67fOYwRsxN2S8.VWrgWKvDp5Qb/5hyUOnXG`,
+                password: `$2a$08$OEEpbf1gbTuH/`,
                 email: 'Test35@abv.bg',
                 img: 'static/imgs/avatar/Test34.jpg',
                 favs: [] };
