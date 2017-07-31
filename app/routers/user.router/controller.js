@@ -81,16 +81,23 @@ const init = (data) => {
                     }
                 )(req, res);
         },
-        
+
         uploadeImage(req, res, next) {
                 upload(req, res, (err) => {
                     if (err) {
                         if (err.code === 'LIMIT_FILE_SIZE') {
-                            req.flash('register', [{ msg: 'File size is too large. Max limit is 10MB' }]);
+                            req.flash('register',
+                            [{ msg:
+                                'File size is too large. Max limit is 10MB',
+                            }]);
                         } else if (err.code === 'filetype') {
-                            req.flash('register', [{ msg: 'Filetype is invalid. Must be .png/.jpeg/.jpg' }]);
+                            req.flash('register',
+                            [{ msg:
+                                'Filetype is invalid. Must be .png/.jpeg/.jpg',
+                            }]);
                         } else {
-                            req.flash('register', [{ msg: 'Unable to upload file' }]);
+                            req.flash('register',
+                                [{ msg: 'Unable to upload file' }]);
                         }
                         return res.send(req.flash('register'));
                     }

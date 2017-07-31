@@ -74,7 +74,8 @@ $(() => {
                     const result = JSON.parse(response);
                     $(commentEditor).hide();
                     $(commentBare).children('.comment-date').text(result.date);
-                    $(commentBare).children('.comment-content').text(result.comment);
+                    $(commentBare).children('.comment-content')
+                                    .text(result.comment);
                     $(commentBare).show();
                 },
             });

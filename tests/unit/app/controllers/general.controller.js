@@ -16,7 +16,8 @@ describe('general controller', () => {
         sectionId: 'sport',
         sectionName: 'Sport',
         webPublicationDate: '2017-07-29T13:24:50Z',
-        webTitle: 'England v South Africa: hosts look to build on big lead in third Test â€“Â live!',
+        webTitle: `England v South Africa: hosts look 
+                    to build on big lead in third Test â€“Â live!`,
     }];
 
     beforeEach(() => {

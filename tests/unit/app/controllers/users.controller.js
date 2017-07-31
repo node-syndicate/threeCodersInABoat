@@ -16,7 +16,8 @@ describe('user controller', () => {
     const result = [{
                 _id: '59767e547aadb61adc225edc',
                 username: 'Test35',
-                password: '$2a$08$mEP5O.pPqm4woww92oJAwO/z4TC3EHznLYeQZ.mkvgTsois1X9bXq',
+                password: `$2a$08$mEP5O.pPqm4woww92oJAw
+                            O/z4TC3EHznLYeQZ.mkvgTsois1X9bXq`,
                 email: 'Test35@abv.bg',
                 img: 'static/imgs/avatar/Test35.jpg',
                 favs: [],
@@ -457,7 +458,8 @@ describe('user controller', () => {
                         });
         });
 
-        it('Expect user to be redirect to /register when not valid auth', () => {
+        it(`Expect user to be redirect to 
+            /register when not valid auth`, () => {
             passport = {
                 authenticate(str, obj) {
                     return Promise.resolve(obj.failureRedirect);
@@ -512,6 +514,7 @@ describe('user controller', () => {
 
             const spy = sinon.spy(res, 'send');
             const arr = [];
+            const route = '';
 
             return controller.editUser(req, res)
                 .then(() => {

@@ -19,7 +19,8 @@ const init = ({ news }) => {
             const randomNews = news.random(20);
             return Promise.all([latestNews, randomNews])
                 .then((result) => {
-                    return res.render('home', { news: result[0], unsNews: result[1] });
+                    return res.render('home',
+                        { news: result[0], unsNews: result[1] });
                 });
         },
 
