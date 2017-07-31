@@ -10,7 +10,6 @@ const init = (data) => {
                     if (result.isEmpty()) {
                         return next();
                     }
-                    console.log(result.array());
                     req.flash('register', result.array());
                     return res.redirect('/register');
                 });
@@ -101,7 +100,7 @@ const init = (data) => {
         logOut(req, res) {
             req.logout();
             req.flash('register', ['You are logged out']);
-            res.redirect('/login');
+            return res.redirect('/login');
         },
     };
     return controller;

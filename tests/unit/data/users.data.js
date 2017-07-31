@@ -26,7 +26,6 @@ describe('UserData', () => {
         users.forEach((user) => {
           if (user[Object.keys(prop)[0]] === prop[Object.keys(prop)[0]]) {
             foundUser = user;
-            console.log(JSON.stringify(prop));
           }
         });
     return Promise.resolve(foundUser);
@@ -217,9 +216,6 @@ describe('UserData', () => {
                         };
             
             return data.updateUser(newUser, req)
-                    .then((foundUsers) =>{
-                        console.log(foundUsers);
-                    })
                     .catch((err) =>{
                         expect('This email is already in use').to.equal(err[0].msg);
                     });

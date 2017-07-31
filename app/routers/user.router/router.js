@@ -20,8 +20,7 @@ const attachTo = (app, data) => {
         })
         .post('/login', controller.validateLog, controller.login)
         .post('/register', controller.validateReg, controller.register)
-        .put(
-            '/edit:id',
+        .put('/edit:id',
             upload.single('img'),
             controller.validateEdit,
             controller.editUser
