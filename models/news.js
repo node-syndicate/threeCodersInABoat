@@ -1,6 +1,6 @@
 class New {
     // validations
-    // new xD
+    // couldn't find way to use this
 }
 
 module.exports = New;

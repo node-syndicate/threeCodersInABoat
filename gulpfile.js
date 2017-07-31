@@ -57,7 +57,7 @@ const { MongoClient } = require('mongodb');
 gulp.task('test-server:stop', () => {
     return MongoClient.connect(config.connectionString)
         .then((db) => {
-            return db.dropDatabase();
+            return db.collection('users').remove({});
         });
 });
 

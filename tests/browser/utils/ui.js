@@ -26,6 +26,20 @@ const waitFor = (selector) => {
     }
 };
 
+const getAttr = (selector, attr) => {
+    try {
+        return driver.findElement(
+            webdriver.By.css(selector))
+            .getAttribute(attr)
+            .catch((err) => {
+                return waitFor(selector);
+            });
+    } catch (err) {
+        return waitSeconds(1)
+            .then(() => waitFor(selector));
+    }
+};
+
 const waitForMany = (selector) => {
     try {
         return driver.findElements(
@@ -65,6 +79,8 @@ const getSelected = (selector) => {
 const setValue = (selector, value) => {
     return async()
         .then(() => waitFor(selector))
+        .then((el) => el.clear())
+        .then(() => waitFor(selector))
         .then((el) => el.sendKeys(value));
 };
 
@@ -78,5 +94,12 @@ module.exports = {
     setDriver(_driver) {
         driver = _driver;
     },
-    waitSeconds, waitFor, getText, getTexts, getSelected, setValue, click,
+    waitSeconds,
+    waitFor,
+    getText,
+    getTexts,
+    getSelected,
+    setValue,
+    click,
+    getAttr,
 };
