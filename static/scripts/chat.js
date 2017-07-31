@@ -35,6 +35,6 @@ $(() => {
   socket.on('chat message', (msg) => {
     const now = new Date();
     const time = now.getHours() + ':' + now.getMinutes();
-    $('#chat-messages').append($(`<li><b><i>${time}</i>|</b>${msg}</li>`));
+    $('#chat-messages').append($(`<li><b><i>${time}</i> | </b>${msg}</li>`));
   });
 });
