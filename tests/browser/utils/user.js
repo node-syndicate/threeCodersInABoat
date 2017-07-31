@@ -3,6 +3,9 @@
         password: 'Testuser1',
         confirmPassword: 'Testuser1',
         email: 'testuser@test.com',
+        otherEmail: 'changed@mail.com',
+        comment: 'test comment',
+        editComment: 'edited test comment',
     };
 
 const createUser = (ui) => {

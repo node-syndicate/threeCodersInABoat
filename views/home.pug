@@ -14,7 +14,7 @@ append main
             .container
                 .row
                     .col-sm-8.news-large-thumbnail
-                        a(href=`/articles?id=${news[0]._id}`)
+                        a#main-article-anchor(href=`/articles?id=${news[0]._id}`)
                             if news[0].fields.thumbnail
                                 img(src= news[0].fields.thumbnail, alt='')
                             else

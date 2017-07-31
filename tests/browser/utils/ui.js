@@ -79,8 +79,6 @@ const getSelected = (selector) => {
 const setValue = (selector, value) => {
     return async()
         .then(() => waitFor(selector))
-        .then((el) => el.clear())
-        .then(() => waitFor(selector))
         .then((el) => el.sendKeys(value));
 };
 
@@ -96,6 +94,7 @@ module.exports = {
     },
     waitSeconds,
     waitFor,
+    waitForMany,
     getText,
     getTexts,
     getSelected,

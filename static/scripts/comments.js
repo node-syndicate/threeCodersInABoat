@@ -52,9 +52,11 @@ $(() => {
     $('.comments-container').on('click', (e) => {
         const target = e.target;
         const commentItem = $(target).parent();
+        const editor = $(commentItem).next();
         if ($(target).hasClass('comment-edit')) {
             $(commentItem).hide();
-            $(commentItem).next().show();
+            $(editor).show();
+            $(editor).children(':first').attr('id', 'current-edit-comment');
         }
     });
 
@@ -72,9 +74,11 @@ $(() => {
                 data: JSON.stringify({ id, comment, articleId, date }),
                 success: (response) => {
                     const result = JSON.parse(response);
+                    $(commentEditor).find(':first').removeAttr('id');
                     $(commentEditor).hide();
                     $(commentBare).children('.comment-date').text(result.date);
-                    $(commentBare).children('.comment-content').text(result.comment);
+                    $(commentBare).children('.comment-content')
+                        .text(result.comment);
                     $(commentBare).show();
                 },
             });
@@ -85,6 +89,7 @@ $(() => {
         const target = e.target;
         const commentItem = $(target).parent();
         if ($(target).hasClass('comment-cancel')) {
+            $(commentItem).find(':first').removeAttr('id');
             $(commentItem).hide();
             $(commentItem).prev().show();
         }

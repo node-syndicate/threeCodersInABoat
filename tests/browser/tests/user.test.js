@@ -6,11 +6,8 @@ const ui = require('./../utils/ui');
 const auth = require('./../utils/user');
 const async = () => Promise.resolve();
 
-describe('User test', () => {
+describe('User functional test', () => {
     let driver = null;
-
-    // let driver = new webdriver.Builder().build();
-
     const appUrl = 'http://localhost:3002';
 
     async()
@@ -84,11 +81,61 @@ describe('User test', () => {
                 });
         });
 
-        it('checks if editing user data works corectly', (done) => {
-                async()
-                .then(() => ui.setValue('input[name="email"]', ''))
-                .then(() => ui.setValue('input[name="email"]', 'changes@email.com'))
-                .then(() => ui.click('#submit-edit-data'))
+    it('checks if editing user data works corectly', (done) => {
+        async()
+            .then(() => ui.waitFor('input[name="email"]'))
+            .then((ele) => ele.clear())
+            .then(() => ui
+                .setValue('input[name="email"]', auth.user.otherEmail))
+            .then(() => ui.click('#submit-edit-data'))
+            .then(() => ui.getText('#email-edit-page'))
+            .then((text) => {
+                expect(text).to.equal(auth.user.otherEmail);
+            })
+            .then(() => ui.click('#navbar-brand-home'))
+            .then(() => done());
+    });
+
+    it('checks if user can reach comment section in article and add a comment',
+        (done) => {
+            async()
+                .then(() => ui.click('#main-article-anchor'))
+                .then(() => ui.setValue('.comment-input', auth.user.comment))
+                .then(() => ui.click('.comment-button'))
+                .then(() => ui.waitForMany('.comment-username'))
+                .then((eles) => Promise.all(eles.map((ele) => ele.getText())))
+                .then((texts) => {
+                    expect(texts).to.contain(auth.user.username);
+                })
+                .then(() => ui.waitForMany('.comment-content'))
+                .then((eles) => Promise.all(eles.map((ele) => ele.getText())))
+                .then((texts) => {
+                    expect(texts).to.contain(auth.user.comment);
+                })
                 .then(() => done());
         });
+
+    it('checks if user can edit comments', (done) => {
+        async()
+            .then(() => driver.navigate().refresh())
+            .then(() => ui.waitSeconds(2))
+            .then(() => ui.click('.comment-edit'))
+            .then(() => ui.waitFor('#current-edit-comment'))
+            .then((ele) => ele.clear())
+            .then(() => ui
+                .setValue('#current-edit-comment', auth.user.editComment))
+            .then(() => ui.click(`button[id^="${auth.user.username}"]`))
+            .then(() => done());
+    });
+
+    it('checks if user can delete comments', (done) => {
+        async()
+            .then(() => ui.click('.comment-delete'))
+            .then(() => ui.waitForMany('.comment-content'))
+            .then((eles) => Promise.all(eles.map((ele) => ele.getText())))
+            .then((texts) => {
+                expect(texts).not.to.contain(auth.user.editComment);
+            })
+            .then(() => done());
+    });
 });

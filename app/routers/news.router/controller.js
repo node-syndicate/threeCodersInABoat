@@ -79,8 +79,9 @@ const init = ({ news }) => {
             const articleId = req.body.articleId;
             const comment = req.body.comment;
             const username = req.user.username;
-            const commentData = { date, comment, username };
-            return news.findOne({ _id: new ObjectId(articleId) })
+            const id = username + Date.now();
+            const commentData = { id, date, comment, username };
+            news.findOne({ _id: new ObjectId(articleId) })
                 .then((article) => {
                     if (!article.comments) {
                         article.comments = [];
