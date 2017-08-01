@@ -68,7 +68,7 @@ describe('General routes', () => {
         });
     });
     describe('GET /chat', () => {
-        it('to return status 200', (done) => {
+        it('to return status 302', (done) => {
             request(app)
                 .get('/chat')
                 .expect(302)

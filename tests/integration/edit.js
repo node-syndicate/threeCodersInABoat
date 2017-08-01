@@ -59,11 +59,10 @@ describe('Edit route', () => {
             .then(() => loginUser(agent, user));
     });
     describe('PUT /edit', () => {
-        it('to return status 303 and redirect to profile', (done) => {
+        it('to return status 200', (done) => {
             agent.put(`/edit${user.username}`)
                 .send(user)
-                .expect(303)
-                .expect('Location', '/profile')
+                .expect(200)
                 .end((err, res) => {
                     if (err) {
                         return done(err);
