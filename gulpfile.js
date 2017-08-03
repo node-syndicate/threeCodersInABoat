@@ -61,7 +61,7 @@ gulp.task('test-server:stop', () => {
         });
 });
 
-gulp.task('test:browser', ['test-server:start'], () => {
+gulp.task('tests:browser', ['test-server:start'], () => {
     return gulp.src('./tests/browser/tests/**/*.js')
         .pipe(mocha({
             reporter: 'spec',
